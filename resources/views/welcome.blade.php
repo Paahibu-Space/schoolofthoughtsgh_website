@@ -169,7 +169,32 @@
     </section>
 
     {{-- About Section----------- --}}
+    <section class="about-section py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Content -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="display-5 fw-bold mb-4">About Us </h2>
+                    <p class="lead mb-3">School of Thoughts Ghana is an award-winning registered Non-profit organization that is designed to
+                        bridge the educational gap between the Northern and Southern parts of Ghana through Human
+                        Capacity Development, Advocacy and Opportunity Creation. It focuses on the tuition of activities such as Reading and Writing, Debate and Public Speaking, Talent and Leadership Development, and
+                        Information Technology.</p>
+                    <p class="mb-4"> Under its Advocacy strand, it pushes for the implementation of policies that would improve the education conditions and opportunities in</p>
+                    <a href="#" class="btn learn-btn">
+                        Learn More <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
 
+                <!-- Image Stack -->
+                <div class="col-lg-6">
+                    <div class="image-stack">
+                        <img src="assets/images/about-down.png" alt="Team working" class="img-stack-bottom">
+                        <img src="assets/images/about-top.png" alt="Community event" class="img-stack-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
