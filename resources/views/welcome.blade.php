@@ -172,7 +172,7 @@
     </section>
 
     {{-- About Section----------- --}}
-    <section class="about-section py-5">
+    <section class="about-section py-3">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Text Content -->
@@ -203,9 +203,9 @@
     </section>
 
     {{-- Our Team Section---- --}}
-    <section class="team-section">
+    <section class="team-section mt-3">
         <!-- Centered Title -->
-        <div class="container text-center mb-5">
+        <div class="container text-center my-3">
             <h2 class="display-4 fw-bold">Our Team</h2>
 
         </div>
@@ -213,13 +213,13 @@
         <div class="container-fluid">
             <div class="row align-items-center">
                 <!-- Left Column - Content -->
-                <div class="col-lg-6 content-col py-5">
+                <div class="col-lg-6 content-col">
                     <div class="px-4 px-lg-5">
                         <h3 class="mb-4">Abraham Agoni</h3>
                         <p class="mb-4">“Education is the foundation of greatness. At school of taught Ghana we empower
                             minds to shape the feature”</p>
                         <p class="mb-4"><strong>Founder</strong></p>
-                        <a href="#" class="btn second-btn">
+                        <a href="#" class="btn second-btn mb-3">
                             Meet Our Team <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                     </div>
@@ -234,7 +234,7 @@
     </section>
 
     {{-- Explore Events Section----- --}}
-    <section class="events-section py-5">
+    <section class="events-section py-3">
         <div class="container">
             <div class="row justify-content-center mb-3">
                 <div class="col-lg-8 text-center">
@@ -321,7 +321,140 @@
     </section>
 
     {{-- Partnership Section- --}}
+    <section class="partnerships py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold">Our Trusted Partners</h2>
+                   
+                </div>
+            </div>
 
+            <div class="partners-container">
+                <div class="partners-track">
+                    <!-- Partner Items (duplicate this block for seamless looping) -->
+                    <div class="partner-item">
+                        <img src="/assets/images/part1.png" alt="Partner 1" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part2.png" alt="Partner 2" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part3.png" alt="Partner 3" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part4.png" alt="Partner 4" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part5.png" alt="Partner 5" class="img-fluid">
+                    </div>
+                    <!-- Duplicate for seamless looping -->
+                    <div class="partner-item">
+                        <img src="/assets/images/part1.png" alt="Partner 1" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part2.png" alt="Partner 2" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part3.png" alt="Partner 3" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part4.png" alt="Partner 4" class="img-fluid">
+                    </div>
+                    <div class="partner-item">
+                        <img src="/assets/images/part5.png" alt="Partner 5" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Blogs Section --}}
+    <section class="events-section py-3">
+        <div class="container">
+            <div class="row justify-content-center mb-3">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Blogs</h2>
+
+                </div>
+            </div>
+
+            <div class="swiper events-slider">
+                <div class="swiper-wrapper">
+                    <!-- Event Card 1 -->
+                    <div class="swiper-slide">
+                        <div class="event-card card-1">
+                            <div class="event-img">
+                                <img src="assets/images/event1.png" alt="Workshop" class="img-fluid">
+                            </div>
+                            <div class="event-content">
+                                <h3>2019 – STARTRIGHT SUMMIT </h3>
+                                <p>The maiden educational summit that witnessed over 200 students, teachers and parents
+                                    to discuss the roles of stakeholders in achieving quality education in Ghana.</p>
+                                <a href="#" class="btn learn-btn">
+                                    Learn More <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 2 -->
+                    <div class="swiper-slide">
+                        <div class="event-card card-2">
+                            <div class="event-img">
+                                <img src="assets/images/about-top.png" alt="Conference" class="img-fluid">
+                            </div>
+                            <div class="event-content">
+                                <h3>2020 – EDUTOUR:</h3>
+                                <p> To compliment the effort of the Ghana Educational Service in reviving the need
+                                    for education after Covid, the team toured up to 16 schools, engaging over 800
+                                    students</p>
+                                <a href="#" class="btn learn-btn">
+                                    Learn More <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 3 -->
+                    <div class="swiper-slide">
+                        <div class="event-card card-3">
+                            <div class="event-img">
+                                <img src="assets/images/about-down.png" alt="Networking" class="img-fluid">
+                            </div>
+                            <div class="event-content">
+                                <h3>2021 – AFRIJAM</h3>
+                                <p>8 young females were sponsored to attend the Centenary Anniversary camp of the
+                                    Ghana Girl Guides Association. This was an opportunity for the girls to be exposed
+                                </p>
+                                <a href="#" class="btn learn-btn">
+                                    Learn More <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Card 4 -->
+                    <div class="swiper-slide">
+                        <div class="event-card card-4">
+                            <div class="event-img">
+                                <img src="assets/images/dropdown5.png" alt="Seminar" class="img-fluid">
+                            </div>
+                            <div class="event-content">
+                                <h3>Industry Seminar</h3>
+                                <p>Learn from leading experts in your field.</p>
+                                <a href="#" class="btn learn-btn">
+                                    Learn More <i class="fas fa-arrow-right ms-2"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- JavaScript -->

@@ -47,3 +47,41 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Pause animation on hover for better UX
+    const track = document.querySelector('.partners-track');
+    if (track) {
+        track.addEventListener('mouseenter', () => {
+            track.style.animationPlayState = 'paused';
+        });
+        
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
+        });
+    }
+
+    // Touch support for mobile devices
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const handleTouch = () => {
+        if (track) {
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+                track.style.animationPlayState = 'paused';
+            }, {passive: true});
+            
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                if (Math.abs(touchEndX - touchStartX) < 5) {
+                    track.style.animationPlayState = 'running';
+                }
+            }, {passive: true});
+        }
+    };
+    
+    if ('ontouchstart' in window) {
+        handleTouch();
+    }
+});
