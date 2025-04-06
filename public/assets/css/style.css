@@ -784,3 +784,204 @@ body {
         height: 100px;
     }
 }
+
+/* Blogs Section------- */
+
+
+/* Footer Section----- */
+/* Footer Section */
+.footer-section {
+    background-color: var(--hover-color) !important;
+    color: var(--text-color);
+    padding: 60px 0 0;
+    position: relative;
+    
+  }
+  
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+  
+  /* Left Column */
+  .footer-left {
+    flex: 1;
+    min-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo {
+    height: 50px;
+    width: auto;
+  }
+  
+  .school-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .footer-left h4 {
+  
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .footer-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-left ul li {
+    margin-bottom: 12px;
+  }
+  
+  .footer-left ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-left ul li a:hover {
+    color: var(--hover-color);
+  }
+  
+  .footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #ecf0f1;
+  }
+  
+  .footer-contact i {
+   
+    width: 20px;
+    text-align: center;
+  }
+  
+  /* Right Column */
+  .footer-right {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+  }
+  
+  .newsletter-box {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  .newsletter-box h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+  }
+  
+  .newsletter-box p {
+    color: #7f8c8d;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .newsletter-form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+ 
+  /* Divider Line */
+  .footer-divider {
+    height: 2px;
+    background-color: rgba(255,255,255,0.1);
+    margin: 20px 0;
+  }
+  
+  /* Footer Bottom */
+/* Custom Footer Styles */
+.footer-section {
+    position: relative;
+  }
+  
+  .footer-logo {
+    height: 50px;
+    width: auto;
+  }
+  
+  .back-to-top {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    background-color: var(--second-bg-color);
+  }
+  
+  .back-to-top.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .back-to-top:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Link Hover Effects */
+  .footer-section a {
+    transition: all 0.2s ease;
+  }
+  
+  .footer-section a:hover {
+    color: var(--second-bg-color) !important;
+    
+  }
+  
+  /* Social Icons with White Circles */
+.social-icon {
+    width: 36px;
+    height: 36px;
+    transition: all 0.3s ease;
+    text-decoration: none !important;
+  }
+  
+  .social-icon:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* Individual icon colors on hover */
+  .social-icon:hover .fa-facebook-f { color: #3b5998 !important; }
+  .social-icon:hover .fa-twitter { color: #1da1f2 !important; }
+  .social-icon:hover .fa-instagram { color: #e1306c !important; }
+  .social-icon:hover .fa-linkedin-in { color: #0077b5 !important; }
+  .social-icon:hover .fa-youtube { color: #ff0000 !important; }
+  /* Responsive Adjustments */
+  @media (max-width: 767.98px) {
+    .footer-section .col-6 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-section .bg-white {
+      margin-top: 1.5rem;
+    }
+  }

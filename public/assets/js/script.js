@@ -85,3 +85,72 @@ document.addEventListener('DOMContentLoaded', function() {
         handleTouch();
     }
 });
+
+// Blogs Slider
+document.addEventListener('DOMContentLoaded', function() {
+    const swiper = new Swiper('.blogs-slider', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            // When window width is >= 576px (sm)
+            576: {
+                slidesPerView: 1,
+            },
+            // When window width is >= 768px (md)
+            768: {
+                slidesPerView: 1,
+            },
+            // When window width is >= 992px (lg)
+            992: {
+                slidesPerView: 2,  // Show 2 cards on desktop
+                spaceBetween: 30
+            }
+        }
+    });
+});
+
+// Footer Section-------
+document.addEventListener('DOMContentLoaded', function() {
+    // Set copyright year
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Back to top button
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('active');
+      } else {
+        backToTopBtn.classList.remove('active');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Smooth scroll for footer links
+    document.querySelectorAll('.footer-left a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href').startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  });
