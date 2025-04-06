@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/logo.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
@@ -70,10 +74,111 @@
     </nav>
 
     {{-- Hero Section------ --}}
+    
+     <section class="hero-slider">
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+            </div>
+            
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <img src="/assets/images/hero1.png" class="d-block w-100" alt="Nature">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 text-start">
+                                    <h1 class="animate__animated animate__fadeInDown">School of Thoughts</h1>
+                                    <p class="animate__animated animate__fadeInUp animate__delay-1s">Transforming taught into ideas for Changes</p>
+                                    <div class="btn-group animate__animated animate__fadeInUp animate__delay-2s">
+                                        <a href="#" class="btn btn-primary me-3">
+                                            Get Involved <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-light">
+                                            Donate Now <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <img src="/assets/images/hero2.jpg" class="d-block w-100" alt="Community">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 text-start">
+                                    <h1 class="animate__animated animate__fadeInDown">Build a Better Future</h1>
+                                    <p class="animate__animated animate__fadeInUp animate__delay-1s">Our programs empower individuals and create lasting impact in underserved communities.</p>
+                                    <div class="btn-group animate__animated animate__fadeInUp animate__delay-2s">
+                                        <a href="#" class="btn btn-primary me-3">
+                                            Get Involved <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-light">
+                                            Donate Now <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <img src="/assets/images/hero3.jpg" class="d-block w-100" alt="Hope">
+                    <div class="carousel-caption d-flex align-items-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 text-start">
+                                    <h1 class="animate__animated animate__fadeInDown">Be Part of the Change</h1>
+                                    <p class="animate__animated animate__fadeInUp animate__delay-1s">Together we can make a difference. Your support helps us reach more people in need.</p>
+                                    <div class="btn-group animate__animated animate__fadeInUp animate__delay-2s">
+                                        <a href="#" class="btn btn-primary me-3">
+                                            Get Involved <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-outline-light">
+                                            Donate Now <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    {{-- About Section----------- --}}
+
+
 
 
     <!-- JavaScript -->
-    <script src="assets/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>
+     <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </body>
 
 </html>
