@@ -196,6 +196,39 @@
         </div>
     </section>
 
+    {{-- Our Team Section---- --}}
+    <section class="team-section">
+        <!-- Centered Title -->
+        <div class="container text-center mb-5">
+            <h2 class="display-4 fw-bold">Our Team</h2>
+           
+        </div>
+
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Left Column - Content -->
+                <div class="col-lg-6 content-col py-5">
+                    <div class="px-4 px-lg-5">
+                        <h3 class="mb-4">Abraham Agoni</h3>
+                        <p class="mb-4">“Education is the foundation of greatness. At school of taught Ghana we empower minds to shape  the feature”</p>
+                        <p class="mb-4"><strong>Founder</strong></p>
+                        <a href="#" class="btn second-btn">
+                            Meet Our Team <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column - Parallax Image -->
+                <div class="col-lg-6 parallax-col p-0">
+                    <div class="parallax-image"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
 
 
     <!-- JavaScript -->

@@ -40,3 +40,21 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     }
   });
 });
+
+    // Parallax effect for larger screens
+    function updateParallax() {
+        if (window.innerWidth >= 992) {
+            const parallax = document.querySelector('.parallax-image');
+            if (parallax) {
+                window.addEventListener('scroll', function() {
+                    const scrollPosition = window.pageYOffset;
+                    parallax.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+                });
+            }
+        }
+    }
+    
+    // Initialize and update on resize
+    updateParallax();
+    window.addEventListener('resize', updateParallax);
+});

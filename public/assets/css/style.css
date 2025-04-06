@@ -425,16 +425,16 @@ body {
     font-weight: 600;
     border-radius: 50px 0px 0px 50px !important;
     transition: all 0.3s ease !important;
-color: var(--bg-color) !important;
+    color: var(--bg-color) !important;
     letter-spacing: 1px;
     background-color: var(--button-color) !important;
-  
 }
 
 .learn-btn:hover {
     background-color: var(--second-bg-color) !important;
-    border-color: var(--second-text-color) !important;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transform: translateX(5px);
+    color: var(--text-color) !important;
 }
 
 /* Responsive Adjustments */
@@ -468,3 +468,109 @@ color: var(--bg-color) !important;
         right: 5%;
     }
 }
+/* End Of About Us Section------- */
+
+/* Our Team Section---------- */
+
+.team-section {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--second-bg-color);
+}
+
+/* Centered Title Styling */
+.team-section h2.display-4 {
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Left Content Column */
+.content-col {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+}
+
+.content-col h3 {
+    font-size: var(--big-font);
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.content-col p {
+    font-size: var(--normal-font);
+    line-height: 1.1;
+    color: var(--text-color);
+}
+
+.second-btn {
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600;
+    border-radius: 50px 0px 0px 50px !important;
+    transition: all 0.3s ease !important;
+    color: var(--bg-color) !important;
+    letter-spacing: 1px;
+    background-color: var(--text-color) !important;
+}
+
+.second-btn:hover {
+    background-color: #2980b9;
+    transform: translateX(5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Right Parallax Column */
+.parallax-col {
+    position: relative;
+    min-height: 500px;
+}
+
+.parallax-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 80%;
+    background-image: url("/assets/images/team.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .content-col {
+        min-height: auto;
+        padding: 60px 0;
+    }
+
+    .parallax-col {
+        min-height: 400px;
+    }
+
+    .parallax-image {
+        background-attachment: scroll !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-section h2.display-4 {
+        font-size: 2.5rem;
+    }
+
+    .content-col {
+        padding: 50px 20px;
+    }
+
+    .content-col h3 {
+        font-size: 1.8rem;
+    }
+
+    .parallax-col {
+        min-height: 300px;
+    }
+}
+/* End Ofg Team Section --------- */
