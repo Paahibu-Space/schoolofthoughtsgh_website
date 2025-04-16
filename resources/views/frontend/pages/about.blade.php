@@ -1,4 +1,4 @@
-@extends('frontend.layouts')
+@extends('frontend.layout')
 @section('content')
 
     <!-- Hero Section -->
