@@ -9,7 +9,7 @@
                 <div class="col-12 mb-4">
                   <div class="d-flex align-items-center">
                     <img
-                      src="assets/images/logo.png') }}"
+                      src="{{ asset('assets/images/logo.png') }}"
                       alt="School Logo"
                       class="footer-logo me-3"
                       style="height: 50px"
