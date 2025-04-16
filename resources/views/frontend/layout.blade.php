@@ -22,7 +22,7 @@
     />
     <link rel="stylesheet" href="{{ asset(path: 'assets/css/style.css') }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"

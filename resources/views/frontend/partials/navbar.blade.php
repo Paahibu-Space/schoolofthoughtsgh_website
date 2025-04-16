@@ -2,7 +2,7 @@
     <nav class="navbar">
         <div class="navbar-logo">
           <a href="{{ route('frontend.home') }}">
-            <img src="/assets/images/logo.png" alt="Logo" />
+            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" />
           </a>
           
         </div>
@@ -23,7 +23,7 @@
                   <li><a href="{{ route('frontend.team') }}">Our Team</a></li>
                 </div>
                 <div class="dropdown-image">
-                  <img src="/assets/images/dropdown1.png" alt="About Us">
+                  <img src="{{ asset('assets/images/dropdown1.png') }}" alt="About Us">
                 </div>
               </div>
             </ul>
@@ -41,7 +41,7 @@
                   <li><a href="{{ route('frontend.events') }}">Stories</a></li>
                 </div>
                 <div class="dropdown-image">
-                  <img src="/assets/images/dropdown2.png" alt="About Us">
+                  <img src="{{ asset('assets/images/dropdown2.png') }}" alt="About Us">
                 </div>
               </div>
             </ul>
@@ -58,7 +58,7 @@
                   
                 </div>
                 <div class="dropdown-image">
-                  <img src="/assets/images/dropdown3.png" alt="About Us">
+                  <img src="{{ asset('assets/images/dropdown3.png') }}" alt="About Us">
                 </div>
               </div>
             </ul>

@@ -35,7 +35,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team.png"
+                  src="{{ asset('assets/images/team.png') }}"
                   alt="Dr. Sarah Johnson"
                   class="img-fluid"
                 />
@@ -51,7 +51,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team2.png"
+                  src="{{ asset('assets/images/team2.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -69,7 +69,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team3.png"
+                  src="{{ asset('assets/images/team3.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -84,7 +84,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team4.png"
+                  src="{{ asset('assets/images/team4.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -99,7 +99,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team5.png"
+                  src="{{ asset('assets/images/team5.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -114,7 +114,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/image7.png"
+                  src="{{ asset('assets/images/image7.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -129,7 +129,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/image10.png"
+                  src="{{ asset('assets/images/image10.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -147,7 +147,7 @@
             <div class="our-team-card text-start">
               <div class="team-img">
                 <img
-                  src="/assets/images/team-image.png"
+                  src="{{ asset('assets/images/team-image.png') }}"
                   alt="Michael Chen"
                   class="img-fluid"
                 />
@@ -224,7 +224,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part1.png"
+                src="{{ asset('assets/images/part1.png') }}"
                 alt="Partner 1"
                 class="img-fluid"
               />
@@ -233,7 +233,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part2.png"
+                src="{{ asset('assets/images/part2.png') }}"
                 alt="Partner 2"
                 class="img-fluid"
               />
@@ -242,7 +242,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part3.png"
+                src="{{ asset('assets/images/part3.png') }}"
                 alt="Partner 3"
                 class="img-fluid"
               />
@@ -251,7 +251,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part4.png"
+                src="{{ asset('assets/images/part4.png') }}"
                 alt="Partner 4"
                 class="img-fluid"
               />
@@ -262,7 +262,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part5.png"
+                src="{{ asset('assets/images/part5.png') }}"
                 alt="Partner 5"
                 class="img-fluid"
               />
@@ -271,7 +271,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part6.png"
+                src="{{ asset('assets/images/part6.png') }}"
                 alt="Partner 6"
                 class="img-fluid"
               />
@@ -280,7 +280,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part7.png"
+                src="{{ asset('assets/images/part7.png') }}"
                 alt="Partner 7"
                 class="img-fluid"
               />
@@ -289,7 +289,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part8.png"
+                src="{{ asset('assets/images/part8.png') }}"
                 alt="Partner 8"
                 class="img-fluid"
               />
