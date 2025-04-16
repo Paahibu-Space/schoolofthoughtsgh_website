@@ -25,6 +25,9 @@ jobs:
       - name: Run Tests
         run: php artisan test
 
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
       - name: Deploy to cPanel via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
