@@ -32,16 +32,25 @@ jobs:
         run: php artisan test
 
       - name: Deploy to cPanel via SSH
-        uses: appleboy/ssh-action@v1.0.0
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          COMPOSER_PROCESS_TIMEOUT: 0
+          COMPOSER_NO_INTERACTION: 1
+          COMPOSER_NO_AUDIT: 1
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
+          debug: true
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
+            echo "Deploying to: ${{ secrets.DEPLOY_PATH }}"
+            cd "${{ secrets.DEPLOY_PATH }}" || { echo "Failed to cd to ${{ secrets.DEPLOY_PATH }}"; exit 1; }
+            if [ ! -f .env ]; then
+              echo "Error: .env file not found"
+              exit 1
+            fi
             git pull origin main
-            php $(which composer) install --no-dev --optimize-autoloader
-            php artisan config:cache
-            php artisan route:cache
+            /usr/local/bin/php /usr/local/bin/composer install --no-dev --optimize-autoloader
+            /usr/local/bin/php artisan config:cache
+            /usr/local/bin/php artisan route:cache
