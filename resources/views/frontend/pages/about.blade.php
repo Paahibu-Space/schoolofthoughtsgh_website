@@ -53,7 +53,7 @@
           </div>
           <div class="col-lg-4 mission-image">
             <img
-              src="/assets/images/mission.png"
+              src="{{ asset('assets/images/mission.png') }}"
               alt="Students learning"
               class="img-fluid rounded-circle"
             />
@@ -69,7 +69,7 @@
           <h3 class="mb-4 text-end text-dark">Our Vision</h3>
           <div class="col-lg-4 vision-image order-lg-1 order-2">
             <img
-              src="/assets/images/vision.png"
+              src="{{ asset('assets/images/vision.png') }}"
               alt="Graduation ceremony"
               class="img-fluid rounded-circle"
             />
@@ -102,7 +102,7 @@
             <!-- Team Member 1 -->
             <div class="team-card">
               <img
-                src="/assets/images/team.png"
+                src="{{ asset('assets/images/team.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -115,7 +115,7 @@
             <!-- Team Member 2 -->
             <div class="team-card">
               <img
-                src="/assets/images/team-image.png"
+                src="{{ asset('assets/images/team-image.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -128,7 +128,7 @@
             <!-- Team Member 3 -->
             <div class="team-card">
               <img
-                src="/assets/images/team.png"
+                src="{{ asset('assets/images/team.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -141,7 +141,7 @@
             <!-- Team Member 4 -->
             <div class="team-card">
               <img
-                src="/assets/images/team-image.png"
+                src="{{ asset('assets/images/team-image.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -154,7 +154,7 @@
             <!-- Team Member 5 -->
             <div class="team-card">
               <img
-                src="/assets/images/team.png"
+                src="{{ asset('assets/images/team.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />

@@ -20,7 +20,7 @@
           <div class="col-lg-8">
             <div class="details-image h-100">
               <img
-                src="/assets/images/event-top.png"
+                src="{{ asset('assets/images/event-top.png') }}"
                 alt="Details"
                 class="img-fluid rounded-3 h-100 w-100 object-fit-cover"
               />
@@ -115,7 +115,7 @@
             </div>
             <div class="summit-image">
               <img
-                src="/assets/images/event-down.png"
+                src="{{ asset('assets/images/event-down.png') }}"
                 alt="Education Summit"
                 class="img-fluid rounded-3 shadow"
               />
@@ -134,7 +134,7 @@
                 class="post-item d-flex mb-4 pb-3 border-bottom border-white border-opacity-25"
               >
                 <img
-                  src="/assets/images/recent1.png"
+                  src="{{ asset('assets/images/recent1.png') }}"
                   alt="Post 1"
                   class="flex-shrink-0 me-3 rounded-2"
                   width="80"
@@ -154,7 +154,7 @@
                 class="post-item d-flex mb-4 pb-3 border-bottom border-white border-opacity-25"
               >
                 <img
-                  src="/assets/images/recent2.png"
+                  src="{{ asset('assets/images/recent2.png') }}"
                   alt="Post 2"
                   class="flex-shrink-0 me-3 rounded-2"
                   width="80"
@@ -174,7 +174,7 @@
                 class="post-item d-flex mb-4 pb-3 border-bottom border-white border-opacity-25"
               >
                 <img
-                  src="/assets/images/recent3.png"
+                  src="{{ asset('assets/images/recent3.png') }}"
                   alt="Post 3"
                   class="flex-shrink-0 me-3 rounded-2"
                   width="80"
@@ -192,7 +192,7 @@
               <!-- Post 4 -->
               <div class="post-item d-flex">
                 <img
-                  src="/assets/images/recent4.png"
+                  src="{{ asset('assets/images/recent4.png') }}"
                   alt="Post 4"
                   class="flex-shrink-0 me-3 rounded-2"
                   width="80"

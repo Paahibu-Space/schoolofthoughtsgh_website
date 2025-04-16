@@ -22,7 +22,7 @@
     />
     <link rel="stylesheet" href="{{ asset(path: 'assets/css/style.css') }}">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -40,7 +40,7 @@
     <nav class="navbar">
       <div class="navbar-logo">
         <a href="{{ route('frontend.home') }}"></a>
-        <img src="/assets/images/logo.png" alt="Logo" />
+        <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" />
       </div>
 
       <ul class="nav-links">
@@ -54,22 +54,22 @@
             <li>
               <a href="#"
                 >Who We Are
-                <img src="/assets/images/dropdown1.png" alt="Mission"
+                <img src="{{ asset('assets/images/dropdown1.png') }}" alt="Mission"
               /></a>
             </li>
             <li>
               <a href="#"
-                >Mission <img src="/assets/images/dropdown3.png" alt="Mission"
+                >Mission <img src="{{ asset('assets/images/dropdown3.png') }}" alt="Mission"
               /></a>
             </li>
             <li>
               <a href="#"
-                >Vision <img src="/assets/images/dropdown2.png" alt="Team"
+                >Vision <img src="{{ asset('assets/images/dropdown2.png') }}" alt="Team"
               /></a>
             </li>
             <li>
               <a href="#"
-                >Our Team <img src="/assets/images/dropdown5.png" alt="History"
+                >Our Team <img src="{{ asset('assets/images/dropdown5.png') }}" alt="History"
               /></a>
             </li>
           </ul>
@@ -83,23 +83,23 @@
             <li>
               <a href="#"
                 >Past Events
-                <img src="/assets/images/dropdown4.png" alt="Upcoming"
+                <img src="{{ asset('assets/images/dropdown4.png') }}" alt="Upcoming"
               /></a>
             </li>
             <li>
               <a href="#"
                 >Upcoming Events
-                <img src="/assets/images/dropdown2.png" alt="Past"
+                <img src="{{ asset('assets/images/dropdown2.png') }}" alt="Past"
               /></a>
             </li>
             <li>
               <a href="#"
-                >Blogs <img src="/assets/images/dropdown3.png" alt="Gallery"
+                >Blogs <img src="{{ asset('assets/images/dropdown3.png') }}" alt="Gallery"
               /></a>
             </li>
             <li>
               <a href="#"
-                >Stories <img src="/assets/images/dropdown1.png" alt="Gallery"
+                >Stories <img src="{{ asset('assets/images/dropdown1.png') }}" alt="Gallery"
               /></a>
             </li>
           </ul>
@@ -111,13 +111,13 @@
             <li>
               <a href="#"
                 >Volunteer
-                <img src="/assets/images/dropdown3.png" alt="Volunteer"
+                <img src="{{ asset('assets/images/dropdown3.png') }}" alt="Volunteer"
               /></a>
             </li>
             <li>
               <a href="#"
                 >Partnership
-                <img src="/assets/images/dropdown2.png" alt="Partner"
+                <img src="{{ asset('assets/images/dropdown2.png') }}" alt="Partner"
               /></a>
             </li>
           </ul>
@@ -197,7 +197,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image1.png"
+                src="{{ asset('assets/images/image1.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -214,7 +214,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image2.png"
+                src="{{ asset('assets/images/image2.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -231,7 +231,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image3.png"
+                src="{{ asset('assets/images/image3.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -248,7 +248,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image4.png"
+                src="{{ asset('assets/images/image4.png') }}"
                 alt="Gallery Image 4"
                 class="img-fluid"
               />
@@ -265,7 +265,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image5.png"
+                src="{{ asset('assets/images/image5.png') }}"
                 alt="Gallery Image 5"
                 class="img-fluid"
               />
@@ -282,7 +282,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/speaker4.png"
+                src="{{ asset('assets/images/speaker4.png') }}"
                 alt="Gallery Image 6"
                 class="img-fluid"
               />
@@ -316,7 +316,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image6.png"
+                src="{{ asset('assets/images/image6.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -333,7 +333,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image7.png"
+                src="{{ asset('assets/images/image7.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -350,7 +350,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image8.png"
+                src="{{ asset('assets/images/image8.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -367,7 +367,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image9.png"
+                src="{{ asset('assets/images/image9.png') }}"
                 alt="Gallery Image 4"
                 class="img-fluid"
               />
@@ -384,7 +384,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image10.png"
+                src="{{ asset('assets/images/image10.png') }}"
                 alt="Gallery Image 5"
                 class="img-fluid"
               />
@@ -401,7 +401,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/speaker4.png"
+                src="{{ asset('assets/images/speaker4.png') }}"
                 alt="Gallery Image 6"
                 class="img-fluid"
               />
@@ -435,7 +435,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image11.png"
+                src="{{ asset('assets/images/image11.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -452,7 +452,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image12.png"
+                src="{{ asset('assets/images/image12.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -469,7 +469,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image13.png"
+                src="{{ asset('assets/images/image13.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -503,7 +503,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/recent1.png"
+                    src="{{ asset('assets/images/recent1.png') }}"
                     alt="Sarah Johnson"
                     class="img-fluid"
                   />
@@ -527,7 +527,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/team-image.png"
+                    src="{{ asset('assets/images/team-image.png') }}"
                     alt="Michael Chen"
                     class="img-fluid"
                   />
@@ -551,7 +551,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/recent4.png"
+                    src="{{ asset('assets/images/recent4.png') }}"
                     alt="Emily Rodriguez"
                     class="img-fluid"
                   />
@@ -623,7 +623,7 @@
               <div class="col-12 mb-4">
                 <div class="d-flex align-items-center">
                   <img
-                    src="/assets/images/logo.png"
+                    src="{{ asset('assets/images/logo.png') }}"
                     alt="School Logo"
                     class="footer-logo me-3"
                     style="height: 50px"

@@ -44,7 +44,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image1.png"
+                src="{{ asset('assets/images/image1.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -61,7 +61,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image2.png"
+                src="{{ asset('assets/images/image2.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -78,7 +78,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image3.png"
+                src="{{ asset('assets/images/image3.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -95,7 +95,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image4.png"
+                src="{{ asset('assets/images/image4.png') }}"
                 alt="Gallery Image 4"
                 class="img-fluid"
               />
@@ -112,7 +112,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image5.png"
+                src="{{ asset('assets/images/image5.png') }}"
                 alt="Gallery Image 5"
                 class="img-fluid"
               />
@@ -129,7 +129,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/speaker4.png"
+                src="{{ asset('assets/images/speaker4.png') }}"
                 alt="Gallery Image 6"
                 class="img-fluid"
               />
@@ -163,7 +163,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image6.png"
+                src="{{ asset('assets/images/image6.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -180,7 +180,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image7.png"
+                src="{{ asset('assets/images/image7.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -197,7 +197,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image8.png"
+                src="{{ asset('assets/images/image8.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -214,7 +214,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image9.png"
+                src="{{ asset('assets/images/image9.png') }}"
                 alt="Gallery Image 4"
                 class="img-fluid"
               />
@@ -231,7 +231,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image10.png"
+                src="{{ asset('assets/images/image10.png') }}"
                 alt="Gallery Image 5"
                 class="img-fluid"
               />
@@ -248,7 +248,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/speaker4.png"
+                src="{{ asset('assets/images/speaker4.png') }}"
                 alt="Gallery Image 6"
                 class="img-fluid"
               />
@@ -282,7 +282,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image11.png"
+                src="{{ asset('assets/images/image11.png') }}"
                 alt="Gallery Image 1"
                 class="img-fluid"
               />
@@ -299,7 +299,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image12.png"
+                src="{{ asset('assets/images/image12.png') }}"
                 alt="Gallery Image 2"
                 class="img-fluid"
               />
@@ -316,7 +316,7 @@
           <div class="col-12 col-md-6 col-lg-4">
             <div class="gallery-item">
               <img
-                src="/assets/images/image13.png"
+                src="{{ asset('assets/images/image13.png') }}"
                 alt="Gallery Image 3"
                 class="img-fluid"
               />
@@ -351,7 +351,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/recent1.png"
+                    src="{{ asset('assets/images/recent1.png') }}"
                     alt="Sarah Johnson"
                     class="img-fluid"
                   />
@@ -375,7 +375,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/team-image.png"
+                    src="{{ asset('assets/images/team-image.png') }}"
                     alt="Michael Chen"
                     class="img-fluid"
                   />
@@ -399,7 +399,7 @@
               <div class="testimonial-content">
                 <div class="profile-img">
                   <img
-                    src="/assets/images/recent4.png"
+                    src="{{ asset('assets/images/recent4.png') }}"
                     alt="Emily Rodriguez"
                     class="img-fluid"
                   />

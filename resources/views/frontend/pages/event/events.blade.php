@@ -54,7 +54,7 @@
               <div class="event-card card-1">
                 <div class="event-img">
                   <img
-                    src="/assets/images/event1.png"
+                    src="{{ asset('assets/images/event1.png') }}"
                     alt="Workshop"
                     class="img-fluid"
                   />
@@ -78,7 +78,7 @@
               <div class="event-card card-2">
                 <div class="event-img">
                   <img
-                    src="/assets/images/about-top.png"
+                    src="{{ asset('assets/images/about-top.png') }}"
                     alt="Conference"
                     class="img-fluid"
                   />
@@ -102,7 +102,7 @@
               <div class="event-card card-3">
                 <div class="event-img">
                   <img
-                    src="/assets/images/about-down.png"
+                    src="{{ asset('assets/images/about-down.png') }}"
                     alt="Networking"
                     class="img-fluid"
                   />
@@ -126,7 +126,7 @@
               <div class="event-card card-4">
                 <div class="event-img">
                   <img
-                    src="/assets/images/dropdown5.png"
+                    src="{{ asset('assets/images/dropdown5.png') }}"
                     alt="Seminar"
                     class="img-fluid"
                   />
@@ -162,7 +162,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <div class="speaker-image">
-                            <img src="/assets/images/speaker1.png" alt="Speaker 1" class="img-fluid">
+                            <img src="{{ asset('assets/images/speaker1.png') }}" alt="Speaker 1" class="img-fluid">
                         </div>
                         <div class="speaker-info">
                             <h4>Abraham Agoni</h4>
@@ -175,7 +175,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <div class="speaker-image">
-                            <img src="/assets/images/speaker2.png" alt="Speaker 2" class="img-fluid">
+                            <img src="{{ asset('assets/images/speaker2.png') }}" alt="Speaker 2" class="img-fluid">
                         </div>
                         <div class="speaker-info">
                             <h4>Michael Chen</h4>
@@ -188,7 +188,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <div class="speaker-image">
-                            <img src="/assets/images/speaker3.png" alt="Speaker 3" class="img-fluid">
+                            <img src="{{ asset('assets/images/speaker3.png') }}" alt="Speaker 3" class="img-fluid">
                         </div>
                         <div class="speaker-info">
                             <h4>Abraham Agoni</h4>
@@ -201,7 +201,7 @@
                 <div class="col-12 col-md-6 col-lg-3">
                     <div class="speaker-card">
                         <div class="speaker-image">
-                            <img src="/assets/images/speaker4.png" alt="Speaker 4" class="img-fluid">
+                            <img src="{{ asset('assets/images/speaker4.png') }}" alt="Speaker 4" class="img-fluid">
                         </div>
                         <div class="speaker-info">
                             <h4>David Wilson</h4>
@@ -227,7 +227,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="/assets/images/blog1.png" alt="Workshop" class="img-fluid">
+            <img src="{{ asset('assets/images/blog1.png') }}" alt="Workshop" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2019 – STARTRIGHT SUMMIT</h3>
@@ -247,7 +247,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="/assets/images/blog2.png" alt="Conference" class="img-fluid">
+            <img src="{{ asset('assets/images/blog2.png') }}" alt="Conference" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2020 – EDUTOUR:</h3>
@@ -267,7 +267,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="/assets/images/about-down.png" alt="Networking" class="img-fluid">
+            <img src="{{ asset('assets/images/about-down.png') }}" alt="Networking" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2021 – AFRIJAM</h3>
@@ -287,7 +287,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="/assets/images/event1.png" alt="Seminar" class="img-fluid">
+            <img src="{{ asset('assets/images/event1.png') }}" alt="Seminar" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>Industry Seminar</h3>
@@ -320,7 +320,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part1.png"
+                src="{{ asset('assets/images/part1.png') }}"
                 alt="Partner 1"
                 class="img-fluid"
               />
@@ -329,7 +329,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part2.png"
+                src="{{ asset('assets/images/part2.png') }}"
                 alt="Partner 2"
                 class="img-fluid"
               />
@@ -338,7 +338,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part3.png"
+                src="{{ asset('assets/images/part3.png') }}"
                 alt="Partner 3"
                 class="img-fluid"
               />
@@ -347,7 +347,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part4.png"
+                src="{{ asset('assets/images/part4.png') }}"
                 alt="Partner 4"
                 class="img-fluid"
               />
@@ -358,7 +358,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part5.png"
+                src="{{ asset('assets/images/part5.png') }}"
                 alt="Partner 5"
                 class="img-fluid"
               />
@@ -367,7 +367,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part6.png"
+                src="{{ asset('assets/images/part6.png') }}"
                 alt="Partner 6"
                 class="img-fluid"
               />
@@ -376,7 +376,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part7.png"
+                src="{{ asset('assets/images/part7.png') }}"
                 alt="Partner 7"
                 class="img-fluid"
               />
@@ -385,7 +385,7 @@
           <div class="col-6 col-md-4 col-lg-3">
             <div class="partner-logo">
               <img
-                src="/assets/images/part8.png"
+                src="{{ asset('assets/images/part8.png') }}"
                 alt="Partner 8"
                 class="img-fluid"
               />
@@ -410,7 +410,7 @@
             <!-- Team Member 1 -->
             <div class="gallery-card">
               <img
-                src="/assets/images/gallery1.png"
+                src="{{ asset('assets/images/gallery1.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -419,7 +419,7 @@
             <!-- Team Member 2 -->
             <div class="gallery-card">
               <img
-                src="/assets/images/team-image.png"
+                src="{{ asset('assets/images/team-image.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -428,7 +428,7 @@
             <!-- Team Member 3 -->
             <div class="gallery-card">
               <img
-                src="/assets/images/team.png"
+                src="{{ asset('assets/images/team.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -437,7 +437,7 @@
             <!-- Team Member 4 -->
             <div class="gallery-card">
               <img
-                src="/assets/images/gallery1.png"
+                src="{{ asset('assets/images/gallery1.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
@@ -446,7 +446,7 @@
             <!-- Team Member 5 -->
             <div class="gallery-card">
               <img
-                src="/assets/images/team.png"
+                src="{{ asset('assets/images/team.png') }}"
                 alt="Team Member"
                 class="img-fluid"
               />
