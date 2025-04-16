@@ -186,12 +186,12 @@
           <div class="col-lg-6">
             <div class="image-stack">
               <img
-                src="assets/images/about-down.png') }}"
+                src="{{ asset('assets/images/about-down.png') }}"
                 alt="Team working"
                 class="img-stack-bottom"
               />
               <img
-                src="assets/images/about-top.png') }}"
+                src="{{ asset('assets/images/about-top.png') }}"
                 alt="Community event"
                 class="img-stack-top"
               />
@@ -249,7 +249,7 @@
               <div class="event-card card-1">
                 <div class="event-img">
                   <img
-                    src="assets/images/event1.png') }}"
+                    src="{{ asset('assets/images/event1.png') }}"
                     alt="Workshop"
                     class="img-fluid"
                   />
@@ -273,7 +273,7 @@
               <div class="event-card card-2">
                 <div class="event-img">
                   <img
-                    src="assets/images/about-top.png') }}"
+                    src="{{ asset('assets/images/about-top.png') }}"
                     alt="Conference"
                     class="img-fluid"
                   />
@@ -297,7 +297,7 @@
               <div class="event-card card-3">
                 <div class="event-img">
                   <img
-                    src="assets/images/about-down.png') }}"
+                    src="{{ asset('assets/images/about-down.png') }}"
                     alt="Networking"
                     class="img-fluid"
                   />
@@ -321,7 +321,7 @@
               <div class="event-card card-4">
                 <div class="event-img">
                   <img
-                    src="assets/images/dropdown5.png') }}"
+                    src="{{ asset('assets/images/dropdown5.png') }}"
                     alt="Seminar"
                     class="img-fluid"
                   />
@@ -447,7 +447,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="assets/images/blog1.png') }}" alt="Workshop" class="img-fluid">
+            <img src="{{ asset('assets/images/blog1.png') }}" alt="Workshop" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2019 – STARTRIGHT SUMMIT</h3>
@@ -467,7 +467,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="assets/images/blog2.png') }}" alt="Conference" class="img-fluid">
+            <img src="{{ asset('assets/images/blog2.png') }}" alt="Conference" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2020 – EDUTOUR:</h3>
@@ -487,7 +487,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="assets/images/about-down.png') }}" alt="Networking" class="img-fluid">
+            <img src="{{ asset('assets/images/about-down.png') }}" alt="Networking" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>2021 – AFRIJAM</h3>
@@ -507,7 +507,7 @@
       <div class="col-12 col-md-6 col-lg-3">
         <div class="blog-card h-100">
           <div class="blog-img">
-            <img src="assets/images/event1.png') }}" alt="Seminar" class="img-fluid">
+            <img src="{{ asset('assets/images/event1.png') }}" alt="Seminar" class="img-fluid">
           </div>
           <div class="blog-content p-4">
             <h3>Industry Seminar</h3>
