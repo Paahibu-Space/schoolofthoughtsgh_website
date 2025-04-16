@@ -20,7 +20,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="{{ asset(path: 'assets/css/style.css') }}">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/images/logo.png" />
     <!-- Bootstrap CSS -->
@@ -39,15 +39,15 @@
     <!-- {{-- Navbar Section----- --}} -->
     <nav class="navbar">
       <div class="navbar-logo">
-        <a href="/index.html"></a>
+        <a href="{{ route('frontend.home') }}"></a>
         <img src="/assets/images/logo.png" alt="Logo" />
       </div>
 
       <ul class="nav-links">
-        <li><a href="/index.html" class="active">Home</a></li>
+        <li><a href="{{ route('frontend.home') }}" class="active">Home</a></li>
 
         <li>
-          <a href="/assets/pages/aboutus.html"
+          <a href="{{ route('frontend.about') }}"
             >About Us <span class="dropdown-icon">▼</span></a
           >
           <ul class="dropdown-menu">
@@ -76,7 +76,7 @@
         </li>
 
         <li>
-          <a href="/assets/pages/events.html"
+          <a href="{{ route('frontend.events') }}"
             >Events <span class="dropdown-icon">▼</span></a
           >
           <ul class="dropdown-menu">
@@ -132,14 +132,35 @@
         <div class="line3"></div>
       </div>
     </nav>
+    <!-- Hero Section --------->
+    <section class="gallery-page2-section">
+      <!-- Full-Width Background Image -->
+      <div class="gallery-page2-bg-image"></div>
 
-    <!-- Hero Section -->
-    <section class="gallery-page">
-      <div class="hero-overlay"></div>
+      <!-- Content Container -->
       <div class="container h-100">
         <div class="row h-100 align-items-center">
-          <div class="col-12 text-center">
-            <!-- <h1 class="display-3 fw-bold text-white">About Our School</h1> -->
+          <!-- Dark Blue Text Container (Half Width) -->
+          <div class="col-lg-6">
+            <div class="gallery-content dark-blue-bg p-4 p-lg-5">
+              <h5 class="fw-bold text-white mb-4">Filter Event</h5>
+              <p class="lead text-white mb-4">
+                Reading training for 20 students from 10 schools, one hour daily
+                after school.
+              </p>
+              <p class="lead text-white mb-4">
+                Reading training for 20 students from 10 schools, one hour daily
+                after school.
+              </p>
+              <p class="lead text-white mb-4">
+                Reading training for 20 students from 10 schools, one hour daily
+                after school.
+              </p>
+              <p class="lead text-white mb-4">
+                Reading training for 20 students from 10 schools, one hour daily
+                after school.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -472,7 +493,6 @@
         <div class="row justify-content-center mb-4">
           <div class="col-lg-8 text-center">
             <h2 class="display-5 fw-bold text-white">Our Testimonies</h2>
-            
           </div>
         </div>
 
@@ -560,11 +580,11 @@
 
       <div class="container">
         <div class="row justify-content-center mb-4">
-            <div class="col-lg-8 text-center">
-              <h2 class="display-5 fw-bold text-white">Our Video Testimonials</h2>
-              <p class="lead text-white">Hear from our community members</p>
-            </div>
+          <div class="col-lg-8 text-center">
+            <h2 class="display-5 fw-bold text-white">Our Video Testimonials</h2>
+            <p class="lead text-white">Hear from our community members</p>
           </div>
+        </div>
         <div class="row justify-content-center">
           <div class="col-lg-8 col-xl-6">
             <div class="video-container shadow-lg">

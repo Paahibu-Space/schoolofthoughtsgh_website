@@ -20,7 +20,7 @@
   }
   
   body {
-    font-family: "DM Sans", sans-serif;
+    font-family: "Lato", sans-serif;
   }
   
   /* Navbar Section ---------- */
@@ -857,7 +857,7 @@
     width: 100%;
     max-height: 200px;
     object-fit: cover;
-    filter: grayscale(100%);
+    /* filter: grayscale(100%); */
   }
   .gallery-card:hover img {
     filter: grayscale(0%);
@@ -2021,8 +2021,8 @@
     align-items: center;
     justify-content: center;
     height: 120px;
-    filter: grayscale(100%);
-    opacity: 0.7;
+    /* filter: grayscale(100%);
+    opacity: 0.7; */
     transition: all 0.3s ease;
     margin-bottom: 15px;
   }
