@@ -1,4 +1,4 @@
-name: Laravel CI/CD
+name: sotgh CI/CD
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Set up PHP
@@ -22,10 +22,16 @@ jobs:
       - name: Install Composer Dependencies
         run: php $(which composer) install --no-interaction --prefer-dist --optimize-autoloader
 
-      - name: Run Laravel Tests
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
+      - name: Run Tests
         run: php artisan test
 
-      - name: Deploy via SSH
+      - name: Deploy to cPanel via SSH
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -33,11 +39,102 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
+          cd: "${{secrets.DEPLOY_PATH}}"
           script: |
-            cd "${{ secrets.DEPLOY_PATH }}"
+            cd "${{secrets.DEPLOY_PATH}}"
             git pull origin main
             php $(which composer) install --no-dev --optimize-autoloader
-            php artisan migrate --force
             php artisan config:cache
             php artisan route:cache
-            php artisan view:cache
+My Workflow:name: Deploy to Server via SSH
+
+on:
+  push:
+    branches:
+      - main # Change this to the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }} # Make sure you've set this in your repository secrets
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts # Optional: Add the server fingerprint
+          chmod 644 ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Deploy changes
+        run: |
+          ssh -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} <<EOF
+            cd /var/www/your-app-directory # Change this to your application's directory on the server
+            git pull origin main                 # Or the branch you're deploying
+            # Add any other deployment commands here (e.g., composer update, php artisan migrate)
+            echo "Deployment successful!"
+            exit
+          EOF
+Comparison:Workflow Name:Yours: Laravel CI/CDMine: Deploy to Server via SSHMine is more specific to the deployment aspect, while yours includes CI/CD.Trigger:Both: push on main branchBoth workflows trigger when you push to the main branch.Jobs:Yours: build-and-deploy (single job for building and deploying)Mine: deploy (single job focused on deployment)Your workflow combines building and deployment into one job, which can be fine for simple projects. However, for more complex workflows, it's often better to separate the build and deploy stages.Steps:Checkout:Yours: actions/checkout@v3Mine: actions/checkout@v4Using the latest version is generally recommended.PHP Setup:Yours: Uses shivammathur/setup-php@v2 to set up PHP.Mine: Does not include PHP setup, assuming it's already on the server.If your deployment server already has PHP set up, you don't need this step. But if you're deploying to a fresh server, you'd need to install PHP.Composer:Yours: Installs Composer dependencies.Mine: Assumes Composer is on the server or installs it as part of the deployment script..env Setup:Yours: Copies .env.example to .env and generates APP_KEY.Mine: Assumes .env is already configured on the server.Tests:Yours: Runs Laravel tests.Mine: Does not include testing.SSH Deployment:Yours: Uses appleboy/ssh-action@v1.0.0 to execute commands over SSH.Mine: Uses webfactory/ssh-agent@v0.8.0 to set up the SSH key and then uses the ssh command directly.Deployment commands:Yours:Change directoryPull from GitInstall composer dependenciesClear config and route cachesMine:Change directoryPull from GitHas placeholder for other commandsSecurity:Mine: Uses webfactory/ssh-agent and adds the server to known_hosts for better security.Pros and Cons:Your Workflow:Pros:Includes testing.Handles .env and APP_KEY setup.Uses a dedicated SSH action.Cons:Combines build and deploy, which might not be ideal for complex projects.Relies on a third-party action for SSH.My Workflow:Pros:More explicit SSH key management.Adds server to known_hosts for security.Clear separation of concerns.Cons:Doesn't include testing or .env setup.Requires more manual configuration of SSH.Which one should you use?It depends on your specific needs and preferences. If you want a workflow that handles everything from building to deploying, your workflow is a good starting point. If you prefer more control over the SSH connection and want to ensure better security, you can use my workflow.Here's a modified version of your workflow, incorporating some of the security best practices from my workflow:name: Laravel CI/CD
+
+on:
+  push:
+    branches:
+      - main # Change this to the branch you want to deploy from
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }} # Ensure this is set in GitHub secrets
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts #  Add server fingerprint
+          chmod 644 ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, bcmath, xml, curl
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Copy .env.example to .env
+        run: cp .env.example .env
+
+      - name: Generate APP_KEY
+        run: php artisan key:generate
+
+      - name: Run Tests
+        run: php artisan test
+
+      - name: Deploy to cPanel
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
+            cd "${{secrets.DEPLOY_PATH}}"
+            git pull origin main
+            php $(which composer) install --no-dev --optimize-autoloader
+            php artisan config:cache
+            php artisan route:cache
+            echo "Deployment successful!"
+            exit
+          EOF
