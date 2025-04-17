@@ -24,8 +24,8 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, bcmath, xml, curl
 
-      - name: Generate APP_KEY
-        run: php artisan key:generate
+      # - name: Generate APP_KEY
+      #   run: php artisan key:generate
 
       - name: Run Tests
         run: php artisan test
