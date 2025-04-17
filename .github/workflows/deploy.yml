@@ -37,12 +37,29 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /home/sites/39b/2/233a692242/public_html && echo "Now in $(pwd)"
-            git pull origin main
-            php $(which composer) install --no-dev --optimize-autoloader
+            echo "🔐 Logged into server"
+            cd "/home/sites/39b/2/233a692242/public_html" || { echo "❌ Failed to cd into project dir"; exit 1; }
+            echo "📁 Now in: $(pwd)"
+            echo "🧠 Current Git branch:"
+            git branch
+
+            echo "📦 Pulling latest code from GitHub..."
+            git pull origin main || { echo "❌ git pull failed"; exit 1; }
+
+            echo "🔍 Git last commit:"
+            git log -1
+
+            echo "📁 Listing files:"
+            ls -la
+
+            echo "🧪 Installing Composer deps..."
+            php /usr/local/bin/composer install --no-dev --optimize-autoloader || { echo "❌ Composer install failed"; exit 1; }
+
+            echo "🧼 Caching config and routes..."
             php artisan config:cache
             php artisan route:cache
+
+            echo "✅ Deployment complete."
           debug: true
