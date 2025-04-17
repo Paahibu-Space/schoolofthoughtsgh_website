@@ -133,7 +133,7 @@
           <div class="row align-items-center">
             <div class="col-md-6 mb-3 mb-md-0">
               <p class="mb-0">
-                &copy; <span id="current-year"></span> School Name. All Rights
+                &copy; <span id="current-year"></span> School of Thoughts Ghana All Rights
                 Reserved.
               </p>
             </div>
