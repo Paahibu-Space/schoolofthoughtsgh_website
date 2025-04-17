@@ -39,9 +39,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
+          server-dir: ${{secrets.DEPLOY_PATH}}
           # cd: "${{secrets.DEPLOY_PATH}}"
           script: |
-            cd "${{secrets.DEPLOY_PATH}}"
+            # cd "${{secrets.DEPLOY_PATH}}"
             git pull origin main
             php $(which composer) install --no-dev --optimize-autoloader
             php artisan config:cache
