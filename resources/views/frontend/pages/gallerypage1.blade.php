@@ -358,7 +358,7 @@
                 </div>
                 <div class="testimonial-text">
                   <p>
-                    "The School of Thought transformed my perspective on
+                    "The School of Thoughts transformed my perspective on
                     education. The innovative approach helped me develop
                     critical thinking skills I use daily in my career."
                   </p>
