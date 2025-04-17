@@ -40,7 +40,7 @@ jobs:
           # passphrase: ${{ secrets.SSH_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd "${{secrets.DEPLOY_PATH}}"
+            cd "/home/sites/39b/2/233a692242/public_html"
             git pull origin main
             php $(which composer) install --no-dev --optimize-autoloader
             php artisan config:cache
