@@ -3,15 +3,27 @@ name: Laravel CI/CD
 on:
   push:
     branches:
-      - main
+      - main # Change this to the branch you want to deploy from
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }} # Ensure this is set in GitHub secrets
+
+      - name: Add server to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts #  Add server fingerprint
+          chmod 644 ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
@@ -19,47 +31,20 @@ jobs:
           php-version: '8.2'
           extensions: mbstring, bcmath, xml, curl
 
-      - name: Install Composer Dependencies
-        run: php $(which composer) install --no-interaction --prefer-dist --optimize-autoloader
-
-      - name: Copy .env.example to .env
-        run: cp .env.example .env
-
       - name: Generate APP_KEY
         run: php artisan key:generate
 
       - name: Run Tests
         run: php artisan test
 
-      - name: Deploy to cPanel via SSH
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            echo "🔐 Logged into server"
-            cd "/home/sites/39b/2/233a692242/public_html" || { echo "❌ Failed to cd into project dir"; exit 1; }
-            echo "📁 Now in: $(pwd)"
-            echo "🧠 Current Git branch:"
-            git branch
-
-            echo "📦 Pulling latest code from GitHub..."
-            git pull origin main || { echo "❌ git pull failed"; exit 1; }
-
-            echo "🔍 Git last commit:"
-            git log -1
-
-            echo "📁 Listing files:"
-            ls -la
-
-            echo "🧪 Installing Composer deps..."
-            php /usr/local/bin/composer install --no-dev --optimize-autoloader || { echo "❌ Composer install failed"; exit 1; }
-
-            echo "🧼 Caching config and routes..."
+      - name: Deploy to cPanel
+        run: |
+          ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} <<EOF
+            cd "${{secrets.DEPLOY_PATH}}"
+            git pull origin main
+            php $(which composer) install --no-dev --optimize-autoloader
             php artisan config:cache
             php artisan route:cache
-
-            echo "✅ Deployment complete."
-          debug: true
+            echo "Deployment successful!"
+            exit
+          EOF
