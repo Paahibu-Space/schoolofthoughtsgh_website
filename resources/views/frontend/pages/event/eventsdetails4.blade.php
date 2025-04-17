@@ -1,4 +1,4 @@
-@extends('frontend.layouts')
+@extends('frontend.layout')
 @extends('content')
     <!-- Hero Section -->
     <section class="events-details-hero">

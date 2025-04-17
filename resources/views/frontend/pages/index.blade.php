@@ -40,17 +40,17 @@
                   <div class="row">
                     <div class="col-lg-6 text-start">
                       <h1 class="animate__animated animate__fadeInDown">
-                        School of Thoughts
+                        School of Thoughts Ghana
                       </h1>
                       <p
                         class="animate__animated animate__fadeInUp animate__delay-1s"
                       >
-                        Transforming taught into ideas for Changes
+                        We Think To Change! We Are Change!
                       </p>
                       <div
                         class="btn-group animate__animated animate__fadeInUp animate__delay-2s"
                       >
-                        <a href="#" class="btn btn-primary me-3">
+                        <a href="{{ route('frontend.about') }}" class="btn btn-primary me-3">
                           Get Involved <i class="fas fa-arrow-right ms-2"></i>
                         </a>
                         <a href="#" class="btn btn-outline-light">
@@ -217,7 +217,7 @@
               <div class="px-4 px-lg-5">
                 <h3 class="mb-4">Abraham Agoni</h3>
                 <p class="mb-4">
-                  “Education is the foundation of greatness. At school of taught
+                  “Education is the foundation of greatness. At school of Thoughts
                   Ghana we empower minds to shape the feature”
                 </p>
                 <p class="mb-4"><strong>Founder</strong></p>

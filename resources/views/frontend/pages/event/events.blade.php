@@ -21,13 +21,13 @@
             <h2 class="mb-2">About Our Events</h2>
 
             <p>
-              The School of Thought hosts events to provide a dynamic platform
+              The School of Thoughts hosts events to provide a dynamic platform
               for intellectual engagement, critical discourse, and collaborative
               learning. These gatherings are designed to foster creativity,
               innovation, and the exchange of diverse perspectives. By bringing
               together thought leaders, students, and community members, the
               events aim to inspire meaningful conversations that drive personal
-              and societal growth. Ultimately, the School of Thought seeks to
+              and societal growth. Ultimately, the School of Thoughts seeks to
               empower individuals to think critically, challenge conventional
               norms, and take actionable steps toward positive change.
             </p>

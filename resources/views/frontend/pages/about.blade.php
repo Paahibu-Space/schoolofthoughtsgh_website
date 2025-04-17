@@ -46,8 +46,8 @@
           <h3 class="mb-4 text-start text-dark">Our Mission</h3>
           <div class="col-lg-8 mission-content">
             <p>
-              To train and raise socially responsible young leaders who, would
-              understand the value of Quality Education and the tenets of Global
+              To train and raise socially responsible young leaders who would
+              understand the value of Quality Education and the tenets of global
               citizenship
             </p>
           </div>

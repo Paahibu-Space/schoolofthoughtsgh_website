@@ -29,12 +29,12 @@
                       <a href="{{ route('frontend.home') }}" class="text-white text-decoration-none">Home</a>
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
+                      <a href="{{ route('frontend.about') }}" class="text-white text-decoration-none"
                         >About Us</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
+                      <a href="{{ route('frontend.events') }}" class="text-white text-decoration-none"
                         >Events</a
                       >
                     </li>
@@ -51,31 +51,26 @@
   
                 <!-- Products Column -->
                 <div class="col-md-4 col-6 mb-4 mb-md-0">
-                  <h5 class="text-white mb-3">Products</h5>
+                  <h5 class="text-white mb-3">Events</h5>
                   <ul class="list-unstyled">
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
-                        >E-Learning</a
+                      <a href="{{ route('frontend.startright') }}" class="text-white text-decoration-none"
+                        >Startright</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
-                        >Curriculum</a
+                      <a href="{{ route('frontend.edutor') }}" class="text-white text-decoration-none"
+                        >Edutor</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
-                        >Resources</a
+                      <a href="{{ route('frontend.afrijam') }}" class="text-white text-decoration-none"
+                        >AfriJam</a
                       >
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
-                        >Merchandise</a
-                      >
-                    </li>
-                    <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
-                        >Partnerships</a
+                      <a href="{{ route('frontend.industry-seminar') }}" class="text-white text-decoration-none"
+                        >Industry Seminar</a
                       >
                     </li>
                   </ul>
@@ -90,15 +85,15 @@
                       <a
                         href="mailto:info@schoolname.edu"
                         class="text-white text-decoration-none"
-                        >info@schoolname.edu</a
+                        >info@sotgh.org</a
                       >
                     </li>
                     <li class="d-flex align-items-center">
                       <i class="fas fa-phone text-white me-2"></i>
                       <a
-                        href="tel:+12345678900"
+                        href="tel:+233246417853"
                         class="text-white text-decoration-none"
-                        >+1 (234) 567-8900</a
+                        >+233 24 641 7853</a
                       >
                     </li>
                   </ul>
@@ -112,7 +107,7 @@
                 <h5 class="mb-3">Newsletter</h5>
                 <p class="text-muted">
                   Join us, not as a client, but as a valued member of our
-                  close-knit community. Let keep yoou Updated.
+                  close-knit community. Let keep you updated.
                 </p>
                 <form class="mt-4">
                   <div class="mb-3">

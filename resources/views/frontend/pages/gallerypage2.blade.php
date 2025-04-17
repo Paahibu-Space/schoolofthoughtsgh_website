@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta
       name="description"
-      content="School of Thought is an educational platform that empowers learners with critical thinking, creativity, and leadership skills."
+      content="School of Thoughts is an educational platform that empowers learners with critical thinking, creativity, and leadership skills."
     />
     <!-- Google Fonts: DM Sans -->
     <link
@@ -510,7 +510,7 @@
                 </div>
                 <div class="testimonial-text">
                   <p>
-                    "The School of Thought transformed my perspective on
+                    "The School of Thoughts transformed my perspective on
                     education. The innovative approach helped me develop
                     critical thinking skills I use daily in my career."
                   </p>
