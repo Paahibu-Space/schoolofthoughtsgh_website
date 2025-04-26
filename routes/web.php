@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\Auth\ConfirmPasswordController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -9,7 +16,6 @@ Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@team')->na
 Route::get('/events', 'App\Http\Controllers\Frontend\FrontendController@events')->name('frontend.events');
 Route::get('/detail-event', 'App\Http\Controllers\Frontend\FrontendController@singleEvent')->name('frontend.event.detail');
 Route::get('/gallery', 'App\Http\Controllers\Frontend\FrontendController@gallery')->name('frontend.gallery');
-
 
 Route::get('/startright', function () {
     return view('frontend.pages.event.eventsdetails6');
@@ -23,3 +29,39 @@ Route::get('/afrijam', function () {
 Route::get('/industry-seminar', function () {
     return view('frontend.pages.event.event-single');
 })->name('frontend.industry-seminar');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/* ======================== ADMIN ROUTES  ========================== */
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::resource('events', EventController::class);
+
+    // Profile Routes
+Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+
+Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+});
+
+
+// Authentication Routes
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login']);
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+// Password Reset Routes
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+// Password Confirmation Routes
+Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
+
+// Email Verification Routes
+Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
