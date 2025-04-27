@@ -49,6 +49,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Blogs Routes
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class)
         ->names('blogs');
+
+    //Stories
+    Route::resource('stories', \App\Http\Controllers\Admin\StoryController::class)
+        ->names('stories');
 });
 
 

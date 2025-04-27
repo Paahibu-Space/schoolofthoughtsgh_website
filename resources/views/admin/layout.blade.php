@@ -59,7 +59,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/stories*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ request()->is('admin/stories*') ? 'active' : '' }}" href="{{ route('admin.stories.index') }}">
                         <i class="fas fa-book"></i>Stories
                     </a>
                 </li>
