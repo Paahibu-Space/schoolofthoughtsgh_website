@@ -9,6 +9,11 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
 use App\Http\Controllers\Admin\PartnerController;
+use App\Http\Controllers\Admin\TeamMemberController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\StoryController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -40,19 +45,23 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('events', EventController::class);
 
     // Profile Routes
-    Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    Route::resource('users', UserController::class);
     Route::resource('partners', PartnerController::class);
 
     // Blogs Routes
-    Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class)
+    Route::resource('blogs', BlogController::class)
         ->names('blogs');
 
     //Stories
-    Route::resource('stories', \App\Http\Controllers\Admin\StoryController::class)
+    Route::resource('stories', StoryController::class)
         ->names('stories');
+
+    // Team Members Routes
+    Route::resource('team', controller: TeamMemberController::class)->names('team');
+    Route::post('team/update-order', [TeamMemberController::class, 'updateOrder'])->name('team.update-order');
 });
 
 

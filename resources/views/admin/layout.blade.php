@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <!-- Summernote CSS -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    @yield('styles')
 
 </head>
 
@@ -39,7 +40,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/team*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ request()->is('admin/team*') ? 'active' : '' }}" href="{{ route('admin.team.index') }}">
                         <i class="fas fa-users"></i>Team
                     </a>
                 </li>
