@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/newsletter*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ request()->is('admin/newsletter*') ? 'active' : '' }}" href="{{ route('admin.newsletter.index') }}">
                         <i class="fas fa-envelope"></i>Newsletter
                     </a>
                 </li>

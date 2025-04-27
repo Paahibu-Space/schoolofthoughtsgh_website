@@ -104,26 +104,42 @@
             <!-- Right Column (Newsletter) -->
             <div class="col-lg-4">
               <div class="bg-white text-dark p-4 rounded">
-                <h5 class="mb-3">Newsletter</h5>
-                <p class="text-muted">
-                  Join us, not as a client, but as a valued member of our
-                  close-knit community. Let keep you updated.
-                </p>
-                <form class="mt-4">
-                  <div class="mb-3">
-                    <input
-                      type="email"
-                      class="form-control"
-                      placeholder="Your email address"
-                      required
-                    />
-                  </div>
-                  <a href="#" class="btn learn-btn mt-4">
-                    Subscribe <i class="fas fa-arrow-right ms-2"></i>
-                  </a>
-                </form>
+                  <h5 class="mb-3">Newsletter</h5>
+                  <p class="text-muted">
+                      Join us, not as a client, but as a valued member of our
+                      close-knit community. Let keep you updated.
+                  </p>
+                  
+                  @if(session('newsletter_success'))
+                      <div class="alert alert-success">
+                          {{ session('newsletter_success') }}
+                      </div>
+                  @elseif(session('newsletter_info'))
+                      <div class="alert alert-info">
+                          {{ session('newsletter_info') }}
+                      </div>
+                  @else
+                      <form action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-4">
+                          @csrf
+                          <div class="mb-3">
+                              <input
+                                  type="email"
+                                  name="email"
+                                  class="form-control @error('email') is-invalid @enderror"
+                                  placeholder="Your email address"
+                                  required
+                              />
+                              @error('email')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                          </div>
+                          <button type="submit" class="btn learn-btn mt-4">
+                              Subscribe <i class="fas fa-arrow-right ms-2"></i>
+                          </button>
+                      </form>
+                  @endif
               </div>
-            </div>
+          </div>
           </div>
   
           <!-- Divider -->

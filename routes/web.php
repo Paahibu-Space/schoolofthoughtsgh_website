@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoryController;
+use App\Http\Controllers\Frontend\NewsletterController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -62,6 +63,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Team Members Routes
     Route::resource('team', controller: TeamMemberController::class)->names('team');
     Route::post('team/update-order', [TeamMemberController::class, 'updateOrder'])->name('team.update-order');
+
+    // Newsletter Routes
+    Route::resource('newsletter', \App\Http\Controllers\Admin\NewsletterController::class)
+        ->only(['index', 'destroy'])
+        ->names('newsletter');
 });
 
 
@@ -81,6 +87,11 @@ Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmFo
 Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
 
 // Email Verification Routes
-Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
+    ->name('newsletter.subscribe');
+
+Route::get('/newsletter/confirm/{token}', [NewsletterController::class, 'confirm'])
+    ->name('newsletter.confirm');
+
+Route::get('/newsletter/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])
+    ->name('newsletter.unsubscribe');

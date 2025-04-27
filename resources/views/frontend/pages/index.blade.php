@@ -102,7 +102,7 @@
             <!-- Slide 3 -->
             <div class="carousel-item">
               <img
-                src="{{ asset('assets/images/hero3.jpg') }}"
+                src="{{ asset('assets/images/hero3.webp') }}"
                 class="d-block w-100"
                 alt="Hope"
               />

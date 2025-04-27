@@ -15,7 +15,7 @@
     
         .image-section {
             flex: 7;
-            background: url('{{ asset('assets/images/hero3.jpg') }}') no-repeat center center;
+            background: url('{{ asset('assets/images/hero3.webp') }}') no-repeat center center;
             background-size: cover;
         }
     
