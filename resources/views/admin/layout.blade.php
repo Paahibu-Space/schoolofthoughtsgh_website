@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}" href="#">
+                    <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">
                         <i class="fas fa-blog"></i>Blog
                     </a>
                 </li>

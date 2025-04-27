@@ -40,11 +40,15 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('events', EventController::class);
 
     // Profile Routes
-Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
-Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
 
-Route::resource('users', App\Http\Controllers\Admin\UserController::class);
-Route::resource('partners', PartnerController::class);
+    Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    Route::resource('partners', PartnerController::class);
+
+    // Blogs Routes
+    Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class)
+        ->names('blogs');
 });
 
 
