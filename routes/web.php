@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\ConfirmPasswordController;
+use App\Http\Controllers\Admin\PartnerController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -43,6 +44,7 @@ Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'ed
 Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
 
 Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+Route::resource('partners', PartnerController::class);
 });
 
 
