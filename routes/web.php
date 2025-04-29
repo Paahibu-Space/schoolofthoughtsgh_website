@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoryController;
 use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Admin\GalleryController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -68,6 +69,16 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('newsletter', \App\Http\Controllers\Admin\NewsletterController::class)
         ->only(['index', 'destroy'])
         ->names('newsletter');
+
+    // Gallery Routes
+    Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
+    Route::get('/gallery/event/{event}', [GalleryController::class, 'showEventGallery'])->name('gallery.event');
+    Route::get('/gallery/event/{event}/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/gallery/event/{event}', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::get('/gallery/image/{image}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+    Route::put('/gallery/image/{image}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('/gallery/image/{image}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+    Route::post('/gallery/update-order', [GalleryController::class, 'updateOrder'])->name('gallery.update-order');
 });
 
 
