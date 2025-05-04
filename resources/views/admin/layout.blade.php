@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Summernote CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
     @yield('styles')
 
 </head>
@@ -41,32 +39,38 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/team*') ? 'active' : '' }}" href="{{ route('admin.team.index') }}">
+                    <a class="nav-link {{ request()->is('admin/team*') ? 'active' : '' }}"
+                        href="{{ route('admin.team.index') }}">
                         <i class="fas fa-users"></i>Team
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/partners*') ? 'active' : '' }}" href="{{ route('admin.partners.index') }}">
+                    <a class="nav-link {{ request()->is('admin/partners*') ? 'active' : '' }}"
+                        href="{{ route('admin.partners.index') }}">
                         <i class="fas fa-handshake"></i>Partners
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}" href="{{ route('admin.blogs.index') }}">
+                    <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}"
+                        href="{{ route('admin.blogs.index') }}">
                         <i class="fas fa-blog"></i>Blog
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/gallery*') ? 'active' : '' }}" href="{{ route('admin.gallery.index') }}">
+                    <a class="nav-link {{ request()->is('admin/gallery*') ? 'active' : '' }}"
+                        href="{{ route('admin.gallery.index') }}">
                         <i class="fas fa-images"></i>Gallery
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/stories*') ? 'active' : '' }}" href="{{ route('admin.stories.index') }}">
+                    <a class="nav-link {{ request()->is('admin/stories*') ? 'active' : '' }}"
+                        href="{{ route('admin.stories.index') }}">
                         <i class="fas fa-book"></i>Stories
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('admin/newsletter*') ? 'active' : '' }}" href="{{ route('admin.newsletter.index') }}">
+                    <a class="nav-link {{ request()->is('admin/newsletter*') ? 'active' : '' }}"
+                        href="{{ route('admin.newsletter.index') }}">
                         <i class="fas fa-envelope"></i>Newsletter
                     </a>
                 </li>
@@ -146,41 +150,28 @@
                 $('.content-wrapper').toggleClass('sidebar-open');
             });
         });
-
-        $(document).ready(function () {
-
-
-
-$('.summernote').summernote({
-    height: 400,   //set editable area's height
-    codemirror: { // codemirror options
-        theme: 'monokai'
-    },
-    callbacks: {
-        onChange: function(contents, $editable) {
-            
-            let finalContenat =  iFrameFilterInSummernote(contents);
-
-            // console.log(finalContenat)
-            
-            $(this).prev('textarea').val(finalContenat);
-        }
-    }
-});
-if($('.summernote').length > 0){
-    $('.summernote').each(function(index,value){
-        $(this).summernote('code', $(this).data('content'));
-    });
-}
-
-});
     </script>
     <!-- jQuery (required for Summernote) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap 4 Bundle JS (required for Summernote's popovers) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Summernote JS -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content'), {
+                simpleUpload: {
+                    uploadUrl: '{{ route('admin.ckeditor.upload') }}', // Change to your route
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    }
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
     @yield('scripts')
     @stack('scripts')
 </body>

@@ -7,7 +7,7 @@
     text-decoration: none;
   }
   :root {
-    --text-color: #5d5a88;
+    /* --text-color: #5d5a88; */
     --second-text-color: #000;
     --third-text-color: #9795b5;
     --button-color: #2b87cb;
@@ -16,6 +16,19 @@
     --second-bg-color: #aae5f2;
     --big-font: 2.5rem;
     --normal-font: 1.5rem;
+    --transition: all 0.3s ease;
+    
+
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --text-color: #333;
+    --light-bg: #f5f8fa;
+    --dark-bg: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f39c12;
+    --border-radius: 8px;
+    --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     --transition: all 0.3s ease;
   }
   

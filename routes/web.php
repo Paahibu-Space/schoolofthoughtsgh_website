@@ -16,14 +16,32 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoryController;
 use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Admin\UploadController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
 Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@about')->name('frontend.about');
-Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@team')->name('frontend.team');
+// Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@team')->name('frontend.team');
 Route::get('/events', 'App\Http\Controllers\Frontend\FrontendController@events')->name('frontend.events');
-Route::get('/detail-event', 'App\Http\Controllers\Frontend\FrontendController@singleEvent')->name('frontend.event.detail');
+// Route::get('/detail-event', 'App\Http\Controllers\Frontend\FrontendController@singleEvent')->name('frontend.event.detail');
 // Route::get('/gallery', 'App\Http\Controllers\Frontend\FrontendController@gallery')->name('frontend.gallery');
+
+// Blogs
+Route::get('/blogs', [FrontendController::class, 'blogs'])->name('frontend.blogs');
+Route::get('/blogs/{slug}', [FrontendController::class, 'showBlog'])->name('blogs.show');
+
+// Events
+Route::get('/events', [FrontendController::class, 'events'])->name('frontend.events');
+Route::get('/events/{id}', [FrontendController::class, 'showEvent'])->name('events.show');
+
+// Stories
+Route::get('/stories', [FrontendController::class, 'stories'])->name('frontend.stories');
+Route::get('/stories/{slug}', [FrontendController::class, 'showStory'])->name('stories.show');
+
+// Other pages
+Route::get('/partners', [FrontendController::class, 'partners'])->name('frontend.partners');
+Route::get('/team', [FrontendController::class, 'team'])->name('frontend.team');
 
 // Gallery frontend routes
 Route::get('/gallery', 'App\Http\Controllers\Frontend\GalleryController@index')->name('gallery.index');
@@ -90,6 +108,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::put('/gallery/image/{image}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/gallery/image/{image}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
     Route::post('/gallery/update-order', [GalleryController::class, 'updateOrder'])->name('gallery.update-order');
+
+    Route::post('/ckeditor-upload', [UploadController::class, 'upload'])->name('ckeditor.upload');
+
 });
 
 

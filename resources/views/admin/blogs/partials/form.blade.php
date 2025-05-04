@@ -21,7 +21,7 @@
                 
                 <div class="mb-4">
                     <label for="content" class="form-label">Post Content <span class="text-danger">*</span></label>
-                    <textarea class="form-control summernote @error('content') is-invalid @enderror" 
+                    <textarea class="form-control @error('content') is-invalid @enderror" 
                               id="content" 
                               name="content" 
                               rows="10">{{ old('content', $blog->content ?? '') }}</textarea>
@@ -30,6 +30,7 @@
                     @enderror
                 </div>
             </div>
+            
         </div>
     </div>
     

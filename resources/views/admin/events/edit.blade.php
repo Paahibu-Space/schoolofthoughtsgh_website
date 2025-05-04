@@ -34,7 +34,7 @@
                     
                     <div class="mb-4">
                         <label for="description" class="form-label">Event Description <span class="text-danger">*</span></label>
-                        <textarea class="form-control summernote @error('description') is-invalid @enderror" id="description" name="description" rows="6" placeholder="Enter event description" required>{{ old('description', $event->description) }}</textarea>
+                        <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" rows="6" placeholder="Enter event description" required>{{ old('description', $event->description) }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
