@@ -23,8 +23,19 @@ Route::get('/about', 'App\Http\Controllers\Frontend\FrontendController@about')->
 Route::get('/team', 'App\Http\Controllers\Frontend\FrontendController@team')->name('frontend.team');
 Route::get('/events', 'App\Http\Controllers\Frontend\FrontendController@events')->name('frontend.events');
 Route::get('/detail-event', 'App\Http\Controllers\Frontend\FrontendController@singleEvent')->name('frontend.event.detail');
-Route::get('/gallery', 'App\Http\Controllers\Frontend\FrontendController@gallery')->name('frontend.gallery');
+// Route::get('/gallery', 'App\Http\Controllers\Frontend\FrontendController@gallery')->name('frontend.gallery');
 
+// Gallery frontend routes
+Route::get('/gallery', 'App\Http\Controllers\Frontend\GalleryController@index')->name('gallery.index');
+Route::get('/gallery/{id}', 'App\Http\Controllers\Frontend\GalleryController@show')->name('gallery.show');
+Route::get('/gallery/{id}/masonry', 'App\Http\Controllers\Frontend\GalleryController@masonry')->name('gallery.masonry');
+
+// Featured gallery components
+Route::get('/featured-gallery', 'App\Http\Controllers\Frontend\GalleryController@featured')->name('gallery.featured');
+Route::get('/gallery-carousel/{eventId?}', 'App\Http\Controllers\Frontend\GalleryController@carousel')->name('gallery.carousel');
+
+// Optional: Featured gallery for homepage
+// Route::get('/featured-gallery', action: 'App\Http\Controllers\GalleryController@featured')->name('gallery.featured');
 Route::get('/startright', function () {
     return view('frontend.pages.event.eventsdetails6');
 })->name('frontend.startright');

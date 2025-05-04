@@ -4,11 +4,24 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Event;
+use App\Models\GalleryImage;
 
 class FrontendController extends Controller
 {
     public function index() {
-        return view('frontend.pages.index');
+        $events = Event::withCount('galleryImages')
+            ->has('galleryImages')
+            ->latest()
+            ->paginate(9);
+
+            $featuredImages = GalleryImage::where('is_featured', true)
+            ->with('event')
+            ->latest()
+            ->take(6)
+            ->get();
+            
+        return view('frontend.pages.index', compact('events', 'featuredImages'));
     }
 
     public function about() {

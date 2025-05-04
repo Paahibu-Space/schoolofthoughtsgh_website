@@ -221,7 +221,7 @@
                   Ghana we empower minds to shape the feature”
                 </p>
                 <p class="mb-4"><strong>Founder</strong></p>
-                <a href="#" class="btn second-btn mb-3">
+                <a href="{{ route('frontend.team') }}" class="btn second-btn mb-3">
                   Meet Our Team <i class="fas fa-arrow-right ms-2"></i>
                 </a>
               </div>
@@ -525,7 +525,7 @@
   </section>
   
    <!-- gallery--- Section -->
-   <section class="gallery-section py-5 bg-light">
+   {{-- <section class="gallery-section py-5 bg-light">
       <div class="container">
           <div class="row justify-content-center mb-3">
               <div class="col-lg-8 text-center">
@@ -589,5 +589,6 @@
         </div>
       </div>
     </section>
-
+     --}}
+    @include('frontend.pages.gallery.featured')
     @endsection

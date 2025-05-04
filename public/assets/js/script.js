@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 5. Footer Functionality
     const initFooter = () => {
         // Copyright year
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById('current-year').textContent = new Date().getFullYear();
         
         // Back to top button
         const backToTopBtn = document.querySelector('.back-to-top');
@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Video player
 document.addEventListener('DOMContentLoaded', function() {
     const videoContainer = document.querySelector('.video-container');
-    const iframe = videoContainer.querySelector('iframe');
+    const iframe = videoContainer.querySelector('.iframe');
     const playButton = document.querySelector('.play-button');
     
     // Hide play button when video starts

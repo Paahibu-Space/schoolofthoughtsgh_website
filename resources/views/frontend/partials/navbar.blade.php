@@ -21,7 +21,7 @@
                   {{-- <li><a href="{{ route('frontend.about') }}">Mission</a></li>
                   <li><a href="{{ route('frontend.about') }}">Vision</a></li> --}}
                   <li><a href="{{ route('frontend.team') }}">Our Team</a></li>
-                  <li><a href="{{ route('frontend.gallery') }}">Our Gallery</a></li>
+                  <li><a href="{{ route('gallery.index') }}">Our Gallery</a></li>
                 </div>
                 <div class="dropdown-image">
                   <img src="{{ asset('assets/images/dropdown1.png') }}" alt="About Us">
