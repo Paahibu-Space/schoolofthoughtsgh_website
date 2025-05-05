@@ -85,7 +85,7 @@ class FrontendController extends Controller
             ->take(3)
             ->get();
 
-        return view('blogs.show', compact('blog', 'relatedBlogs'));
+        return view('frontend.blog.show', compact('blog', 'relatedBlogs'));
     }
 
     /**
@@ -101,7 +101,31 @@ class FrontendController extends Controller
             ->orderBy('start_date', 'desc')
             ->paginate(6, ['*'], 'past_page');
 
-        return view('frontend.pages.event.index', compact('upcomingEvents', 'pastEvents'));
+            $featuredImages = GalleryImage::where('is_featured', true)
+            ->with('event')
+            ->latest()
+            ->take(6)
+            ->get();
+
+            $blogs = Blog::where('published_at', '<=', Carbon::now())
+            ->orderBy('published_at', 'desc')
+            ->paginate(6);
+
+            $stories = Story::where('published_at', '<=', Carbon::now())
+            ->with('author')
+            ->orderBy('published_at', 'desc')
+            ->paginate(6);
+
+            $partners = Partner::orderBy('name')->get();
+
+            $featuredBlogs = Blog::where('is_featured', true)
+        ->where('published_at', '<=', Carbon::now())
+        ->orderBy('published_at', 'desc')
+        ->take(3)
+        ->get();
+
+
+        return view('frontend.pages.event.index', compact('upcomingEvents', 'pastEvents', 'featuredImages', 'blogs', 'stories', 'partners', 'featuredBlogs'));
     }
 
     /**

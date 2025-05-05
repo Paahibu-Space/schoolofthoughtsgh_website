@@ -29,11 +29,11 @@ Route::get('/events', 'App\Http\Controllers\Frontend\FrontendController@events')
 
 // Blogs
 Route::get('/blogs', [FrontendController::class, 'blogs'])->name('frontend.blogs');
-Route::get('/blogs/{slug}', [FrontendController::class, 'showBlog'])->name('blogs.show');
+Route::get('/blogs/{slug}', [FrontendController::class, 'showBlog'])->name('frontend.blog.show');
 
 // Events
 Route::get('/events', [FrontendController::class, 'events'])->name('frontend.events');
-Route::get('/events/{id}', [FrontendController::class, 'showEvent'])->name('events.show');
+Route::get('/events/{id}', [FrontendController::class, 'showEvent'])->name('frontend.event.show');
 
 // Stories
 Route::get('/stories', [FrontendController::class, 'stories'])->name('frontend.stories');
@@ -52,8 +52,6 @@ Route::get('/gallery/{id}/masonry', 'App\Http\Controllers\Frontend\GalleryContro
 Route::get('/featured-gallery', 'App\Http\Controllers\Frontend\GalleryController@featured')->name('gallery.featured');
 Route::get('/gallery-carousel/{eventId?}', 'App\Http\Controllers\Frontend\GalleryController@carousel')->name('gallery.carousel');
 
-// Optional: Featured gallery for homepage
-// Route::get('/featured-gallery', action: 'App\Http\Controllers\GalleryController@featured')->name('gallery.featured');
 Route::get('/startright', function () {
     return view('frontend.pages.event.eventsdetails6');
 })->name('frontend.startright');
@@ -66,6 +64,9 @@ Route::get('/afrijam', function () {
 Route::get('/industry-seminar', function () {
     return view('frontend.pages.event.event-single');
 })->name('frontend.industry-seminar');
+
+// Optional: Featured gallery for homepage
+// Route::get('/featured-gallery', action: 'App\Http\Controllers\GalleryController@featured')->name('gallery.featured');
 // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -170,6 +170,7 @@
   font-weight: 600;
   margin-top: 2.5rem;
   font-size: 1.5rem;
+  padding-left: 20px
 }
 
 .gallery-filter {
@@ -433,7 +434,7 @@
     </section>
 
     <!-- Details Section -->
-    <section class="details-section py-5">
+    <section class="details-section py-6">
         <div class="container">
             <div class="row g-4 align-items-stretch">
                 <!-- Left Column - Image -->
@@ -579,7 +580,7 @@
         </div>
 
         <!-- Right Column - Recent Events -->
-        <div class="col-lg-4">
+        <div class="col-lg-4 mt-3">
             <div class="recent-posts text-dark p-4 rounded-3 h-100">
                 <h3 class="mb-4">
                     <i class="fas fa-calendar me-2"></i>Recent Events
@@ -591,7 +592,7 @@
                             alt="{{ $recentEvent->title }}" class="flex-shrink-0 me-3 rounded-2" width="80"
                             height="80" />
                         <div class="post-content">
-                            <a href="{{ route('events.show', $recentEvent->id) }}" class="text-decoration-none">
+                            <a href="{{ route('frontend.event.show', $recentEvent->id) }}" class="text-decoration-none">
                                 <p class="mb-2 strong">{{ $recentEvent->title }}</p>
                             </a>
                             <div class="post-meta d-flex align-items-center">

@@ -17,6 +17,7 @@
     --big-font: 2.5rem;
     --normal-font: 1.5rem;
     --transition: all 0.3s ease;
+    --white: #fff;
     
 
     --primary-color: #2c3e50;
@@ -1115,10 +1116,11 @@
   }
   
   /* Intro Section */
-  .about-intro {
+  /* .about-intro {
     background-color: var(--second-bg-color);
     border-radius: 20px 0px;
-  }
+
+  } */
   
   .about-intro h2 {
     color: #000;
@@ -1287,15 +1289,15 @@
     }
   }
   
-  /* Events Page--- */
   .events-hero {
+    height: 50vh;
     background-image: url("../images/events-home.png");
     background-size: cover;
     background-position: center;
-    height: 100vh;
     position: relative;
     display: flex;
     align-items: center;
+    color: white !important;
   }
   
   /* Speakers Section------ */
@@ -1385,27 +1387,7 @@
   }
   
   /* Events Details Page------------ */
-  .events-details-hero {
-    background-image: url("../images/events-details.png");
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  /* Details Section */
-  .details-section {
-    background-color: #f8f9fa;
-  }
-  
-  /* Image Container */
-  .details-image {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-  
+ 
   /* Search Box */
   .search-box {
     transition: all 0.3s ease;
@@ -1982,7 +1964,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /* height: 110%; */
     background-color: rgba(0, 0, 0, 0.1);
   }
   
