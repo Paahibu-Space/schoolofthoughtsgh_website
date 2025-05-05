@@ -580,30 +580,32 @@
         </div>
 
         <!-- Right Column - Recent Events -->
+       <div class="container">
         <div class="col-lg-4 mt-3">
-            <div class="recent-posts text-dark p-4 rounded-3 h-100">
-                <h3 class="mb-4">
-                    <i class="fas fa-calendar me-2"></i>Recent Events
-                </h3>
+          <div class="recent-posts text-dark p-4 rounded-3 h-100">
+              <h3 class="mb-4">
+                  <i class="fas fa-calendar me-2"></i>Recent Events
+              </h3>
 
-                @foreach ($recentEvents as $recentEvent)
-                    <div class="post-item d-flex mb-4 pb-3 border-bottom">
-                        <img src="{{ $recentEvent->image ? Storage::url($recentEvent->image) : asset('assets/images/event-default-thumb.png') }}"
-                            alt="{{ $recentEvent->title }}" class="flex-shrink-0 me-3 rounded-2" width="80"
-                            height="80" />
-                        <div class="post-content">
-                            <a href="{{ route('frontend.event.show', $recentEvent->id) }}" class="text-decoration-none">
-                                <p class="mb-2 strong">{{ $recentEvent->title }}</p>
-                            </a>
-                            <div class="post-meta d-flex align-items-center">
-                                <i class="far fa-calendar-alt me-2"></i>
-                                <small class="text-dark">{{ $recentEvent->start_date->format('F j, Y') }}</small>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
+              @foreach ($recentEvents as $recentEvent)
+                  <div class="post-item d-flex mb-4 pb-3 border-bottom">
+                      <img src="{{ $recentEvent->image ? Storage::url($recentEvent->image) : asset('assets/images/event-default-thumb.png') }}"
+                          alt="{{ $recentEvent->title }}" class="flex-shrink-0 me-3 rounded-2" width="80"
+                          height="80" />
+                      <div class="post-content">
+                          <a href="{{ route('frontend.event.show', $recentEvent->id) }}" class="text-decoration-none">
+                              <p class="mb-2 strong">{{ $recentEvent->title }}</p>
+                          </a>
+                          <div class="post-meta d-flex align-items-center">
+                              <i class="far fa-calendar-alt me-2"></i>
+                              <small class="text-dark">{{ $recentEvent->start_date->format('F j, Y') }}</small>
+                          </div>
+                      </div>
+                  </div>
+              @endforeach
+          </div>
+      </div>
+       </div>
         </div>
         </div>
     </section>
