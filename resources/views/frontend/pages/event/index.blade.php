@@ -206,7 +206,7 @@
         </section>
 
         <!-- Blogs Section -->
-        <section class="blogs-section py-5 bg-light">
+        {{-- <section class="blogs-section py-5 bg-light">
           <div class="container">
               <div class="row justify-content-center mb-5">
                   <div class="col-lg-8 text-center">
@@ -245,7 +245,7 @@
                   </div>
               @endif
           </div>
-      </section>
+      </section> --}}
 
 
         <!-- Partners Section -->

@@ -112,7 +112,7 @@
     </section>
 
     <!-- {{-- About Section----------- --}} -->
-    <section class="about-section py-3">
+    <section class="about-section py-5">
         <div class="container">
             <div class="row align-items-center">
                 <!-- Text Content -->
@@ -132,7 +132,7 @@
                         policies that would improve the education conditions and
                         opportunities in
                     </p>
-                    <a href="#" class="btn learn-btn">
+                    <a href="{{ route('frontend.about') }}" class="btn learn-btn">
                         Learn More <i class="fas fa-arrow-right ms-2"></i>
                     </a>
                 </div>
@@ -150,7 +150,7 @@
     </section>
 
     {{-- EVENTS SECTION --}}
-    <section class="events-section py-3">
+    <section class="events-section py-5">
         <div class="container">
             <div class="row justify-content-center mb-3">
                 <div class="col-lg-8 text-center">
@@ -190,7 +190,7 @@
     </section>
 
     {{-- PAST EVENTS SECTION --}}
-    <section class="events-section py-3">
+    {{-- <section class="events-section py-3">
         <div class="container">
             <div class="row justify-content-center mb-3">
                 <div class="col-lg-8 text-center">
@@ -227,8 +227,47 @@
                 </div>
             @endif
         </div>
-    </section>
+    </section> --}}
 
+    <section class="blogs-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Explore Our Past Events</h2>
+                </div>
+            </div>
+
+            @if ($pastEvents->count() > 0)
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    @foreach ($pastEvents as $event)
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}" class="img-fluid">
+                                </div>
+                                <div class="blog-content p-4">
+                                    <h3>{{ $event->title }}</h3>
+                                    <p>{!! iFrameFilterInSummernoteAndRender(Str::limit($event->description, 150)) !!}</p>
+                                    <a href="{{ route('frontend.event.show', $event->id) }}" class="btn learn-btn">
+                                        Read More <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="{{ route('frontend.events') }}" class="btn learn-btn">
+                        View All Events
+                    </a>
+                </div>
+            @else
+                <div class="text-center py-4">
+                    <p class="lead">No past events available yet. Check back soon!</p>
+                </div>
+            @endif
+        </div>
+    </section>
+    {{-- Blogs section
     <section class="blogs-section py-5 bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5">
@@ -268,9 +307,133 @@
                 </div>
             @endif
         </div>
-    </section>
+    </section> --}}
+
+    {{-- Contact section --}}
+    {{-- <div class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>We'd love to hear from you. Fill out the form and our team will get back to you as soon as possible.</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="text">
+                                    <h5>Our Location</h5>
+                                    <p>123 Business Avenue, Tech City, 10001</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="text">
+                                    <h5>Phone Number</h5>
+                                    <p>+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="text">
+                                    <h5>Email Address</h5>
+                                    <p>info@yourcompany.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="text">
+                                    <h5>Working Hours</h5>
+                                    <p>Monday - Friday: 9am - 5pm</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="contact-form-wrapper">
+                        <h3>Send us a Message</h3>
+                        
+                        @if(session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+                        
+                        <form id="contactForm" action="{{ route('contact.send') }}" method="POST" class="contact-form">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required>
+                                @error('name')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject" value="{{ old('subject') }}" required>
+                                @error('subject')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message" rows="5" required>{{ old('message') }}</textarea>
+                                @error('message')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        
+                            
+                            <button type="submit" class="btn btn-primary submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                                <div class="spinner-border spinner-border-sm d-none" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
 
     
 
     @include('frontend.pages.gallery.featured')
+@endsection
+
+@section('scripts')
+{{-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> --}}
+<script src="{{ asset('js/contact.js') }}"></script>
 @endsection
