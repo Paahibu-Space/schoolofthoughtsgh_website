@@ -30,7 +30,7 @@
                     
                     <div class="mb-4">
                         <label for="description" class="form-label">Event Description <span class="text-danger">*</span></label>
-                        <textarea id="content" class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6" placeholder="Enter event description" required>{{ old('description') }}</textarea>
+                        <textarea id="content" class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="6" placeholder="Enter event description">{{ old('description') }}</textarea>
                         @error('description')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
