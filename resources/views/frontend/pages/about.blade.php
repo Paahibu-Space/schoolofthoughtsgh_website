@@ -234,12 +234,54 @@
         </div>
     </div>
 
+        {{-- Blogs section --}}
+        <section class="blogs-section py-5 bg-light">
+            <div class="container">
+                <div class="row justify-content-center mb-5">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="display-5 fw-bold mb-3">Latest Blogs</h2>
+                    </div>
+                </div>
+    
+                @if ($featuredBlogs->count() > 0)
+                    <div class="row g-4">
+                        @foreach ($featuredBlogs as $blog)
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="blog-card h-100">
+                                    <div class="blog-img">
+                                        <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-fluid">
+                                    </div>
+                                    <div class="blog-content p-4">
+                                        <h3>{{ $blog->title }}</h3>
+                                        <p class="mb-3">{!! iFrameFilterInSummernoteAndRender(Str::limit($blog->content, 100)) !!}</p>
+                                        <a href="#" class="btn learn-btn">
+                                            Read More <i class="fas fa-arrow-right ms-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+    
+                    <div class="text-center mt-5">
+                        <a href="{{ route('frontend.blogs') }}" class="btn learn-btn">
+                            View All Blog Posts
+                        </a>
+                    </div>
+                @else
+                    <div class="text-center py-4">
+                        <p class="lead">No blog posts available yet. Check back soon!</p>
+                    </div>
+                @endif
+            </div>
+        </section>
+
     <!-- Partners Section -->
 <section class="partners-section py-5">
   <div class="container">
       <div class="row justify-content-center mb-5">
           <div class="col-lg-8 text-center">
-              <h2 class="text-dark mb-3">Our Partners</h2>
+              <h2 class="display-4 fw-bold text-dark mb-3">Our Partners</h2>
               <p class="lead">
                   Collaborating with leading organizations to enhance education
               </p>

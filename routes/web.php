@@ -18,6 +18,7 @@ use App\Http\Controllers\Frontend\NewsletterController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Frontend\ContactController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -38,6 +39,8 @@ Route::get('/events/{id}', [FrontendController::class, 'showEvent'])->name('fron
 // Stories
 Route::get('/stories', [FrontendController::class, 'stories'])->name('frontend.stories');
 Route::get('/stories/{slug}', [FrontendController::class, 'showStory'])->name('stories.show');
+Route::get('/stories/featured', [FrontendController::class, 'featuredStories'])->name('stories.featured');
+
 
 // Other pages
 Route::get('/partners', [FrontendController::class, 'partners'])->name('frontend.partners');
@@ -51,6 +54,9 @@ Route::get('/gallery/{id}/masonry', 'App\Http\Controllers\Frontend\GalleryContro
 // Featured gallery components
 Route::get('/featured-gallery', 'App\Http\Controllers\Frontend\GalleryController@featured')->name('gallery.featured');
 Route::get('/gallery-carousel/{eventId?}', 'App\Http\Controllers\Frontend\GalleryController@carousel')->name('gallery.carousel');
+
+// Contact route
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
 Route::get('/startright', function () {
     return view('frontend.pages.event.eventsdetails6');
