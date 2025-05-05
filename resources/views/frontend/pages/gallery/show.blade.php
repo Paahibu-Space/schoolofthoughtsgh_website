@@ -10,6 +10,7 @@
         background-color: #f8f9fc;
         padding: 3rem 0;
         margin-bottom: 2rem;
+        margin-top: 100px
     }
     
     .event-title {
@@ -187,7 +188,7 @@
             </div>
             @if($event->description)
                 <div class="event-description">
-                    {{ $event->description }}
+                    {!! $event->description !!}
                 </div>
             @endif
         </div>

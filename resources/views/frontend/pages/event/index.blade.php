@@ -40,7 +40,7 @@
     <section class="about-intro mx-4 py-3 mt-4">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
+                <div class="text-center">
                     <h2 class="mb-2">About Our Events</h2>
                     <p>
                         The School of Thoughts hosts events to provide a dynamic platform

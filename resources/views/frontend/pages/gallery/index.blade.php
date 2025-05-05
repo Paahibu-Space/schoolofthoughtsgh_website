@@ -13,6 +13,7 @@
         margin-bottom: 2rem;
         text-align: center;
         margin-top: 0;
+        margin-top: 100px
     }
     
     .gallery-hero h1 {
@@ -210,7 +211,7 @@
                                     </span>
                                 </div>
                                 <div class="event-description">
-                                    {{ Str::limit($event->description ?? 'No description available', 100) }}
+                                    {!! Str::limit($event->description ?? 'No description available', 100) !!}
                                 </div>
                                 <div class="event-cta">
                                     <a href="{{ route('gallery.show', $event->id) }}" class="view-gallery-btn">

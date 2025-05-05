@@ -57,6 +57,23 @@ class FrontendController extends Controller
         return view('frontend.pages.index', compact('events', 'featuredImages', 'blogs', 'stories', 'featuredBlogs', 'upcomingEvents', 'pastEvents'));
     }
 
+    public function about() {
+        $teamMembers = TeamMember::where('is_active', true)
+                    ->orderBy('display_order')
+                    ->get();
+
+                    $partners = Partner::orderBy('name')->get();
+
+                    $impactData = [
+                        'students' => 5000,   // Replace with actual count from database
+                        'schools' => 50,      // e.g.: School::count()
+                        'regions' => 10,      // e.g.: Region::count()
+                        'volunteers' => 200   // e.g.: Volunteer::count()
+                    ];
+
+        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData'));
+    }
+
     /**
      * Display all blogs
      */
@@ -192,6 +209,6 @@ class FrontendController extends Controller
     {
         $teamMembers = TeamMember::getActiveMembers();
 
-        return view('team', compact('teamMembers'));
+        return view('frontend.pages.team', compact('teamMembers'));
     }
 }

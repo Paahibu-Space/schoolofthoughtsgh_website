@@ -3,300 +3,171 @@
 @section('content')
     <!-- Hero Section -->
     <section class="team-hero">
-      <div class="hero-overlay"></div>
-      <div class="container h-100">
-        <div class="row h-100 align-items-center">
-          <div class="col-12 text-center">
-            <h1 class="display-3 fw-bold text-white">
-              We think to change ! We are Change !
-            </h1>
-          </div>
+        <div class="hero-overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 text-center">
+                    <h1 class="display-3 fw-bold text-white mb-4">Meet the Clonify Team</h1>
+                    {{-- <p class="lead text-white opacity-75">Driving innovation through collaboration</p> --}}
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
     <!-- Team Section -->
     <section class="our-team-section py-5">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-lg-8 text-center">
-            <h5 class="text-dark mb-3">OUR TEAM</h5>
-            <h1 class="display-3 fw-bold text-dark">Meet the Clonify team</h1>
-            <p class="lead">
-              Alone we can do little, together we can do so much, Team work is a
-              secret that makes common people achieve uncommon result.
-            </p>
-          </div>
-        </div>
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    {{-- <h5 class="text-primary mb-3">OUR TEAM</h5> --}}
+                    {{-- <h1 class="display-3 fw-bold text-dark mb-3">Meet the Clonify Team</h1> --}}
+                    <p class="lead text-muted">
+                        Alone we can do little, together we can do so much. Teamwork is the secret that makes common people achieve uncommon results.
+                    </p>
+                </div>
+            </div>
 
-        <div class="row g-4">
-          <!-- Team Member 1 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team.png') }}"
-                  alt="Dr. Sarah Johnson"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Abraham Agoni</h4>
-              <p class="text-muted mb-3">Founder</p>
-              <p>None of Us is as smart as all of us</p>
+            <div class="row g-4">
+                @foreach($teamMembers as $member)
+                <div class="col-md-6 col-lg-3">
+                    <div class="our-team-card">
+                        <div class="team-img-wrapper">
+                            <img
+                                src="{{ $member->photo ? Storage::url($member->photo) : asset('assets/images/team-default.png') }}"
+                                alt="{{ $member->name }}"
+                                class="img-fluid"
+                                loading="lazy"
+                            />
+                            <div class="team-social-links">
+                                @foreach($member->getActiveSocialLinks() as $platform => $url)
+                                    <a href="{{ $url }}" target="_blank" class="social-link">
+                                        <i class="fab fa-{{ $platform }}"></i>
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="team-card-body">
+                            <h4 class="mb-1">{{ $member->name }}</h4>
+                            <p class="text-muted mb-2">{{ $member->role }}</p>
+                            <p class="team-quote">{{ $member->description ?: 'Making a difference every day' }}</p>
+                            <button class="btn btn-sm learn-btn view-details" 
+                                    data-member-id="{{ $member->id }}">
+                                View Profile
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
             </div>
-          </div>
-
-          <!-- Team Member 2 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team2.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Prince Avarade</h4>
-              <p class="text-muted mb-3">Academic Director</p>
-              <p>
-                At school of Ghana we believe in nurturing mind and building
-                legacy of excellence
-              </p>
-            </div>
-          </div>
-          <!-- Team Member 3 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team3.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Joel Nasara Sulemana</h4>
-              <p class="text-muted mb-3">Senior Communications Officer</p>
-              <p>Education is most powerful tool to change the world</p>
-            </div>
-          </div>
-          <!-- Team Member 4 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team4.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Daniel Bajaba</h4>
-              <p class="text-muted mb-3">Programs Coordinator</p>
-              <p>Discipline, teamwork and passion make champions</p>
-            </div>
-          </div>
-          <!-- Team Member 5 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team5.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Cecelia Kwara</h4>
-              <p class="text-muted mb-3">Assistant Communications Officer</p>
-              <p>Every Student deserves the right opportunity to succeed</p>
-            </div>
-          </div>
-          <!-- Team Member 6 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/image7.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Thomas Akanjo</h4>
-              <p class="text-muted mb-3">Finance Officer</p>
-              <p>A strong foundation today builds a sustainable future</p>
-            </div>
-          </div>
-          <!-- Team Member 7 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/image10.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Prince Avarade</h4>
-              <p class="text-muted mb-3">Academic Director</p>
-              <p>
-                At school of Ghana we believe in nurturing mind and building
-                legacy of excellence
-              </p>
-            </div>
-          </div>
-          <!-- Team Member 8 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="our-team-card text-start">
-              <div class="team-img">
-                <img
-                  src="{{ asset('assets/images/team-image.png') }}"
-                  alt="Michael Chen"
-                  class="img-fluid"
-                />
-              </div>
-              <h4 class="mt-4 mb-1">Prince Avarade</h4>
-              <p class="text-muted mb-3">Academic Director</p>
-              <p>
-                At school of Ghana we believe in nurturing mind and building
-                legacy of excellence
-              </p>
-            </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Impact Section -->
-    <section class="impact-section py-5 text-white">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-lg-8 text-center">
-            <h2 class="mb-4">Our Impact</h2>
-          </div>
+    <!-- Team Member Modal -->
+    <div class="modal fade" id="teamMemberModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="row g-0">
+                        <!-- Left Column - Image -->
+                        <div class="col-md-5">
+                            <div class="modal-img-wrapper h-100">
+                                <img id="modalMemberImage" src="" alt="" class="img-fluid h-100 w-100 object-fit-cover">
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column - Content -->
+                        <div class="col-md-7">
+                            <div class="p-4 p-lg-5">
+                                <h3 id="modalMemberName" class="mb-2"></h3>
+                                <p id="modalMemberRole" class="text-primary mb-4"></p>
+                                
+                                <div id="modalMemberBio" class="mb-4"></div>
+                                
+                                <div class="member-social-links mb-4">
+                                    <h6 class="mb-3">Connect:</h6>
+                                    <!-- Social links will be inserted here by JavaScript -->
+                                </div>
+                                
+                                <div class="member-quote bg-light p-3 rounded mb-4">
+                                    <i class="fas fa-quote-left text-primary me-2"></i>
+                                    <span id="modalMemberQuote"></span>
+                                </div>
+                                
+                                <div class="member-meta d-flex flex-wrap gap-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-sort-numeric-down me-2 text-muted"></i>
+                                        <small class="text-muted">Display order: <span id="modalMemberOrder"></span></small>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-circle me-2 text-success"></i>
+                                        <small class="text-muted">Status: Active</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div class="row g-4">
-          <!-- Impact Item 1 -->
-          <div class="col-md-6 col-lg-3">
-            <div class="impact-card text-center p-4">
-              <i class="fas fa-graduation-cap fa-3x mb-4"></i>
-              <p class="fw-bold fs-5">5K +</p>
-              <p class="fw-bold fs-5">Students</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="impact-card text-center p-4">
-              <i class="fas fa-school fa-3x mb-4"></i>
-              <p class="fw-bold fs-5">50 +</p>
-              <p class="fw-bold fs-5">Schools</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="impact-card text-center p-4">
-              <i class="fas fa-globe fa-3x mb-4"></i>
-              <p class="fw-bold fs-5">10 +</p>
-              <p class="fw-bold fs-5">Region</p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="impact-card text-center p-4">
-              <i class="fas fas fa-user-friends fa-3x mb-4"></i>
-              <p class="fw-bold fs-5">200 +</p>
-              <p class="fw-bold fs-5">Volunteers</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+@endsection
 
-    <!-- Partners Section -->
-    <section class="partners-section py-5">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-lg-8 text-center">
-            <h2 class="text-dark mb-3">Our Partners</h2>
-            <p class="lead">
-              Collaborating with leading organizations to enhance education
-            </p>
-          </div>
-        </div>
-
-        <div class="row g-4 justify-content-center align-items-center">
-          <!-- Row 1 -->
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part1.png') }}"
-                alt="Partner 1"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part2.png') }}"
-                alt="Partner 2"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part3.png') }}"
-                alt="Partner 3"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part4.png') }}"
-                alt="Partner 4"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-
-          <!-- Row 2 -->
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part5.png') }}"
-                alt="Partner 5"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part6.png') }}"
-                alt="Partner 6"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part7.png') }}"
-                alt="Partner 7"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-          <div class="col-6 col-md-4 col-lg-3">
-            <div class="partner-logo">
-              <img
-                src="{{ asset('assets/images/part8.png') }}"
-                alt="Partner 8"
-                class="img-fluid"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    @endsection
+@section('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Team member modal functionality
+    const viewButtons = document.querySelectorAll('.view-details');
+    const modal = new bootstrap.Modal(document.getElementById('teamMemberModal'));
+    
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-member-id');
+            fetchMemberDetails(memberId);
+        });
+    });
+    
+    function fetchMemberDetails(memberId) {
+        // In a real application, you would fetch this data via AJAX
+        // For this example, we'll use data from the card
+        
+        const card = document.querySelector(`[data-member-id="${memberId}"]`).closest('.our-team-card');
+        const name = card.querySelector('h4').textContent;
+        const role = card.querySelector('.text-muted').textContent;
+        const quote = card.querySelector('.team-quote').textContent;
+        const imgSrc = card.querySelector('img').src;
+        
+        // Set modal content
+        document.getElementById('modalMemberName').textContent = name;
+        document.getElementById('modalMemberRole').textContent = role;
+        document.getElementById('modalMemberQuote').textContent = quote;
+        document.getElementById('modalMemberImage').src = imgSrc;
+        document.getElementById('modalMemberImage').alt = name;
+        
+        // For demo purposes - in real app you'd get bio from AJAX
+        document.getElementById('modalMemberBio').innerHTML = 
+            `<p>This would be the detailed bio of ${name}, showing their background, experience, and role in the organization. In a real application, this would be pulled from the database.</p>`;
+        
+        // Add social links
+        const socialLinksContainer = document.querySelector('.member-social-links');
+        // Clear existing links except the heading
+        while (socialLinksContainer.children.length > 1) {
+            socialLinksContainer.removeChild(socialLinksContainer.lastChild);
+        }
+        
+        // Get social links from the card (in real app, get from AJAX)
+        const socialLinks = card.querySelectorAll('.social-link');
+        socialLinks.forEach(link => {
+            const clone = link.cloneNode(true);
+            clone.classList.remove('social-link');
+            clone.classList.add('btn', 'btn-outline-primary', 'me-2');
+            socialLinksContainer.appendChild(clone);
+        });
+        
+        // Show the modal
+        modal.show();
+    }
+});
+</script>
+@endsection
