@@ -1,7 +1,7 @@
-{{-- create.blade.php --}}
+{{-- edit.blade.php --}}
 @extends('admin.layout')
 
-@section('title', 'Create New Story')
+@section('title', 'Edit Story')
 
 @section('actions')
     <a href="{{ route('admin.stories.index') }}" class="btn btn-outline-secondary">
@@ -10,14 +10,25 @@
 @endsection
 
 @section('content')
-<form action="{{ route('admin.stories.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.stories.update', $story->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
     @include('admin.stories.partials.form')
 </form>
 @endsection
 
 @section('scripts')
 <script>
+    // Initialize with existing image
+    document.addEventListener('DOMContentLoaded', function() {
+        const preview = document.getElementById('imagePreview');
+        const existingImage = "{{ $story->image ?? '' }}";
+        
+        if (existingImage) {
+            preview.innerHTML = `<img src="{{ asset('storage/${existingImage}') }}" class="img-fluid rounded" style="max-height: 200px;">`;
+        }
+    });
+
     // Image preview
     document.getElementById('image').addEventListener('change', function(e) {
         const file = e.target.files[0];
@@ -42,14 +53,19 @@
             }
             reader.readAsDataURL(file);
         } else {
-            preview.innerHTML = `
-                <i class="fas fa-image fa-3x text-secondary mb-2"></i>
-                <p class="mb-0">No image selected</p>
-            `;
+            const existingImage = "{{ $story->image ?? '' }}";
+            if (existingImage) {
+                preview.innerHTML = `<img src="{{ asset('storage/${existingImage}') }}" class="img-fluid rounded" style="max-height: 200px;">`;
+            } else {
+                preview.innerHTML = `
+                    <i class="fas fa-image fa-3x text-secondary mb-2"></i>
+                    <p class="mb-0">No image selected</p>
+                `;
+            }
         }
     });
 
-    // // Initialize rich text editor
+    // // Initialize rich text editor with existing content
     // if (typeof ClassicEditor !== 'undefined') {
     //     ClassicEditor
     //         .create(document.querySelector('#content'), {

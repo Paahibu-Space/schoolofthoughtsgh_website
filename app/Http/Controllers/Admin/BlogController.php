@@ -42,7 +42,7 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        return view('admin.frontend.blog.show', compact('blog'));
+        return view('admin.blogs.show', compact('blog'));
     }
 
     public function edit(Blog $blog)

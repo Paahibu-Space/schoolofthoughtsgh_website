@@ -3,7 +3,7 @@
 @section('title', 'Team Members')
 @section('actions')
     <a href="{{ route('admin.team.create') }}" class="btn btn-primary">
-        <i class="fas fa-plus me-2"></i>New Story
+        <i class="fas fa-plus me-2"></i>New Team
     </a>
 @endsection
 

@@ -4,7 +4,7 @@
 @section('title', 'Add Team Member')
 @section('actions')
     <a href="{{ route('admin.team.index') }}" class="btn btn-outline-secondary">
-        <i class="fas fa-arrow-left me-2"></i>Back to Stories
+        <i class="fas fa-arrow-left me-2"></i>Back to Teams
     </a>
 @endsection
 

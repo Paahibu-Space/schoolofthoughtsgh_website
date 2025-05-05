@@ -83,7 +83,7 @@ class FrontendController extends Controller
             ->orderBy('published_at', 'desc')
             ->paginate(6);
 
-        return view('blogs.index', compact('blogs'));
+        return view('frontend.pages.blogs.index', compact('blogs'));
     }
 
     /**

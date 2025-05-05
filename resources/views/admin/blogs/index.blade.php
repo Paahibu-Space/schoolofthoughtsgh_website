@@ -52,7 +52,7 @@
                             </td>
                             <td>
                                 <div class="d-flex justify-content-end gap-2">
-                                    <a href="{{ route('admin.frontend.blog.show', $blog) }}" 
+                                    <a href="{{ route('admin.blogs.show', $blog) }}" 
                                        class="btn btn-sm btn-outline-primary rounded-circle action-btn"
                                        data-bs-toggle="tooltip" 
                                        title="View">

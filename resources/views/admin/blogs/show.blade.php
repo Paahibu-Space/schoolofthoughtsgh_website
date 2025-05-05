@@ -63,8 +63,8 @@
                     </a>
                     <button type="button" 
                             class="btn btn-outline-danger"
-                            data-bs-toggle="modal" 
-                            data-bs-target="#deleteModal">
+                            data-bs-toggle="modal"
+                                                data-bs-target="#deleteModal-{{ $blog->id }}">
                         <i class="fas fa-trash-alt me-2"></i>Delete Post
                     </button>
                 </div>
