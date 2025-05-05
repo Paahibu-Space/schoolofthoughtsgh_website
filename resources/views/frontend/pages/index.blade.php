@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="event-content">
                                         <h3>{{ $event->title }}</h3>
-                                        <p>{{ $event->excerpt ?? Str::limit($event->description, 150) }}</p>
+                                        <p>{!! $event->excerpt ?? Str::limit($event->description, 150) !!}</p>
                                         <a href="{{ route('frontend.event.show', $event->id) }}" class="btn learn-btn">
                                             Learn More <i class="fas fa-arrow-right ms-2"></i>
                                         </a>
