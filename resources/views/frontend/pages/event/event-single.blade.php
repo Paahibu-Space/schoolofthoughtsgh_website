@@ -489,7 +489,7 @@
                             <h3 class="mb-4 text-dark">Quick Links</h3>
                             <ul class="list-unstyled">
                                 <li class="mb-3">
-                                    <a href="{{ route('frontend.stories') }}"
+                                    <a href="#"
                                         class="text-dark text-decoration-none d-flex align-items-center">
                                         <i class="fas fa-book me-3"></i>
                                         <span>Stories</span>
@@ -503,7 +503,7 @@
                                     </a>
                                 </li>
                                 <li class="mb-3">
-                                    <a href="{{ route('frontend.blogs') }}"
+                                    <a href="#"
                                         class="text-dark text-decoration-none d-flex align-items-center">
                                         <i class="fas fa-users me-3"></i>
                                         <span>Blogs</span>

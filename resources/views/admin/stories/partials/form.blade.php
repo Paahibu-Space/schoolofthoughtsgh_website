@@ -20,7 +20,7 @@
                 </div>
                 
                 <div class="mb-4">
-                    <label for="content" class="form-label">Story Content <span class="text-danger">*</span></label>
+                    <label for="content" class="form-label">Post Content <span class="text-danger">*</span></label>
                     <textarea class="form-control @error('content') is-invalid @enderror" 
                               id="content" 
                               name="content" 
