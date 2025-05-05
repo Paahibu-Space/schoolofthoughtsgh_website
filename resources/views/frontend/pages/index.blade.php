@@ -258,7 +258,7 @@
                 </div>
 
                 <div class="text-center mt-5">
-                    <a href="#" class="btn learn-btn">
+                    <a href="{{ route('frontend.blogs') }}" class="btn learn-btn">
                         View All Blog Posts
                     </a>
                 </div>

@@ -38,7 +38,7 @@
                 <div class="dropdown-links">
                   <li><a href="{{ route('frontend.events') }}">Upcoming Events</a></li>
                   <li><a href="{{ route('frontend.events') }}">Past Events</a></li>
-                  <li><a href="{{ route('frontend.events') }}">Blogs</a></li>
+                  <li><a href="{{ route('frontend.blogs') }}">Blogs</a></li>
                   <li><a href="{{ route('frontend.events') }}">Stories</a></li>
                 </div>
                 <div class="dropdown-image">

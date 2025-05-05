@@ -25,7 +25,7 @@
     <!-- Hero Section -->
     <section class="events-hero">
         <div class="hero-overlay"></div>
-        <div class="container">
+        <div class="container z-1">
             <div class="row align-items-center">
                 <div class="col-12 text-center">
                     <h1 class="display-4 fw-bold mb-3">Explore Our Events</h1>

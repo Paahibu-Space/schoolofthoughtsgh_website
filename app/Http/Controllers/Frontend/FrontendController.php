@@ -77,32 +77,49 @@ class FrontendController extends Controller
     /**
      * Display all blogs
      */
-    public function blogs()
+    public function blogs(Request $request)
     {
-        $blogs = Blog::where('published_at', '<=', Carbon::now())
-            ->orderBy('published_at', 'desc')
-            ->paginate(6);
+        $query = Blog::query();
+        
+        // Handle search functionality
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('title', 'like', "%{$search}%")
+                  ->orWhere('content', 'like', "%{$search}%");
+        }
+        
+        // Handle filtering
+        if ($request->has('filter')) {
+            $filter = $request->input('filter');
+            
+            if ($filter === 'featured') {
+                $query->where('is_featured', true);
+            } elseif ($filter === 'recent') {
+                $query->whereNotNull('published_at')
+                      ->orderBy('published_at', 'desc');
+            }
+        }
+        
+        // Default ordering
+        $query->latest();
+        
+        // Get the blogs with pagination
+        $blogs = $query->paginate(9);
 
-        return view('frontend.pages.blogs.index', compact('blogs'));
+        return view('frontend.pages.blog.index', compact('blogs'));
     }
 
     /**
      * Display a single blog
      */
-    public function showBlog($slug)
+    public function showBlog($id)
     {
-        $blog = Blog::where('slug', $slug)
-            ->where('published_at', '<=', Carbon::now())
-            ->firstOrFail();
-
-        // Related blogs (same author or similar tags could be added later)
-        $relatedBlogs = Blog::where('id', '!=', $blog->id)
-            ->where('published_at', '<=', Carbon::now())
-            ->orderBy('published_at', 'desc')
-            ->take(3)
-            ->get();
-
-        return view('frontend.blog.show', compact('blog', 'relatedBlogs'));
+        $blog = Blog::findOrFail($id);
+        
+        // You can add logic to get comments if you have a comments system
+        // $comments = $blog->comments()->latest()->get();
+        
+        return view('frontend.pages.blog.show', compact('blog'));
     }
 
     /**
