@@ -26,7 +26,7 @@
                                         School of Thoughts Ghana
                                     </h1>
                                     <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                                        We Think To Change! We Are Change!
+                                        Transforming Minds, Changing Narratives!
                                     </p>
                                     <div class="btn-group animate__animated animate__fadeInUp animate__delay-2s">
                                         <a href="{{ route('frontend.about') }}" class="btn btn-primary me-3">

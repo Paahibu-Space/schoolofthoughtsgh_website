@@ -41,5 +41,6 @@ jobs:
             cd "${{secrets.DEPLOY_PATH}}"
             git pull origin main
             php $(which composer) install --no-dev --optimize-autoloader
+            php artisan migrate
             php artisan config:cache
             php artisan route:cache
