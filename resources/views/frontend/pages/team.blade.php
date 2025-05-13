@@ -8,7 +8,7 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12 text-center">
                     <h1 class="display-3 fw-bold text-white mb-4">Meet the Clonify Team</h1>
-                    {{-- <p class="lead text-white opacity-75">Driving innovation through collaboration</p> --}}
+                    {{-- <p class=" text-white opacity-75">Driving innovation through collaboration</p> --}}
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <div class="col-lg-8 text-center">
                     {{-- <h5 class="text-primary mb-3">OUR TEAM</h5> --}}
                     {{-- <h1 class="display-3 fw-bold text-dark mb-3">Meet the Clonify Team</h1> --}}
-                    <p class="lead text-muted">
+                    <p class=" text-muted">
                         Alone we can do little, together we can do so much. Teamwork is the secret that makes common people achieve uncommon results.
                     </p>
                 </div>

@@ -4,7 +4,7 @@
 
     <!-- {{-- Hero Section------ --}} -->
 
-    <section class="hero-slider">
+    <div class="hero-slider">
         <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators -->
             <div class="carousel-indicators">
@@ -44,7 +44,7 @@
 
                 <!-- Slide 2 -->
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/images/hero2.jpg') }}" class="d-block w-100" alt="Community" />
+                    <img src="{{ asset('assets/images/login.webp') }}" class="d-block w-100" alt="Community" />
                     <div class="carousel-caption d-flex align-items-center">
                         <div class="container">
                             <div class="row">
@@ -72,7 +72,7 @@
 
                 <!-- Slide 3 -->
                 <div class="carousel-item">
-                    <img src="{{ asset('assets/images/hero3.webp') }}" class="d-block w-100" alt="Hope" />
+                    <img src="{{ asset('assets/images/hero.webp') }}" class="d-block w-100" alt="Hope" />
                     <div class="carousel-caption d-flex align-items-center">
                         <div class="container">
                             <div class="row">
@@ -109,7 +109,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </section>
+    </div>
 
     <!-- {{-- About Section----------- --}} -->
     <section class="about-section py-5">
@@ -118,7 +118,7 @@
                 <!-- Text Content -->
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h2 class="display-5 fw-bold mb-4">About Us</h2>
-                    <p class="lead mb-3">
+                    <p class=" mb-3">
                         School of Thoughts Ghana is an award-winning registered Non-profit
                         organization that is designed to bridge the educational gap
                         between the Northern and Southern parts of Ghana through Human
@@ -183,7 +183,7 @@
                 </div>
             @else
                 <div class="text-center py-4">
-                    <p class="lead">No upcoming events scheduled. Please check back later!</p>
+                    <p >No upcoming events scheduled. Please check back later!</p>
                 </div>
             @endif
         </div>
@@ -223,7 +223,7 @@
                 </div>
             @else
                 <div class="text-center py-4">
-                    <p class="lead">No past events. Check back later!</p>
+                    <p >No past events. Check back later!</p>
                 </div>
             @endif
         </div>
@@ -262,7 +262,7 @@
                 </div>
             @else
                 <div class="text-center py-4">
-                    <p class="lead">No past events available yet. Check back soon!</p>
+                    <p >No past events available yet. Check back soon!</p>
                 </div>
             @endif
         </div>
@@ -303,7 +303,7 @@
                 </div>
             @else
                 <div class="text-center py-4">
-                    <p class="lead">No blog posts available yet. Check back soon!</p>
+                    <p >No blog posts available yet. Check back soon!</p>
                 </div>
             @endif
         </div>

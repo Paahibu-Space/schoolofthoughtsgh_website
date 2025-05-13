@@ -13,6 +13,7 @@ class TeamMemberController extends Controller
         $teamMembers = TeamMember::orderBy('display_order')->get();
         return view('admin.team.index', compact('teamMembers'));
     }
+
     public function create()
     {
         return view('admin.team.create');
@@ -26,8 +27,8 @@ class TeamMemberController extends Controller
             'description' => 'nullable|string',
             'photo' => 'nullable|image|max:1024',
             'linkedin_url' => 'nullable|url|max:255',
-            'twitter_url' => 'nullable|url|max:255',
-            'github_url' => 'nullable|url|max:255',
+            'x_url' => 'nullable|url|max:255',
+            'facebook_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',
             'display_order' => 'integer',
             'is_active' => 'boolean'
@@ -51,6 +52,7 @@ class TeamMemberController extends Controller
         }
         return view('admin.team.edit', compact('teamMember'));
     }
+
     public function update(Request $request, TeamMember $teamMember)
     {
         $validated = $request->validate([
@@ -59,8 +61,8 @@ class TeamMemberController extends Controller
             'description' => 'nullable|string',
             'photo' => 'nullable|image|max:1024',
             'linkedin_url' => 'nullable|url|max:255',
-            'twitter_url' => 'nullable|url|max:255',
-            'github_url' => 'nullable|url|max:255',
+            'x_url' => 'nullable|url|max:255',
+            'facebook_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',
             'display_order' => 'integer',
             'is_active' => 'boolean'
@@ -81,6 +83,7 @@ class TeamMemberController extends Controller
         return redirect()->route('admin.team.index')
             ->with('success', 'Team member updated successfully.');
     }
+
     public function destroy(TeamMember $teamMember)
     {
         // Delete photo if exists

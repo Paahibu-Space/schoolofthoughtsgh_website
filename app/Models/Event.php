@@ -43,4 +43,9 @@ class Event extends Model
     {
         return $this->hasMany(GalleryImage::class);
     }
+
+    public function speakers()
+    {
+        return $this->hasMany(Speaker::class);
+    }
 }

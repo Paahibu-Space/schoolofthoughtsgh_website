@@ -144,21 +144,27 @@ document.addEventListener('DOMContentLoaded', function() {
         // Copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
-        // Back to top button
+        // Back to top
         const backToTopBtn = document.querySelector('.back-to-top');
-        if (backToTopBtn) {
-            window.addEventListener('scroll', function() {
-                backToTopBtn.classList.toggle('active', window.pageYOffset > 300);
-            });
-            
-            backToTopBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
+
+        if (!backToTopBtn) return;
+    
+        const toggleVisibility = () => {
+            backToTopBtn.classList.toggle('active', window.scrollY > 300);
+        };
+    
+        window.addEventListener('scroll', toggleVisibility);
+    
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // WhatsApp
+        const phoneNumber = '233246417853'; // Replace with your number
+        const message = encodeURIComponent("Hello there! I'm interested in your services.");
+        const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+        document.getElementById('whatsappButton').href = whatsappLink;
         
         // Smooth scroll for footer links
         document.querySelectorAll('.footer-left a[href^="#"]').forEach(anchor => {
@@ -417,3 +423,72 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
 });
+
+    // Initialize text editors for content (CKEditor or other rich text editor)
+    document.addEventListener('DOMContentLoaded', function() {
+        // Replace textareas with CKEditor if available
+        if (typeof ClassicEditor !== 'undefined') {
+            ClassicEditor.create(document.querySelector('#general_content'));
+            ClassicEditor.create(document.querySelector('#mission_content'));
+            ClassicEditor.create(document.querySelector('#vision_content'));
+        }
+        
+        // Make impact items sortable
+        const impactItemsTable = document.getElementById('impact-items-table');
+        if (impactItemsTable) {
+            new Sortable(impactItemsTable, {
+                handle: '.handle',
+                animation: 150,
+                onEnd: function() {
+                    updateImpactItemsOrder();
+                }
+            });
+        }
+        
+        // Setup edit impact item modal
+        const editButtons = document.querySelectorAll('.edit-item');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const icon = this.getAttribute('data-icon');
+                const count = this.getAttribute('data-count');
+                const title = this.getAttribute('data-title');
+                const isActive = this.getAttribute('data-active') === '1';
+                
+                document.getElementById('edit_icon').value = icon;
+                document.getElementById('edit_count').value = count;
+                document.getElementById('edit_title').value = title;
+                document.getElementById('edit_is_active').checked = isActive;
+                
+                document.getElementById('editImpactItemForm').action = 
+                    '{{ route("admin.settings.about.impact-items.update", "") }}/' + id;
+                
+                const editModal = new bootstrap.Modal(document.getElementById('editImpactItemModal'));
+                editModal.show();
+            });
+        });
+    });
+    
+    // Update the order of impact items
+    function updateImpactItemsOrder() {
+        const rows = document.querySelectorAll('#impact-items-table tr[data-id]');
+        const itemIds = Array.from(rows).map(row => row.getAttribute('data-id'));
+        
+        fetch('{{ route("admin.settings.about.impact-items.order") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({ items: itemIds })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('Order updated successfully');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating order:', error);
+        });
+    }

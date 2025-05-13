@@ -71,6 +71,57 @@
                         @enderror
                         <div class="form-text">Specify where the event will take place. Leave empty if not applicable.</div>
                     </div>
+
+                    <div class="mb-4">
+                        <label class="form-label d-flex justify-content-between align-items-center">
+                            <span>Event Speakers</span>
+                            <button type="button" class="btn btn-sm btn-outline-primary" id="addSpeakerBtn">
+                                <i class="fas fa-plus me-1"></i>Add Speaker
+                            </button>
+                        </label>
+                        
+                        <div id="speakersContainer">
+                            <!-- Speaker template will be cloned here -->
+                        </div>
+                        
+                        <!-- Template for new speaker -->
+                        <template id="speakerTemplate">
+                            <div class="card mb-3 speaker-item">
+                                <div class="card-header bg-light d-flex justify-content-between align-items-center py-2">
+                                    <h6 class="mb-0 speaker-title">New Speaker</h6>
+                                    <button type="button" class="btn btn-sm btn-outline-danger remove-speaker">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="speaker-image-preview text-center bg-light rounded p-2 mb-2">
+                                                <div class="speaker-preview">
+                                                    <i class="fas fa-user fa-2x text-secondary"></i>
+                                                </div>
+                                            </div>
+                                            <div class="input-group input-group-sm">
+                                                <input type="file" class="form-control speaker-image" name="speakers[INDEX][image]" accept="image/*">
+                                                <label class="input-group-text"><i class="fas fa-upload"></i></label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control form-control-sm speaker-name" name="speakers[INDEX][name]" placeholder="Speaker Name" required>
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control form-control-sm" name="speakers[INDEX][role]" placeholder="Role/Position">
+                                            </div>
+                                            <div class="mb-2">
+                                                <input type="text" class="form-control form-control-sm" name="speakers[INDEX][specialty]" placeholder="Specialty/Expertise">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
                 </form>
             </div>
         </div>
@@ -183,6 +234,59 @@
                 alert('End date cannot be earlier than start date');
             }
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const speakersContainer = document.getElementById('speakersContainer');
+        const speakerTemplate = document.getElementById('speakerTemplate');
+        const addSpeakerBtn = document.getElementById('addSpeakerBtn');
+        let speakerCount = 0;
+        
+        // Function to add a new speaker
+        function addSpeaker() {
+            const speakerIndex = speakerCount++;
+            const speakerNode = speakerTemplate.content.cloneNode(true);
+            
+            // Update all input names with correct index
+            speakerNode.querySelectorAll('[name*="INDEX"]').forEach(input => {
+                input.name = input.name.replace('INDEX', speakerIndex);
+            });
+            
+            // Set up image preview
+            const imageInput = speakerNode.querySelector('.speaker-image');
+            const previewContainer = speakerNode.querySelector('.speaker-preview');
+            
+            imageInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewContainer.innerHTML = `<img src="${e.target.result}" class="img-fluid rounded" style="max-height: 100px;">`;
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            // Set up name change to update header
+            const nameInput = speakerNode.querySelector('.speaker-name');
+            const speakerTitle = speakerNode.querySelector('.speaker-title');
+            
+            nameInput.addEventListener('input', function() {
+                speakerTitle.textContent = this.value || 'New Speaker';
+            });
+            
+            // Set up remove button
+            const removeBtn = speakerNode.querySelector('.remove-speaker');
+            removeBtn.addEventListener('click', function() {
+                this.closest('.speaker-item').remove();
+            });
+            
+            // Add to DOM
+            speakersContainer.appendChild(speakerNode);
+        }
+        
+        // Add speaker button
+        addSpeakerBtn.addEventListener('click', addSpeaker);
     });
 </script>
 @endsection

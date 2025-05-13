@@ -4,12 +4,17 @@
 @section('content')
 
     <!-- Hero Section -->
-    <section class="about-hero">
+    <section class="about-hero"
+        style="background-image: url('{{ $aboutData['breadcrumb_image'] ? asset('storage/' . $aboutData['breadcrumb_image']) : asset('images/default-breadcrumb.jpg') }}');">
         <div class="hero-overlay"></div>
         <div class="container h-100 z-1">
             <div class="row h-100 align-items-center">
                 <div class="col-12 text-center">
-                    <h1 class="display-3 fw-bold text-white">About Us</h1>
+                    <h1 class="display-3 fw-bold text-white">{{ $aboutData['title'] }}</h1>
+                    {{-- <ul class="breadcrumb">
+                        <li><a href="{{ route('frontend.home') }}">Home</a></li>
+                        <li class="active">{{ $aboutData['title'] }}</li>
+                    </ul> --}}
                 </div>
             </div>
         </div>
@@ -19,23 +24,11 @@
     <section class="about-intro mx-4 py-3 mt-4">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="text-center">
+                <div class="text-center about-content">
                     {{-- <h2 class="mb-2">About Us</h2> --}}
 
-                    <p>
-                        School of Thoughts Ghana is an award-winning registered Non-profit
-                        organization that is designed to bridge the educational gap
-                        between the Northern and Southern parts of Ghana through Human
-                        Capacity Development, Advocacy and Opportunity Creation. It
-                        focuses on the tuition of activities such as Reading and Writing,
-                        Debate and Public Speaking, Talent and Leadership Development, and
-                        Information Technology. Under its Advocacy strand, it pushes for
-                        the implementation of policies that would improve the education
-                        conditions and opportunities in Northern Ghana. Its Opportunity
-                        Creation strand affords young people from the North an opportunity
-                        to enjoy the events, programs, scholarships and training that are
-                        hitherto concentrated in the capital cities of the country.
-                    </p>
+                    {!! $aboutData['general'] !!}
+
                 </div>
             </div>
         </div>
@@ -47,14 +40,11 @@
             <div class="row align-items-center">
                 <h3 class="mb-4 text-start text-dark">Our Mission</h3>
                 <div class="col-lg-8 mission-content">
-                    <p>
-                        To train and raise socially responsible young leaders who would
-                        understand the value of Quality Education and the tenets of global
-                        citizenship
-                    </p>
+                    {!! $aboutData['mission']['content'] !!}
+
                 </div>
                 <div class="col-lg-4 mission-image">
-                    <img src="{{ asset('assets/images/mission.png') }}" alt="Students learning"
+                    <img src="{{ asset('storage/' . $aboutData['mission']['image']) }}" alt="Students learning"
                         class="img-fluid rounded-circle" />
                 </div>
             </div>
@@ -67,79 +57,75 @@
             <div class="row align-items-center">
                 <h3 class="mb-4 text-end text-dark">Our Vision</h3>
                 <div class="col-lg-4 vision-image order-lg-1 order-2">
-                    <img src="{{ asset('assets/images/vision.png') }}" alt="Graduation ceremony"
+                    <img src="{{ asset('storage/' . $aboutData['vision']['image']) }}" alt="Graduation ceremony"
                         class="img-fluid rounded-circle" />
                 </div>
                 <div class="col-lg-8 vision-content order-lg-2 order-1">
-                    <p class="">
-                        To be the hub for the formulation and implementation of activities
-                        geared towards the achievement of SDG 4; Quality Education, first
-                        in Northern Ghana and then other deprived regions in the
-                        continent.
-                    </p>
+                    {!! $aboutData['vision']['content'] !!}
+
 
                 </div>
             </div>
         </div>
     </section>
 
-        <!-- Impact Section -->
-        <section class="impact-section py-5 text-white">
-          <div class="container">
-              <div class="row justify-content-center mb-5">
-                  <div class="col-lg-8 text-center">
-                      <h2 class="mb-4">Our Impact</h2>
-                      <p class="lead">The difference we're making together</p>
-                  </div>
-              </div>
-      
-              <div class="row g-4">
-                  <!-- Students Impact -->
-                  <div class="col-md-6 col-lg-3">
-                      <div class="impact-card text-center p-4 h-100">
-                          <i class="fas fa-graduation-cap fa-3x mb-4"></i>
-                          <p class="fw-bold fs-5 mb-1">
-                              <span class="counter" data-target="{{ $impactData['students'] }}">0</span>+
-                          </p>
-                          <p class="fw-bold fs-5">Students</p>
-                      </div>
-                  </div>
-                  
-                  <!-- Schools Impact -->
-                  <div class="col-md-6 col-lg-3">
-                      <div class="impact-card text-center p-4 h-100">
-                          <i class="fas fa-school fa-3x mb-4"></i>
-                          <p class="fw-bold fs-5 mb-1">
-                              <span class="counter" data-target="{{ $impactData['schools'] }}">0</span>+
-                          </p>
-                          <p class="fw-bold fs-5">Schools</p>
-                      </div>
-                  </div>
-                  
-                  <!-- Regions Impact -->
-                  <div class="col-md-6 col-lg-3">
-                      <div class="impact-card text-center p-4 h-100">
-                          <i class="fas fa-globe fa-3x mb-4"></i>
-                          <p class="fw-bold fs-5 mb-1">
-                              <span class="counter" data-target="{{ $impactData['regions'] }}">0</span>+
-                          </p>
-                          <p class="fw-bold fs-5">Regions</p>
-                      </div>
-                  </div>
-                  
-                  <!-- Volunteers Impact -->
-                  <div class="col-md-6 col-lg-3">
-                      <div class="impact-card text-center p-4 h-100">
-                          <i class="fas fa-user-friends fa-3x mb-4"></i>
-                          <p class="fw-bold fs-5 mb-1">
-                              <span class="counter" data-target="{{ $impactData['volunteers'] }}">0</span>+
-                          </p>
-                          <p class="fw-bold fs-5">Volunteers</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
+    <!-- Impact Section -->
+    <section class="impact-section py-5 text-white">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">Our Impact</h2>
+                    <p >The difference we're making together</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Students Impact -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="impact-card text-center p-4 h-100">
+                        <i class="fas fa-graduation-cap fa-3x mb-4"></i>
+                        <p class="fw-bold fs-5 mb-1">
+                            <span class="counter" data-target="{{ $impactData['students'] }}">0</span>+
+                        </p>
+                        <p class="fw-bold fs-5">Students</p>
+                    </div>
+                </div>
+
+                <!-- Schools Impact -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="impact-card text-center p-4 h-100">
+                        <i class="fas fa-school fa-3x mb-4"></i>
+                        <p class="fw-bold fs-5 mb-1">
+                            <span class="counter" data-target="{{ $impactData['schools'] }}">0</span>+
+                        </p>
+                        <p class="fw-bold fs-5">Schools</p>
+                    </div>
+                </div>
+
+                <!-- Regions Impact -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="impact-card text-center p-4 h-100">
+                        <i class="fas fa-globe fa-3x mb-4"></i>
+                        <p class="fw-bold fs-5 mb-1">
+                            <span class="counter" data-target="{{ $impactData['regions'] }}">0</span>+
+                        </p>
+                        <p class="fw-bold fs-5">Regions</p>
+                    </div>
+                </div>
+
+                <!-- Volunteers Impact -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="impact-card text-center p-4 h-100">
+                        <i class="fas fa-user-friends fa-3x mb-4"></i>
+                        <p class="fw-bold fs-5 mb-1">
+                            <span class="counter" data-target="{{ $impactData['volunteers'] }}">0</span>+
+                        </p>
+                        <p class="fw-bold fs-5">Volunteers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Team Section -->
     <section class="team-section py-5 bg-light">
@@ -147,7 +133,7 @@
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center">
                     <h2 class="display-5 fw-bold mb-3">Meet Our Team</h2>
-                    <p class="lead text-muted">The talented individuals who make it all happen</p>
+                    <p class=" text-muted">The talented individuals who make it all happen</p>
                 </div>
             </div>
 
@@ -215,17 +201,6 @@
                                 <div class="member-social-links mb-4">
                                     <!-- Social links will be inserted here by JavaScript -->
                                 </div>
-
-                                <div class="member-meta d-flex flex-wrap gap-3">
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-sort-numeric-down me-2 text-muted"></i>
-                                        <small class="text-muted">Display order: <span id="modalMemberOrder"></span></small>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-circle me-2 text-success"></i>
-                                        <small class="text-muted">Status: Active</small>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -234,88 +209,97 @@
         </div>
     </div>
 
-        {{-- Blogs section --}}
-        <section class="blogs-section py-5 bg-light">
-            <div class="container">
-                <div class="row justify-content-center mb-5">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="display-5 fw-bold mb-3">Latest Blogs</h2>
-                    </div>
+    {{-- Blogs section --}}
+    <section class="blogs-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Latest Blogs</h2>
                 </div>
-    
-                @if ($featuredBlogs->count() > 0)
-                    <div class="row g-4">
-                        @foreach ($featuredBlogs as $blog)
-                            <div class="col-12 col-md-6 col-lg-3">
-                                <div class="blog-card h-100">
-                                    <div class="blog-img">
-                                        <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-fluid">
-                                    </div>
-                                    <div class="blog-content p-4">
-                                        <h3>{{ $blog->title }}</h3>
-                                        <p class="mb-3">{!! iFrameFilterInSummernoteAndRender(Str::limit($blog->content, 100)) !!}</p>
-                                        <a href="#" class="btn learn-btn">
-                                            Read More <i class="fas fa-arrow-right ms-2"></i>
-                                        </a>
-                                    </div>
+            </div>
+ 
+            @if ($featuredBlogs->count() > 0)
+                <div class="row g-4">
+                    @foreach ($featuredBlogs as $blog)
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="blog-card h-100">
+                                <div class="blog-img">
+                                    <img src="{{ $blog->image_url }}" alt="{{ $blog->title }}" class="img-fluid">
+                                </div>
+                                <div class="blog-content p-4">
+                                    <h3>{{ $blog->title }}</h3>
+                                    <p class="mb-3">{!! iFrameFilterInSummernoteAndRender(Str::limit($blog->content, 100)) !!}</p>
+                                    <a href="#" class="btn learn-btn">
+                                        Read More <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-    
-                    <div class="text-center mt-5">
-                        <a href="{{ route('frontend.blogs') }}" class="btn learn-btn">
-                            View All Blog Posts
-                        </a>
-                    </div>
-                @else
-                    <div class="text-center py-4">
-                        <p class="lead">No blog posts available yet. Check back soon!</p>
-                    </div>
-                @endif
-            </div>
-        </section>
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="{{ route('frontend.blogs') }}" class="btn learn-btn">
+                        View All Blog Posts
+                    </a>
+                </div>
+            @else
+                <div class="text-center py-4">
+                    <p >No blog posts available yet. Check back soon!</p>
+                </div>
+            @endif
+        </div>
+    </section>
 
     <!-- Partners Section -->
-<section class="partners-section py-5">
-  <div class="container">
-      <div class="row justify-content-center mb-5">
-          <div class="col-lg-8 text-center">
-              <h2 class="display-4 fw-bold text-dark mb-3">Our Partners</h2>
-              <p class="lead">
-                  Collaborating with leading organizations to enhance education
-              </p>
-          </div>
-      </div>
+    <section class="partners-section py-5">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-4 fw-bold text-dark mb-3">Our Partners</h2>
+                    <p >
+                        Collaborating with leading organizations to enhance education
+                    </p>
+                </div>
+            </div>
 
-      @if($partners->count() > 0)
-          <div class="row g-4 justify-content-center align-items-center">
-              @foreach($partners as $partner)
-              <div class="col-6 col-md-4 col-lg-3">
-                  <div class="partner-logo">
-                      <img 
-                          src="{{ $partner->image_url }}" 
-                          alt="{{ $partner->name }}" 
-                          class="img-fluid"
-                          title="{{ $partner->name }}"
-                          loading="lazy"
-                      />
-                      @if($partner->website_url)
-                      <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer" class="partner-link"></a>
-                      @endif
-                  </div>
-              </div>
-              @endforeach
-          </div>
-      @else
-          <div class="text-center py-4">
-              <div class="alert alert-info">
-                  <i class="fas fa-handshake me-2"></i> Our partner network is growing. Check back soon!
-              </div>
-          </div>
-      @endif
-  </div>
-</section>
+            @if ($partners->count() > 0)
+                <div class="row g-4 justify-content-center align-items-center">
+                    @foreach ($partners as $partner)
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="partner-logo">
+                                <img src="{{ $partner->image_url }}" alt="{{ $partner->name }}" class="img-fluid"
+                                    title="{{ $partner->name }}" loading="lazy" />
+                                @if ($partner->website_url)
+                                    <a href="{{ $partner->website_url }}" target="_blank" rel="noopener noreferrer"
+                                        class="partner-link"></a>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-4">
+                    <div class="alert alert-info">
+                        <i class="fas fa-handshake me-2"></i> Our partner network is growing. Check back soon!
+                    </div>
+                </div>
+            @endif
+        </div>
+    </section>
+
+    <section class="py-5 event-highlighted-story">
+        <div class="container">
+                <div class="row align-items-center">
+                    <div class="text-section col-lg-6">
+                        <h1>Patricia Naah Story:<br>Project Management for Female Entrepreneurs</h1>
+                    </div>
+    
+                    <div class="video-section col-lg-6">
+                        <iframe width="650" height="400" src="https://www.youtube.com/embed/FPcD75pIb_I?si=E6QmyO7gmy1E9ypd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+                    </div>
+        </div>
+    </section>
 @section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -370,47 +354,51 @@
             }
         });
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
     const counters = document.querySelectorAll('.counter');
-    const speed = 200; // Animation speed (lower = faster)
-    const animateWhenVisible = true; // Only animate when scrolled to
-    
-    function animateCounters() {
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const increment = target / speed;
-            
+    const duration = 4000; // Total animation duration in ms
+    const animateWhenVisible = true;
+
+    function animateCounter(counter) {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const incrementTime = 20; // ms
+        const steps = duration / incrementTime;
+        const increment = target / steps;
+
+        const timer = setInterval(() => {
+            count += increment;
             if (count < target) {
-                counter.innerText = Math.ceil(count + increment);
-                setTimeout(animateCounters, 1);
+                counter.innerText = Math.ceil(count).toLocaleString();
             } else {
-                counter.innerText = target.toLocaleString(); // Format with commas
+                counter.innerText = target.toLocaleString();
+                clearInterval(timer);
             }
-        });
+        }, incrementTime);
     }
-    
-    // Option 1: Animate immediately
-    // animateCounters();
-    
-    // Option 2: Animate when section is visible
+
     if (animateWhenVisible) {
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounters();
+                    entry.target.querySelectorAll('.counter').forEach(counter => {
+                        animateCounter(counter);
+                    });
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
-        
+        }, {
+            threshold: 0.5
+        });
+
         document.querySelectorAll('.impact-section').forEach(section => {
             observer.observe(section);
         });
+    } else {
+        counters.forEach(counter => animateCounter(counter));
     }
 });
+
     </script>
-
-
 @endsection
 @endsection

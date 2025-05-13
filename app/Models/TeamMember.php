@@ -14,8 +14,8 @@ class TeamMember extends Model
         'description',
         'photo',
         'linkedin_url',
-        'twitter_url',
-        'github_url',
+        'x_url',
+        'facebook_url',
         'instagram_url',
         'display_order',
         'is_active'
@@ -46,12 +46,12 @@ class TeamMember extends Model
             $links['linkedin'] = $this->linkedin_url;
         }
         
-        if (!empty($this->twitter_url)) {
-            $links['twitter'] = $this->twitter_url;
+        if (!empty($this->x_url)) {
+            $links['x'] = $this->x_url;
         }
         
-        if (!empty($this->github_url)) {
-            $links['github'] = $this->github_url;
+        if (!empty($this->facebook_url)) {
+            $links['facebook'] = $this->facebook_url;
         }
         
         if (!empty($this->instagram_url)) {

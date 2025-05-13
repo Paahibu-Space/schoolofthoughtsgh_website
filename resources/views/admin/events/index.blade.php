@@ -159,7 +159,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex justify-content-end">
-                                            <a href="#" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
+                                            <a href="{{ route('admin.events.show', $event) }}" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
                                                 title="View Details">
                                                 <i class="fas fa-eye"></i>
                                             </a>
