@@ -430,7 +430,7 @@
         <div class="row justify-content-center mb-4">
             <div class="col-lg-8 text-center">
               <h2 class="display-5 fw-bold text-white">Our Video Testimonials</h2>
-              <p class="lead text-white">Hear from our community members</p>
+              <p class=" text-white">Hear from our community members</p>
             </div>
           </div>
         <div class="row justify-content-center">
@@ -450,7 +450,7 @@
 
             <div class="testimonial-content text-center mt-5">
               <h2 class="text-white mb-3">Hear From Our Community</h2>
-              <p class="lead text-white">
+              <p class=" text-white">
                 See what our students and partners have to say about their
                 experiences
               </p>

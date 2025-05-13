@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Frontend\ContactController;
+use App\Http\Controllers\Admin\PageSettingsController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -118,6 +119,21 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::post('/ckeditor-upload', [UploadController::class, 'upload'])->name('ckeditor.upload');
 
+    // Institutions worked with
+    Route::resource('institutions', \App\Http\Controllers\Admin\InstitutionController::class);
+
+    // Page Settings routes
+    Route::prefix('settings')->name('settings.')->group(function () {
+        // About Page Settings
+        Route::get('/about', [PageSettingsController::class, 'aboutPage'])->name('about');
+        Route::post('/about', [PageSettingsController::class, 'updateAboutPage'])->name('about.update');
+
+        // Impact Items
+        Route::post('/about/impact-items', [PageSettingsController::class, 'storeImpactItem'])->name('about.impact-items.store');
+        Route::put('/about/impact-items/{id}', [PageSettingsController::class, 'updateImpactItem'])->name('about.impact-items.update');
+        Route::delete('/about/impact-items/{id}', [PageSettingsController::class, 'deleteImpactItem'])->name('about.impact-items.delete');
+        Route::post('/about/impact-items/order', [PageSettingsController::class, 'updateImpactItemsOrder'])->name('about.impact-items.order');
+    });
 });
 
 

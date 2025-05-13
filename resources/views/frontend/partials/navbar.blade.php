@@ -29,25 +29,7 @@
               </div>
             </ul>
           </li>
-  
-          <li>
-            <a href="{{ route('frontend.events') }}">Events <span class="dropdown-icon">▼</span></a>
-            
-            <ul class="dropdown-menu">
-              <div class="dropdown-content">
-                <div class="dropdown-links">
-                  <li><a href="{{ route('frontend.events') }}">Upcoming Events</a></li>
-                  <li><a href="{{ route('frontend.events') }}">Past Events</a></li>
-                  <li><a href="{{ route('frontend.blogs') }}">Blogs</a></li>
-                  <li><a href="{{ route('frontend.stories') }}">Stories</a></li>
-                </div>
-                <div class="dropdown-image">
-                  <img src="{{ asset('assets/images/dropdown2.png') }}" alt="About Us">
-                </div>
-              </div>
-            </ul>
-          </li>
-  
+
           <li>
             <a href="#">Get Involved <span class="dropdown-icon">▼</span></a>
            
@@ -65,7 +47,28 @@
             </ul>
           </li>
   
-          <li><a href="#" class="donate-btn">Donate</a></li>
+          <li>
+            <a href="{{ route('frontend.events') }}">Events <span class="dropdown-icon">▼</span></a>
+            
+            <ul class="dropdown-menu">
+              <div class="dropdown-content">
+                <div class="dropdown-links">
+                  <li><a href="{{ route('frontend.events') }}">Upcoming Events</a></li>
+                  <li><a href="{{ route('frontend.events') }}">Past Events</a></li>
+                  <li><a href="{{ route('frontend.stories') }}">Stories</a></li>
+                </div>
+                <div class="dropdown-image">
+                  <img src="{{ asset('assets/images/dropdown2.png') }}" alt="About Us">
+                </div>
+              </div>
+            </ul>
+          </li>
+          <li><a href="{{ route('frontend.blogs') }}">Blogs</a></li>
+
+  
+
+  
+          {{-- <li><a href="#" class="donate-btn">Donate</a></li> --}}
         </ul>
   
         <div class="burger">

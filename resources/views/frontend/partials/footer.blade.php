@@ -190,23 +190,20 @@
           </div>
         </div>
   
-       <!-- WhatsApp Button -->
-      <a href="#" id="whatsappButton" class="floating-button whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+
     
     <!-- Back to Top Button -->
-    <a href="#" id="backToTop" class="floating-button back-to-top-btn">
+    <a href="#" id="backToTop" class="floating-button back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
+
+           <!-- WhatsApp Button -->
+           <a href="#" id="whatsappButton" class="floating-button whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
   
       <!-- JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
       <script src="/assets/js/script.js"></script>
       <!-- Bootstrap JS Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- Animate.css -->
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-      />

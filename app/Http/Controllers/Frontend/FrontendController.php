@@ -11,6 +11,8 @@ use App\Models\Event;
 use App\Models\Partner;
 use App\Models\TeamMember;
 use App\Models\Story;
+use App\Helpers\PageSettingsHelper;
+use App\Models\Institution;
 
 class FrontendController extends Controller
 {
@@ -79,7 +81,13 @@ class FrontendController extends Controller
         ->take(3)
         ->get();
 
-        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs'));
+        $aboutData = PageSettingsHelper::getAboutPageData();
+
+        $institutions = Institution::orderBy('name')->get();
+
+
+
+        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs', 'aboutData', 'institutions'));
     }
 
     /**
@@ -166,8 +174,12 @@ class FrontendController extends Controller
             ->take(3)
             ->get();
 
+        // Speakers
+        $events = Event::with('speakers')->latest()->get(); // eager-load speakers
 
-        return view('frontend.pages.event.index', compact('upcomingEvents', 'pastEvents', 'featuredImages', 'blogs', 'stories', 'partners', 'featuredBlogs'));
+
+
+        return view('frontend.pages.event.index', compact('upcomingEvents', 'pastEvents', 'featuredImages', 'blogs', 'stories', 'partners', 'featuredBlogs', 'events'));
     }
 
     /**
@@ -180,6 +192,7 @@ class FrontendController extends Controller
             ->orderBy('start_date', 'desc')
             ->take(4)
             ->get();
+        
 
         return view('frontend.pages.event.event-single', compact('event', 'recentEvents'));
     }

@@ -48,6 +48,12 @@
   a {
     text-decoration: none;
   }
+
+  @media (max-width: 992px) {
+    section {
+      padding: 30px 10px !important;
+    }
+  }
   
   /* Navbar Section ---------- */
   .navbar {
@@ -58,7 +64,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 15px 5% !important;
+    padding: 6px 5% !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,17 +73,18 @@
   .navbar-logo {
     display: flex;
     align-items: center;
+    padding-left: 100px;
   }
   
-  /* .navbar-logo img {
-    height: 40px;
-    width: auto;
-  } */
+  .navbar-logo img {
+    width: 55px;
+  }
   
   .nav-links {
     display: flex;
     align-items: center;
     list-style: none;
+    margin: 0 !important;
   }
   
   .nav-links li {
@@ -98,7 +105,7 @@
   }
   
   .nav-links a:hover {
-    color: var(--hover-color);
+    color: var(--button-color);
   }
   
   .nav-links a.active {
@@ -301,8 +308,16 @@
         padding: 10px 25px !important;
       }
     }
+
+    .navbar {
+      padding: 6px 5% !important;
+    }
+
+    .navbar-logo {
+      padding-left: 0;
+    }
     .navbar-logo img{
-      width: 30px;
+      width: 50px;
     }
     .dropdown-links {
       padding: 15px;
@@ -746,7 +761,7 @@
     text-decoration: none;
   }
   
-  .swiper {
+  .events-slider {
     padding: 30px 10px 60px;
     width: 60%;
   }
@@ -777,7 +792,7 @@
   
   @media (max-width: 768px) {
     .swiper {
-      padding: 15px 5px 30px;
+      padding: 0;
       width: 100%;
     }
     .swiper-slide {
@@ -787,6 +802,8 @@
     .event-img {
       height: 180px;
     }
+
+  
   }
   /* End Of Events Section--- */
   
@@ -896,6 +913,11 @@
     color: var(--text-color);
     padding: 60px 0 0;
     position: relative;
+  }
+
+  .footer-section h5 {
+    font-size: 24px;
+    font-weight: 700;
   }
   
   .footer-content {
@@ -1045,15 +1067,27 @@
   /* WhatsApp Button */
   .whatsapp-btn {
       background-color: #25D366; /* WhatsApp green */
-      bottom: 80px;
+      bottom: 20px;
   }
   
   /* Back to Top Button */
-  .back-to-top-btn {
-      background-color: var(--button-color); /* Bootstrap primary blue */
-      bottom: 20px;
-      
-  }
+  .back-to-top {
+    position: fixed;
+    bottom: 80px;
+    display: none;
+    background: var(--button-color);
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.back-to-top.active {
+    display: block;
+    opacity: 1;
+}
   
   /* Responsive adjustments */
   @media (max-width: 768px) {
@@ -1114,7 +1148,7 @@
   /* About Us Page------------- */
   /* Hero Section */
   .about-hero {
-    background-image: url("../images/about-home.png");
+    /* background-image: url("../images/about-home.png"); */
     background-size: cover;
     background-position: center;
     height: 65vh;
@@ -1305,6 +1339,7 @@
         @media (max-width: 767.98px) {
             .modal-img-wrapper {
                 height: 250px;
+                position: static;
             }
         }
   
@@ -1325,6 +1360,7 @@
       width: 100%;
       border-radius: 20px;
       margin-bottom: 30px;
+      padding: 20px;
     }
   
     .mission-image img,
@@ -1337,12 +1373,19 @@
   
     .vision-content {
       text-align: left !important;
+      padding: 20px;
+    }
+
+    .about-content {
+      text-align: left !important;
+      padding: 0;
+      margin: 0;
     }
   }
   
   @media (max-width: 768px) {
     .about-hero {
-      height: 100vh;
+      height: 50vh;
     }
   
     .mission-image img,
@@ -1378,6 +1421,10 @@
   
   .speakers-section {
     background-color: #f8f9fa;
+  }
+
+  .speaker-swiper {
+    padding: 30px 10px 60px;
   }
   
   /* Speaker Card */
@@ -2203,8 +2250,6 @@
     max-height: 100px;
     width: auto;
     object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.7;
     transition: all 0.3s ease;
 }
 
@@ -2238,9 +2283,9 @@
     .team-hero {
       height: 100vh;
     }
-    .our-team-card {
+    /* .our-team-card {
       padding: 8px 15px;
-    }
+    } */
   
     .team-img {
       width: 100%;
@@ -2253,9 +2298,6 @@
       font-size: 2.5rem;
     }
   
-    .team-card {
-      padding: 20px 15px;
-    }
   }
   
   @media (max-width: 576px) {
@@ -2691,3 +2733,39 @@
       background-color: #4299e1;
       color: white;
   }
+
+  /* Add to your stylesheet */
+.collapse-arrow {
+  transition: transform 0.2s ease;
+}
+
+.collapsed .collapse-arrow {
+  transform: rotate(-90deg);
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #4e73df;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+@media (max-width: 991px) {
+  .event-highlighted-story .text-section h1 {
+      font-size: 32px;
+      padding-bottom: 30px;
+      text-align: center;
+  }
+}
+
+@media (max-width: 991px) {
+  .event-highlighted-story iframe {
+      width: 100%;
+      height: 27vh;
+  }
+}

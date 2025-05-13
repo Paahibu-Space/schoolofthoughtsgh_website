@@ -51,6 +51,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->is('admin/institutions*') ? 'active' : '' }}"
+                        href="{{ route('admin.institutions.index') }}">
+                        <i class="fas fa-handshake"></i>Institutions Reached
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}"
                         href="{{ route('admin.blogs.index') }}">
                         <i class="fas fa-blog"></i>Blog
@@ -84,6 +90,27 @@
                     <a class="nav-link {{ request()->is('admin/settings*') ? 'active' : '' }}" href="#">
                         <i class="fas fa-gear"></i>Settings
                     </a>
+                </li>
+                <li class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
+                    <a class="nav-link {{ Request::is('admin/settings*') ? '' : 'collapsed' }}" 
+                       href="#collapseSettings"
+                       data-bs-toggle="collapse"
+                       aria-expanded="{{ Request::is('admin/settings*') ? 'true' : 'false' }}">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Page Settings</span>
+                    </a>
+                    
+                    <div id="collapseSettings" 
+                         class="collapse {{ Request::is('admin/settings*') ? 'show' : '' }}"
+                         data-bs-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Settings Options:</h6>
+                            <a class="collapse-item {{ Request::is('admin/settings/about*') ? 'active' : '' }}" 
+                               href="{{ route('admin.settings.about') }}">
+                                About Page
+                            </a>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -157,6 +184,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+
     <script>
         ClassicEditor
             .create(document.querySelector('#content'), {
