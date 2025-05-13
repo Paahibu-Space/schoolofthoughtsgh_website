@@ -180,6 +180,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     };
 
+        // Initialize Swiper
+        const swiper = new Swiper('.institutions-swiper', {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                576: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 25,
+                },
+                992: {
+                    slidesPerView: 5,
+                    spaceBetween: 30,
+                },
+                1200: {
+                    slidesPerView: 6,
+                    spaceBetween: 30,
+                }
+            }
+        });
+
     // Initialize all components
     initSwipers();
     initParallax();

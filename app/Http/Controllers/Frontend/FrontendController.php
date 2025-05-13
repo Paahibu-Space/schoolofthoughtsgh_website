@@ -12,6 +12,7 @@ use App\Models\Partner;
 use App\Models\TeamMember;
 use App\Models\Story;
 use App\Helpers\PageSettingsHelper;
+use App\Models\Institution;
 
 class FrontendController extends Controller
 {
@@ -82,8 +83,11 @@ class FrontendController extends Controller
 
         $aboutData = PageSettingsHelper::getAboutPageData();
 
+        $institutions = Institution::orderBy('name')->get();
 
-        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs', 'aboutData'));
+
+
+        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs', 'aboutData', 'institutions'));
     }
 
     /**

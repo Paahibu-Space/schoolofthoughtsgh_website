@@ -51,6 +51,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->is('admin/institutions*') ? 'active' : '' }}"
+                        href="{{ route('admin.institutions.index') }}">
+                        <i class="fas fa-handshake"></i>Institutions Reached
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin/blog*') ? 'active' : '' }}"
                         href="{{ route('admin.blogs.index') }}">
                         <i class="fas fa-blog"></i>Blog

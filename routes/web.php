@@ -119,6 +119,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::post('/ckeditor-upload', [UploadController::class, 'upload'])->name('ckeditor.upload');
 
+    // Institutions worked with
+    Route::resource('institutions', \App\Http\Controllers\Admin\InstitutionController::class);
+
     // Page Settings routes
     Route::prefix('settings')->name('settings.')->group(function () {
         // About Page Settings

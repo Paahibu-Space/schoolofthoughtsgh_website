@@ -1,6 +1,75 @@
 @extends('frontend.layout')
 
-
+@section('styles')
+<style>
+    /* Swiper Styles */
+    .institutions-swiper {
+        padding: 20px 0 40px;
+        width: 100%;
+    }
+    
+    .institution-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 120px;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    
+    .institution-logo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    .institution-logo img {
+        max-height: 80px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        /* filter: grayscale(100%);
+        opacity: 0.7; */
+        transition: all 0.3s ease;
+    }
+    
+    .institution-logo:hover img {
+        filter: grayscale(0);
+        opacity: 1;
+    }
+    
+    .institution-link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+    
+    .swiper-button-next, 
+    .swiper-button-prev {
+        color: var(--bs-primary);
+        background: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .swiper-button-next::after, 
+    .swiper-button-prev::after {
+        font-size: 1.2rem;
+    }
+    
+    .swiper-pagination-bullet-active {
+        background: var(--bs-primary);
+    }
+</style>
+@endsection
 @section('content')
 
     <!-- Hero Section -->
@@ -288,16 +357,64 @@
         </div>
     </section>
 
+    <!-- Institutions Reached Section with Swiper Slider -->
+<section class="institutions-section py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="display-4 fw-bold text-dark mb-3">Institutions Worked With</h2>
+                <p>
+                    Connecting with educational institutions to empower learning
+                </p>
+            </div>
+        </div>
+
+        @if ($institutions->count() > 0)
+            <!-- Swiper Container -->
+            <div class="swiper institutions-swiper">
+                <div class="swiper-wrapper">
+                    @foreach ($institutions as $institution)
+                        <div class="swiper-slide">
+                            <div class="institution-logo">
+                                <img src="{{ $institution->image_url }}" alt="{{ $institution->name }}" 
+                                     class="img-fluid" title="{{ $institution->name }}" loading="lazy" />
+                                @if ($institution->website)
+                                    <a href="{{ $institution->website }}" target="_blank" rel="noopener noreferrer"
+                                       class="institution-link"></a>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        @else
+            <div class="text-center py-4">
+                <div class="alert alert-info">
+                    <i class="fas fa-university me-2"></i> We're expanding our network of institutions. Stay tuned!
+                </div>
+            </div>
+        @endif
+    </div>
+</section>
+
+
+
     <section class="py-5 event-highlighted-story">
         <div class="container">
                 <div class="row align-items-center">
                     <div class="text-section col-lg-6">
-                        <h1>Patricia Naah Story:<br>Project Management for Female Entrepreneurs</h1>
+                        <h1>The NGO in Northern Ghana Helping to Achieve SDG 4- Quality Education</h1>
                     </div>
     
                     <div class="video-section col-lg-6">
-                        <iframe width="650" height="400" src="https://www.youtube.com/embed/FPcD75pIb_I?si=E6QmyO7gmy1E9ypd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
-                    </div>
+                        <iframe width="650" height="400" src="https://www.youtube.com/embed/rZqbS-kJj5o?si=Bagpxa3L47F0C4Su" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>                    </div>
         </div>
     </section>
 @section('scripts')
