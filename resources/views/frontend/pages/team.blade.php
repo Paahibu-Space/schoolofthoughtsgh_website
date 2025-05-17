@@ -94,7 +94,7 @@
                                     <span id="modalMemberQuote"></span>
                                 </div>
                                 
-                                <div class="member-meta d-flex flex-wrap gap-3">
+                                {{-- <div class="member-meta d-flex flex-wrap gap-3">
                                     <div class="d-flex align-items-center">
                                         <i class="fas fa-sort-numeric-down me-2 text-muted"></i>
                                         <small class="text-muted">Display order: <span id="modalMemberOrder"></span></small>
@@ -103,7 +103,7 @@
                                         <i class="fas fa-circle me-2 text-success"></i>
                                         <small class="text-muted">Status: Active</small>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

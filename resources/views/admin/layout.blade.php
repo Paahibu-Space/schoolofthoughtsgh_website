@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('styles')
 
@@ -62,7 +61,7 @@
                         <i class="fas fa-blog"></i>Blog
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin/gallery*') ? 'active' : '' }}"
                         href="{{ route('admin.gallery.index') }}">
                         <i class="fas fa-images"></i>Gallery
@@ -73,7 +72,7 @@
                         href="{{ route('admin.stories.index') }}">
                         <i class="fas fa-book"></i>Stories
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin/newsletter*') ? 'active' : '' }}"
                         href="{{ route('admin.newsletter.index') }}">
@@ -92,25 +91,32 @@
                     </a>
                 </li>
                 <li class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
-                    <a class="nav-link {{ Request::is('admin/settings*') ? '' : 'collapsed' }}" 
-                       href="#collapseSettings"
-                       data-bs-toggle="collapse"
-                       aria-expanded="{{ Request::is('admin/settings*') ? 'true' : 'false' }}">
+                    <a class="nav-link {{ Request::is('admin/settings*') ? '' : 'collapsed' }}"
+                        href="#collapseSettings" data-bs-toggle="collapse"
+                        aria-expanded="{{ Request::is('admin/settings*') ? 'true' : 'false' }}">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Page Settings</span>
                     </a>
-                    
-                    <div id="collapseSettings" 
-                         class="collapse {{ Request::is('admin/settings*') ? 'show' : '' }}"
-                         data-bs-parent="#accordionSidebar">
+
+                    <div id="collapseSettings" class="collapse {{ Request::is('admin/settings*') ? 'show' : '' }}"
+                        data-bs-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Settings Options:</h6>
-                            <a class="collapse-item {{ Request::is('admin/settings/about*') ? 'active' : '' }}" 
-                               href="{{ route('admin.settings.about') }}">
+                            <a class="collapse-item {{ Request::is('admin/settings/about*') ? 'active' : '' }}"
+                                href="{{ route('admin.settings.about') }}">
                                 About Page
                             </a>
                         </div>
                     </div>
+                </li>
+                {{-- <li>
+                    <a class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}" href="{{ route('admin.settings.website-settings.index') }}">Website Settings</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('admin/settings*') ? 'active' : '' }}"
+                        href="{{ route('admin.settings.website-settings.index') }}">
+                        <i class="fas fa-users-cog"></i>Website Settings
+                    </a>
                 </li>
             </ul>
         </div>

@@ -20,6 +20,8 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Admin\PageSettingsController;
+use App\Http\Controllers\Admin\WebsiteSettingsController;
+use App\Models\WebsiteSetting;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -127,6 +129,10 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         // About Page Settings
         Route::get('/about', [PageSettingsController::class, 'aboutPage'])->name('about');
         Route::post('/about', [PageSettingsController::class, 'updateAboutPage'])->name('about.update');
+
+        // Website Settings
+        Route::get('/', [WebsiteSettingsController::class, 'index'])->name('website-settings.index');
+        Route::put('/', [WebsiteSettingsController::class, 'update'])->name('website-settings.update');
 
         // Impact Items
         Route::post('/about/impact-items', [PageSettingsController::class, 'storeImpactItem'])->name('about.impact-items.store');

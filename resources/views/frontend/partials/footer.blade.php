@@ -155,38 +155,62 @@
             </div>
             <div class="col-md-6">
               <div class="d-flex justify-content-md-end justify-content-center">
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-facebook-f text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-twitter text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-instagram text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-linkedin-in text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center"
-                >
-                  <i class="fab fa-youtube text-dark"></i>
-                </a>
+                  @if(setting('facebook_url'))
+                  <a
+                      href="{{ setting('facebook_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-facebook-f text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('twitter_url'))
+                  <a
+                      href="{{ setting('twitter_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-x text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('instagram_url'))
+                  <a
+                      href="{{ setting('instagram_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-instagram text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('linkedin_url'))
+                  <a
+                      href="{{ setting('linkedin_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-linkedin-in text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('youtube_url'))
+                  <a
+                      href="{{ setting('youtube_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center"
+                  >
+                      <i class="fab fa-youtube text-dark"></i>
+                  </a>
+                  @endif
               </div>
-            </div>
+          </div>
           </div>
         </div>
   
@@ -198,12 +222,17 @@
     </a>
 
            <!-- WhatsApp Button -->
-           <a href="#" id="whatsappButton" class="floating-button whatsapp-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
+           <a id="whatsappButton" 
+           href="#"
+           class="whatsapp-btn floating-button"
+           target="_blank"
+           data-number="{{ setting('whatsapp_number', '233246417853') }}"
+           data-default-message="Hello! I'm interested in your services">
+           <i class="fab fa-whatsapp"></i>
         </a>
   
       <!-- JavaScript -->
       <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-      <script src="/assets/js/script.js"></script>
+      <script src="{{ asset('assets/js/script.js') }}"></script>
       <!-- Bootstrap JS Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

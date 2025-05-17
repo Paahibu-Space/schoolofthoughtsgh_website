@@ -9,7 +9,7 @@
             <div class="card-body d-flex align-items-center">
                 <div class="welcome-icon me-4">
                     <div style="width: 60px; height: 60px; background-color: #4f46e5; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-hand-wave text-white" style="font-size: 24px;"></i>
+                        <i class="fas fa-hand text-white" style="font-size: 24px;"></i>
                     </div>
                 </div>
                 <div>
@@ -24,7 +24,7 @@
 <!-- Stats Cards -->
 <div class="row">
     <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card bg-gradient-primary text-white">
+        <div class="card dashboard-card bg-gradient-primary">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
@@ -45,7 +45,7 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card bg-gradient-secondary text-white">
+        <div class="card dashboard-card bg-gradient-secondary">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
@@ -66,7 +66,7 @@
     </div>
     
     <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card bg-gradient-info text-white">
+        <div class="card dashboard-card bg-gradient-info">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                     <div>
