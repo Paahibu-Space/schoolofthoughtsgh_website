@@ -128,7 +128,7 @@
 @section('content')
 <div class="container-fluid py-4">
     <div class="team-form-container">
-        <form action="{{ route('admin.team.update', $teamMember) }}" method="POST" enctype="multipart/form-data" id="teamForm">
+        <form action="{{ route('admin.team.update', $team) }}" method="POST" enctype="multipart/form-data" id="teamForm">
             @csrf
             @method('PUT')
             
@@ -138,8 +138,8 @@
                         <div class="text-center mb-4">
                             <label for="fileInput" class="photo-upload-container">
                                 <div class="photo-preview" id="photoPreview">
-                                    @if($teamMember->photo)
-                                        <img src="{{ asset('storage/' . $teamMember->photo) }}" alt="{{ $teamMember->name }}">
+                                    @if($team->photo)
+                                        <img src="{{ asset('storage/' . $team->photo) }}" alt="{{ $team->name }}">
                                     @else
                                         <i class="fas fa-user fa-3x text-muted"></i>
                                     @endif
@@ -164,7 +164,7 @@
                             
                             <div class="mb-3">
                                 <label for="display_order" class="form-label">Display Order</label>
-                                <input type="number" class="form-control @error('display_order') is-invalid @enderror" id="display_order" name="display_order" value="{{ old('display_order', $teamMember->display_order) }}">
+                                <input type="number" class="form-control @error('display_order') is-invalid @enderror" id="display_order" name="display_order" value="{{ old('display_order', $team->display_order) }}">
                                 <div class="form-text small">Lower numbers appear first</div>
                                 @error('display_order')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -174,10 +174,10 @@
                             <div class="mb-3">
                                 <label class="form-label d-block">Status</label>
                                 <div class="btn-group w-100" role="group">
-                                    <input type="radio" class="btn-check" name="is_active" id="active" value="1" {{ old('is_active', $teamMember->is_active) ? 'checked' : '' }}>
+                                    <input type="radio" class="btn-check" name="is_active" id="active" value="1" {{ old('is_active', $team->is_active) ? 'checked' : '' }}>
                                     <label class="btn btn-outline-success w-50" for="active">Active</label>
                                     
-                                    <input type="radio" class="btn-check" name="is_active" id="inactive" value="0" {{ old('is_active', $teamMember->is_active) ? '' : 'checked' }}>
+                                    <input type="radio" class="btn-check" name="is_active" id="inactive" value="0" {{ old('is_active', $team->is_active) ? '' : 'checked' }}>
                                     <label class="btn btn-outline-secondary w-50" for="inactive">Inactive</label>
                                 </div>
                                 <div class="form-text small">Inactive members are hidden from the website</div>
@@ -194,7 +194,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Full Name" value="{{ old('name', $teamMember->name) }}" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Full Name" value="{{ old('name', $team->name) }}" required>
                                     <label for="name">Full Name<span class="text-danger">*</span></label>
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -203,7 +203,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control @error('role') is-invalid @enderror" id="role" name="role" placeholder="Role/Position" value="{{ old('role', $teamMember->role) }}" required>
+                                    <input type="text" class="form-control @error('role') is-invalid @enderror" id="role" name="role" placeholder="Role/Position" value="{{ old('role', $team->role) }}" required>
                                     <label for="role">Role/Position<span class="text-danger">*</span></label>
                                     @error('role')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -212,9 +212,9 @@
                             </div>
                             <div class="col-12">
                                 <label for="description" class="form-label">Short Description</label>
-                                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="4" maxlength="500" placeholder="Brief description about this team member">{{ old('description', $teamMember->description) }}</textarea>
+                                <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="4" maxlength="500" placeholder="Brief description about this team member">{{ old('description', $team->description) }}</textarea>
                                 <div class="char-counter">
-                                    <span id="charCount">{{ strlen(old('description', $teamMember->description)) }}</span>/500 characters
+                                    <span id="charCount">{{ strlen(old('description', $team->description)) }}</span>/500 characters
                                 </div>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -234,7 +234,7 @@
                                     <span class="input-group-text social-icon-prepend border">
                                         <i class="fab fa-linkedin-in text-primary"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('linkedin_url') is-invalid @enderror" id="linkedin_url" name="linkedin_url" value="{{ old('linkedin_url', $teamMember->linkedin_url) }}" placeholder="https://linkedin.com/in/username">
+                                    <input type="url" class="form-control social-input @error('linkedin_url') is-invalid @enderror" id="linkedin_url" name="linkedin_url" value="{{ old('linkedin_url', $team->linkedin_url) }}" placeholder="https://linkedin.com/in/username">
                                     @error('linkedin_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -242,26 +242,26 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="github_url" class="form-label">GitHub</label>
+                                <label for="facebook_url" class="form-label">GitHub</label>
                                 <div class="input-group">
                                     <span class="input-group-text social-icon-prepend border">
-                                        <i class="fab fa-github text-dark"></i>
+                                        <i class="fab fa-facebook text-info"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('github_url') is-invalid @enderror" id="github_url" name="github_url" value="{{ old('github_url', $teamMember->github_url) }}" placeholder="https://github.com/username">
-                                    @error('github_url')
+                                    <input type="url" class="form-control social-input @error('facebook_url') is-invalid @enderror" id="facebook_url" name="facebook_url" value="{{ old('facebook_url', $team->facebook_url) }}" placeholder="https://github.com/username">
+                                    @error('facebook_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="twitter_url" class="form-label">Twitter / X</label>
+                                <label for="x_url" class="form-label">Twitter / X</label>
                                 <div class="input-group">
                                     <span class="input-group-text social-icon-prepend border">
-                                        <i class="fab fa-twitter text-info"></i>
+                                        <i class="fab fa-x text-info"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('twitter_url') is-invalid @enderror" id="twitter_url" name="twitter_url" value="{{ old('twitter_url', $teamMember->twitter_url) }}" placeholder="https://twitter.com/username">
-                                    @error('twitter_url')
+                                    <input type="url" class="form-control social-input @error('x_url') is-invalid @enderror" id="x_url" name="x_url" value="{{ old('x_url', $team->x_url) }}" placeholder="https://twitter.com/username">
+                                    @error('x_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -273,7 +273,7 @@
                                     <span class="input-group-text social-icon-prepend border">
                                         <i class="fab fa-instagram text-danger"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('instagram_url') is-invalid @enderror" id="instagram_url" name="instagram_url" value="{{ old('instagram_url', $teamMember->instagram_url) }}" placeholder="https://instagram.com/username">
+                                    <input type="url" class="form-control social-input @error('instagram_url') is-invalid @enderror" id="instagram_url" name="instagram_url" value="{{ old('instagram_url', $team->instagram_url) }}" placeholder="https://instagram.com/username">
                                     @error('instagram_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror

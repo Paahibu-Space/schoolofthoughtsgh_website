@@ -50,13 +50,13 @@ class TeamMemberController extends Controller
             ->with('success', 'Team member added successfully.');
     }
 
-    public function edit(TeamMember $teamMember)
+    public function edit(TeamMember $team)
     {
         // No need to check exists - Laravel's route model binding handles this
-        return view('admin.team.edit', compact('teamMember'));
+        return view('admin.team.edit', compact('team'));
     }
 
-    public function update(Request $request, TeamMember $teamMember)
+    public function update(Request $request, TeamMember $team)
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
@@ -71,32 +71,32 @@ class TeamMemberController extends Controller
         ]);
         
         // Ensure is_active is set (checkbox might not be submitted if unchecked)
-        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
+        // $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
         if ($request->hasFile('photo')) {
             // Delete old photo if exists
-            if ($teamMember->photo) {
-                Storage::disk('public')->delete($teamMember->photo);
+            if ($team->photo) {
+                Storage::disk('public')->delete($team->photo);
             }
             
             $path = $request->file('photo')->store('team-members', 'public');
             $validated['photo'] = $path;
         }
 
-        $teamMember->update($validated);
+        $team->update($validated);
 
         return redirect()->route('admin.team.index')
             ->with('success', 'Team member updated successfully.');
     }
 
-    public function destroy(TeamMember $teamMember)
+    public function destroy(TeamMember $team)
     {
         // Delete photo if exists
-        if ($teamMember->photo) {
-            Storage::disk('public')->delete($teamMember->photo);
+        if ($team->photo) {
+            Storage::disk('public')->delete($team->photo);
         }
         
-        $teamMember->delete();
+        $team->delete();
 
         return redirect()->route('admin.team.index')
             ->with('success', 'Team member deleted successfully.');

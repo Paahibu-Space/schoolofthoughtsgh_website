@@ -85,10 +85,10 @@
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="#" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
+                                                {{-- <a href="#" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
                                                     title="View Details">
                                                     <i class="fas fa-eye"></i>
-                                                </a>
+                                                </a> --}}
                                                 <a href="{{ route('admin.team.edit', $member) }}"
                                                     class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip"
                                                     title="Edit Team">

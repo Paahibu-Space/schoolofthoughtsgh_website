@@ -175,10 +175,10 @@
                                             <h5 class="card-title mb-0">Impact Items</h5>
                                         </div>
                                         <div class="card-body">
-                                            <div class="alert alert-info">
+                                            {{-- <div class="alert alert-info">
                                                 <p>You can add up to 4 impact items. The items will be displayed in the
                                                     order shown below.</p>
-                                            </div>
+                                            </div> --}}
 
                                             <!-- Impact Items List -->
                                             <div class="table-responsive">

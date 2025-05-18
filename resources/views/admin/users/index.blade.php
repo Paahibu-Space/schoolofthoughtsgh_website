@@ -32,7 +32,7 @@
             display: inline-block;
         }
 
-        .table> :not(caption)>*>* {
+        .table > :not(caption) > * > * {
             padding: 0.75rem 1rem;
         }
 
@@ -74,48 +74,9 @@
     <div class="card shadow-sm border-0">
         <div class="card-header bg-white py-3">
             <div class="row align-items-center">
-                <div class="col-md-7 mb-3 mb-md-0">
+                <div class="col-md-12 mb-3 mb-md-0">
                     <h5 class="mb-0">All Users</h5>
                     <p class="text-muted mb-0">Manage user accounts and permissions</p>
-                </div>
-                <div class="col-md-5">
-                    <div class="d-flex gap-2 justify-content-md-end">
-                        <div class="search-container flex-grow-1">
-                            <div class="input-group">
-                                <span class="input-group-text bg-light border-end-0">
-                                    <i class="fas fa-search text-muted"></i>
-                                </span>
-                                <input type="text" id="userSearch" class="form-control border-start-0"
-                                    placeholder="Search users...">
-                            </div>
-                        </div>
-                        <div class="dropdown role-filter">
-                            <button class="btn btn-outline-secondary dropdown-toggle btn-filter" type="button"
-                                id="roleFilterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-filter me-2"></i>Filter
-                            </button>
-                            <div class="dropdown-menu p-3" aria-labelledby="roleFilterDropdown">
-                                <h6 class="dropdown-header px-0 pt-0">Filter by Role</h6>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="roleFilter" id="roleAll"
-                                        value="all" checked>
-                                    <label class="form-check-label" for="roleAll">All Users</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="roleFilter" id="roleAdmin"
-                                        value="admin">
-                                    <label class="form-check-label" for="roleAdmin">Administrators</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="roleFilter" id="roleStandard"
-                                        value="standard">
-                                    <label class="form-check-label" for="roleStandard">Standard Users</label>
-                                </div>
-                                <div class="dropdown-divider"></div>
-                                <button type="button" class="btn btn-sm btn-primary w-100">Apply Filter</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -126,11 +87,11 @@
                     <table class="table table-hover align-middle mb-0">
                         <thead class="bg-light">
                             <tr>
-                                <th scope="col" style="width: 35%">User</th>
-                                <th scope="col" style="width: 15%">Role</th>
-                                <th scope="col" style="width: 15%">Status</th>
-                                <th scope="col" style="width: 20%">Created</th>
-                                <th scope="col" style="width: 15%">Actions</th>
+                                <th style="width: 35%">User</th>
+                                <th style="width: 15%">Role</th>
+                                <th style="width: 15%">Status</th>
+                                <th style="width: 20%">Created</th>
+                                <th style="width: 15%">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -139,11 +100,11 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="user-avatar">
-                                                @if (isset($user->avatar))
+                                                @if ($user->avatar)
                                                     <img src="{{ asset('storage/' . $user->avatar) }}"
-                                                        alt="{{ $user->name }}">
+                                                         alt="{{ $user->name }}">
                                                 @else
-                                                    {{ substr($user->name, 0, 1) }}
+                                                    {{ strtoupper(substr($user->name, 0, 1)) }}
                                                 @endif
                                             </div>
                                             <div>
@@ -170,17 +131,44 @@
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a href="{{ route('admin.users.edit', $user) }}"
-                                                class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip"
-                                                data-bs-title="Edit User">
+                                               class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip"
+                                               data-bs-title="Edit User">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <button type="button" class="btn btn-sm btn-outline-danger"
-                                                data-bs-toggle="modal"
-                                                data-bs-target="#deleteUserModal-{{ $user->id }}"
-                                                data-bs-title="Delete User">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
+                                            @if (auth()->id() !== $user->id)
+                                                <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#deleteUserModal-{{ $user->id }}">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            @endif
                                         </div>
+
+                                        {{-- Delete Modal --}}
+                                        @if (auth()->id() !== $user->id)
+                                            <div class="modal fade" id="deleteUserModal-{{ $user->id }}" tabindex="-1"
+                                                 aria-labelledby="deleteUserModalLabel-{{ $user->id }}"
+                                                 aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="modal-content">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="modal-header bg-danger text-white">
+                                                            <h5 class="modal-title" id="deleteUserModalLabel-{{ $user->id }}">
+                                                                Confirm User Deletion
+                                                            </h5>
+                                                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Are you sure you want to delete <strong>{{ $user->name }}</strong>? This action cannot be undone.</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger">Delete User</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
@@ -192,28 +180,4 @@
             @endif
         </div>
     </div>
-    <!-- Delete Confirmation Modal -->
-    <div class="modal fade" id="deleteUserModal-{{ $user->id }}" tabindex="-1"
-        aria-labelledby="deleteUserModalLabel-{{ $user->id }}" aria-hidden="true">
-        <div class="modal-dialog">
-            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="modal-content">
-                @csrf
-                @method('DELETE')
-                <div class="modal-header bg-danger text-white">
-                    <h5 class="modal-title" id="deleteUserModalLabel-{{ $user->id }}">Confirm User Deletion</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to delete <strong>{{ $user->name }}</strong>? This action
-                        <strong>cannot</strong> be undone.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete User</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
 @endsection
