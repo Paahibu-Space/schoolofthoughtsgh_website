@@ -56,7 +56,7 @@
         <a href="{{ route('admin.users.create') }}" class="btn btn-primary me-2">
             <i class="fas fa-user-plus me-2"></i>Add New User
         </a>
-        <div class="dropdown">
+        {{-- <div class="dropdown">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="exportDropdown"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-download me-2"></i>Export
@@ -66,7 +66,7 @@
                 <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel me-2"></i>Export as Excel</a></li>
                 <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf me-2"></i>Export as PDF</a></li>
             </ul>
-        </div>
+        </div> --}}
     </div>
 @endsection
 

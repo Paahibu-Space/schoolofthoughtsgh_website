@@ -2,7 +2,7 @@
     <nav class="navbar">
         <div class="navbar-logo">
           <a href="{{ route('frontend.home') }}">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" />
+            <img src="{{ Storage::url(setting('logo')) }}" alt="Logo" />
           </a>
           
         </div>

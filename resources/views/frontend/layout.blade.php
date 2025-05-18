@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
+    <link rel="icon" type="image/png" href="{{ Storage::url(setting('favicon')) }}" />
 
     {{-- Tailwind CSS for blogs styles --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">

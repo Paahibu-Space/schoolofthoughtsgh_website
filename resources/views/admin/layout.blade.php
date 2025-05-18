@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo.png') }}" />
+    <link rel="icon" type="image/png" href="{{ Storage::url(setting('favicon')) }}" />
     <!-- Custom Admin Styles -->
     <link rel="stylesheet" href="{{ asset('assets/admin/css/style.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
