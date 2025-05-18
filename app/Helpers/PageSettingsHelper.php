@@ -34,13 +34,7 @@ class PageSettingsHelper
         $visionSection = AboutPageSection::where('page_setting_id', $pageSetting->id)
             ->where('section_type', 'vision')
             ->first();
-            
-        // Get active impact items
-        $impactItems = AboutPageImpactItem::where('page_setting_id', $pageSetting->id)
-            ->where('is_active', true)
-            ->orderBy('order')
-            ->take(4) // Ensure we only get at most 4 items
-            ->get();
+        
             
         return [
             'title' => $pageSetting->title,
@@ -54,7 +48,6 @@ class PageSettingsHelper
                 'content' => $visionSection ? $visionSection->content : null,
                 'image' => $visionSection ? $visionSection->image : null,
             ],
-            'impact_items' => $impactItems,
         ];
     }
 }

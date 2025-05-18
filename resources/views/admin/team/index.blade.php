@@ -134,7 +134,7 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     <script>
-        document.addTeamListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const teamList = document.getElementById('team-members-list');
 
             if (teamList) {

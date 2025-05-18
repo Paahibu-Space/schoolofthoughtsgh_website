@@ -9,8 +9,8 @@
             <div class="card shadow-sm border-0 rounded-lg">
                 <div class="card-header bg-white border-bottom-0 pt-4 pb-0 px-4">
                     <div class="d-flex align-items-center">
-                        <div class="profile-avatar me-3">
-                            <img src="{{ $user->avatar ?? '/images/default-avatar.png' }}" alt="Profile" class="rounded-circle" width="60" height="60">
+                        <div class="user-avatar">
+                            {{ substr(Auth::user()->name, 0, 1) }}
                         </div>
                         <div>
                             <h4 class="mb-0 fw-bold">Edit Profile</h4>

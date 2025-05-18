@@ -189,7 +189,6 @@
                                                             <th width="20%">Icon</th>
                                                             <th width="15%">Count</th>
                                                             <th width="25%">Title</th>
-                                                            <th width="10%">Status</th>
                                                             <th width="20%">Actions</th>
                                                         </tr>
                                                     </thead>
@@ -205,13 +204,13 @@
                                                                     {{ $item->icon }}</td>
                                                                 <td>{{ $item->count }}</td>
                                                                 <td>{{ $item->title }}</td>
-                                                                <td>
+                                                                {{-- <td>
                                                                     @if ($item->is_active)
                                                                         <span class="badge bg-success">Active</span>
                                                                     @else
                                                                         <span class="badge bg-danger">Inactive</span>
                                                                     @endif
-                                                                </td>
+                                                                </td> --}}
                                                                 <td>
                                                                     <button type="button"
                                                                         class="btn btn-sm btn-primary edit-item"
@@ -222,7 +221,7 @@
                                                                         data-active="{{ $item->is_active ? '1' : '0' }}">
                                                                         <i class="fas fa-edit"></i>
                                                                     </button>
-                                                                    <form action="{{ route('admin.settings.about.impact-items.delete', $item->id) }}" 
+                                                                    {{-- <form action="{{ route('admin.settings.about.impact-items.delete', $item->id) }}" 
                                                                       method="POST" class="d-inline">
                                                                     @csrf
                                                                     @method('DELETE')
@@ -230,27 +229,15 @@
                                                                             onclick="return confirm('Are you sure you want to delete this item?')">
                                                                         <i class="fas fa-trash"></i>
                                                                     </button>
-                                                                </form>
-                                                                    {{-- <button type="button" class="btn btn-sm btn-danger"
+                                                                </form> --}}
+                                                                    <button type="button" class="btn btn-sm btn-danger"
                                                                         data-bs-toggle="modal"
                                                                         data-bs-target="#deleteModal-{{ $item->id }}"
                                                                         title="Delete Event">
                                                                         <i class="fas fa-trash-alt"></i>
                                                                     </button>
 
-                                                                    @include(
-                                                                        'admin.partials.delete-modal',
-                                                                        [
-                                                                            'id' => $item->id,
-                                                                            'route' => route(
-                                                                                'admin.settings.about.impact-items.delete',
-                                                                                $item),
-                                                                            'title' => $item->title,
-                                                                            'type' => 'item',
-                                                                            'additional_warning' =>
-                                                                                'All associated registrations will also be deleted.',
-                                                                        ]
-                                                                    ) --}}
+
                                                                 </td>
                                                             </tr>
                                                         @empty
@@ -278,6 +265,16 @@
                                 <button type="submit" class="btn btn-primary">Save Changes</button>
                             </div>
                         </form>
+                        @foreach ($impactItems as $item)
+                            @include('admin.partials.delete-modal', [
+                                'id' => $item->id,
+                                'route' => route('admin.settings.about.impact-items.delete', $item),
+                                'title' => $item->title,
+                                'type' => 'item',
+                                'additional_warning' => 'All associated registrations will also be deleted.',
+                            ])
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -316,10 +313,10 @@
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" name="title" required>
                         </div>
-                        <div class="mb-3 form-check">
+                        {{-- <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="is_active" name="is_active" checked>
                             <label class="form-check-label" for="is_active">Active</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -335,7 +332,7 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="editImpactItemForm" method="POST">
+                <form id="editImpactItemForm" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="modal-header">
@@ -363,10 +360,10 @@
                             <label for="edit_title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="edit_title" name="title" required>
                         </div>
-                        <div class="mb-3 form-check">
+                        {{-- <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="edit_is_active" name="is_active">
                             <label class="form-check-label" for="edit_is_active">Active</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -412,10 +409,21 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Icon data
         const faIcons = [
-            'fas fa-user', 'fas fa-users', 'fas fa-home', 'fas fa-briefcase', 'fas fa-globe',
-            'fas fa-chart-bar', 'fas fa-chart-line', 'fas fa-heart', 'fas fa-star', 'fas fa-award',
-            // ... other icons ...
-        ];
+        'fas fa-user', 'fas fa-users', 'fas fa-home', 'fas fa-briefcase', 'fas fa-globe',
+        'fas fa-chart-bar', 'fas fa-chart-line', 'fas fa-heart', 'fas fa-star', 'fas fa-award',
+        'fas fa-trophy', 'fas fa-medal', 'fas fa-certificate', 'fas fa-check', 'fas fa-check-circle',
+        'fas fa-thumbs-up', 'fas fa-handshake', 'fas fa-hands-helping', 'fas fa-hand-holding-heart',
+        'fas fa-hand-holding-usd', 'fas fa-dollar-sign', 'fas fa-money-bill', 'fas fa-coins',
+        'fas fa-seedling', 'fas fa-tree', 'fas fa-leaf', 'fas fa-recycle', 'fas fa-solar-panel',
+        'fas fa-lightbulb', 'fas fa-graduation-cap', 'fas fa-book', 'fas fa-university',
+        'fas fa-building', 'fas fa-city', 'fas fa-industry', 'fas fa-hospital', 'fas fa-medkit',
+        'fas fa-stethoscope', 'fas fa-heartbeat', 'fas fa-head-side-mask', 'fas fa-hands-wash',
+        'fas fa-people-arrows', 'fas fa-people-carry', 'fas fa-child', 'fas fa-baby',
+        'fas fa-wheelchair', 'fas fa-peace', 'fas fa-dove', 'fas fa-hands', 'fas fa-fist-raised',
+        'fas fa-hamburger', 'fas fa-utensils', 'fas fa-apple-alt', 'fas fa-carrot',
+        'fas fa-wheat', 'fas fa-tractor', 'fas fa-truck', 'fas fa-plane', 'fas fa-ship',
+        'fas fa-earth-americas', 'fas fa-place-of-worship', 'fas fa-praying-hands'
+    ];
     
         let selectedIcon = '';
         let currentTargetInput = null;
@@ -560,7 +568,7 @@
                 const icon = btn.dataset.icon;
                 const count = btn.dataset.count;
                 const title = btn.dataset.title;
-                const isActive = btn.dataset.active === '1';
+                // const isActive = btn.dataset.active === '1';
     
                 const editForm = document.getElementById('editImpactItemForm');
                 if (!editForm) return;
@@ -573,13 +581,13 @@
                 const editIconPreview = document.querySelector('.edit-icon-preview i');
                 const editCount = document.getElementById('edit_count');
                 const editTitle = document.getElementById('edit_title');
-                const editIsActive = document.getElementById('edit_is_active');
+                // const editIsActive = document.getElementById('edit_is_active');
     
                 if (editIcon) editIcon.value = icon;
                 if (editIconPreview) editIconPreview.className = icon;
                 if (editCount) editCount.value = count;
                 if (editTitle) editTitle.value = title;
-                if (editIsActive) editIsActive.checked = isActive;
+                // if (editIsActive) editIsActive.checked = isActive;
     
                 // Show the modal
                 if (editImpactItemModal) {

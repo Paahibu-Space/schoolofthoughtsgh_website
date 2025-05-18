@@ -30,9 +30,14 @@ class TeamMemberController extends Controller
             'x_url' => 'nullable|url|max:255',
             'facebook_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',
-            'display_order' => 'integer',
             'is_active' => 'boolean'
         ]);
+
+        // Set default display order to be last
+        $validated['display_order'] = TeamMember::max('display_order') + 1;
+        
+        // Ensure is_active is set (checkbox might not be submitted if unchecked)
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('team-members', 'public');
@@ -47,9 +52,7 @@ class TeamMemberController extends Controller
 
     public function edit(TeamMember $teamMember)
     {
-        if (!$teamMember->exists) {
-            abort(404, 'Team member not found');
-        }
+        // No need to check exists - Laravel's route model binding handles this
         return view('admin.team.edit', compact('teamMember'));
     }
 
@@ -64,9 +67,11 @@ class TeamMemberController extends Controller
             'x_url' => 'nullable|url|max:255',
             'facebook_url' => 'nullable|url|max:255',
             'instagram_url' => 'nullable|url|max:255',
-            'display_order' => 'integer',
             'is_active' => 'boolean'
         ]);
+        
+        // Ensure is_active is set (checkbox might not be submitted if unchecked)
+        $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
         if ($request->hasFile('photo')) {
             // Delete old photo if exists

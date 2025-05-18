@@ -182,7 +182,6 @@ class PageSettingsController extends Controller
             'count' => $request->count,
             'title' => $request->title,
             'order' => $maxOrder + 1,
-            'is_active' => true,
         ]);
 
         return redirect()->route('admin.settings.about')
@@ -202,7 +201,6 @@ class PageSettingsController extends Controller
             'icon' => 'required|string|max:255',
             'count' => 'required|integer',
             'title' => 'required|string|max:255',
-            'is_active' => 'nullable|boolean',
         ]);
 
         $impactItem = AboutPageImpactItem::findOrFail($id);
@@ -211,7 +209,6 @@ class PageSettingsController extends Controller
             'icon' => $request->icon,
             'count' => $request->count,
             'title' => $request->title,
-            'is_active' => $request->has('is_active'),
         ]);
 
         return redirect()->route('admin.settings.about')
