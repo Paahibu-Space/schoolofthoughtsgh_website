@@ -137,64 +137,32 @@
             </div>
         </div>
     </section>
-
-    <!-- Impact Section -->
-    <section class="impact-section py-5 text-white">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-4">Our Impact</h2>
-                    <p >The difference we're making together</p>
-                </div>
-            </div>
-
-            <div class="row g-4">
-                <!-- Students Impact -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="impact-card text-center p-4 h-100">
-                        <i class="fas fa-graduation-cap fa-3x mb-4"></i>
-                        <p class="fw-bold fs-5 mb-1">
-                            <span class="counter" data-target="{{ $impactData['students'] }}">0</span>+
-                        </p>
-                        <p class="fw-bold fs-5">Students</p>
-                    </div>
-                </div>
-
-                <!-- Schools Impact -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="impact-card text-center p-4 h-100">
-                        <i class="fas fa-school fa-3x mb-4"></i>
-                        <p class="fw-bold fs-5 mb-1">
-                            <span class="counter" data-target="{{ $impactData['schools'] }}">0</span>+
-                        </p>
-                        <p class="fw-bold fs-5">Schools</p>
-                    </div>
-                </div>
-
-                <!-- Regions Impact -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="impact-card text-center p-4 h-100">
-                        <i class="fas fa-globe fa-3x mb-4"></i>
-                        <p class="fw-bold fs-5 mb-1">
-                            <span class="counter" data-target="{{ $impactData['regions'] }}">0</span>+
-                        </p>
-                        <p class="fw-bold fs-5">Regions</p>
-                    </div>
-                </div>
-
-                <!-- Volunteers Impact -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="impact-card text-center p-4 h-100">
-                        <i class="fas fa-user-friends fa-3x mb-4"></i>
-                        <p class="fw-bold fs-5 mb-1">
-                            <span class="counter" data-target="{{ $impactData['volunteers'] }}">0</span>+
-                        </p>
-                        <p class="fw-bold fs-5">Volunteers</p>
-                    </div>
-                </div>
+<!-- Impact Section -->
+<section class="impact-section py-5 text-white">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4">Our Impact</h2>
+                <p>The difference we're making together</p>
             </div>
         </div>
-    </section>
+
+        <div class="row g-4">
+            @foreach ($impactItems as $item)
+                <div class="col-md-6 col-lg-3">
+                    <div class="impact-card text-center p-4 h-100">
+                        <i class="{{ $item->icon }} fa-3x mb-4"></i>
+                        <p class="fw-bold fs-5 mb-1">
+                            <span class="counter" data-target="{{ $item->count }}">0</span>+
+                        </p>
+                        <p class="fw-bold fs-5">{{ $item->title }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 
     <!-- Team Section -->
     <section class="team-section py-5 bg-light">

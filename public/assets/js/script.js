@@ -160,11 +160,30 @@ document.addEventListener('DOMContentLoaded', function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // WhatsApp
-        const phoneNumber = '233246417853'; // Replace with your number
-        const message = encodeURIComponent("Hello there! I'm interested in your services.");
-        const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
-        document.getElementById('whatsappButton').href = whatsappLink;
+        const whatsappButton = document.getElementById('whatsappButton');
+        if (whatsappButton) {
+            // Get number from data attribute and clean it
+            let phoneNumber = whatsappButton.getAttribute('data-number').replace(/\D/g, '');
+            
+            // Ensure number starts with country code (remove leading 0 if present)
+            if (phoneNumber.startsWith('0')) {
+                phoneNumber = phoneNumber.substring(1);
+            }
+            
+            // Get default message from data attribute
+            const defaultMessage = whatsappButton.getAttribute('data-default-message');
+            
+            // Create WhatsApp link
+            const message = encodeURIComponent(defaultMessage);
+            whatsappButton.href = `https://wa.me/${phoneNumber}?text=${message}`;
+            
+            // Show error if number is invalid
+            if (phoneNumber.length < 8) {
+                console.error('Invalid WhatsApp number:', phoneNumber);
+                whatsappButton.style.display = 'none'; // Hide button if number is invalid
+            }
+        }
+    
         
         // Smooth scroll for footer links
         document.querySelectorAll('.footer-left a[href^="#"]').forEach(anchor => {

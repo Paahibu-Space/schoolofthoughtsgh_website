@@ -57,7 +57,7 @@ class StoryController extends Controller
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'is_featured' => 'boolean',
-            'published_at' => 'nullable|date'
+            'published_at' => 'nullable|date',
         ]);
 
         if ($request->hasFile('image')) {

@@ -102,7 +102,7 @@
             </div>
   
             <!-- Right Column (Newsletter) -->
-            <div class="col-lg-4">
+            <div class="col-lg-4" id="frontend-newsletter">
               <div class="bg-white text-dark p-4 rounded">
                   <h5 class="mb-3">Newsletter</h5>
                   <p class="text-muted">
@@ -119,24 +119,27 @@
                           {{ session('newsletter_info') }}
                       </div>
                   @else
-                      <form action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-4">
-                          @csrf
-                          <div class="mb-3">
-                              <input
-                                  type="email"
-                                  name="email"
-                                  class="form-control @error('email') is-invalid @enderror"
-                                  placeholder="Your email address"
-                                  required
-                              />
-                              @error('email')
-                                  <div class="invalid-feedback">{{ $message }}</div>
-                              @enderror
-                          </div>
-                          <button type="submit" class="btn learn-btn mt-4">
-                              Subscribe <i class="fas fa-arrow-right ms-2"></i>
-                          </button>
-                      </form>
+                  <form id="newsletter-form" action="{{ route('newsletter.subscribe') }}" method="POST" class="mt-4">
+                    @csrf
+                    <div class="mb-3 position-relative">
+                        <input
+                            type="email"
+                            name="email"
+                            id="email-input"
+                            class="form-control"
+                            placeholder="Enter your email"
+                            required
+                        />
+                        <div class="invalid-feedback d-none" id="email-error"></div>
+                    </div>
+                    <button type="submit" class="btn learn-btn mt-2" id="submit-btn">
+                        <span id="btn-text">Subscribe</span>
+                        <span id="btn-spinner" class="spinner-border spinner-border-sm d-none ms-2" role="status" aria-hidden="true"></span>
+                    </button>
+                
+                    <div class="alert mt-3 d-none" id="newsletter-response"></div>
+                </form>
+                
                   @endif
               </div>
           </div>
@@ -155,38 +158,62 @@
             </div>
             <div class="col-md-6">
               <div class="d-flex justify-content-md-end justify-content-center">
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-facebook-f text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-twitter text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-instagram text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
-                >
-                  <i class="fab fa-linkedin-in text-dark"></i>
-                </a>
-                <a
-                  href="#"
-                  class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center"
-                >
-                  <i class="fab fa-youtube text-dark"></i>
-                </a>
+                  @if(setting('facebook_url'))
+                  <a
+                      href="{{ setting('facebook_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-facebook-f text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('twitter_url'))
+                  <a
+                      href="{{ setting('twitter_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-x text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('instagram_url'))
+                  <a
+                      href="{{ setting('instagram_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-instagram text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('linkedin_url'))
+                  <a
+                      href="{{ setting('linkedin_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center me-3"
+                  >
+                      <i class="fab fa-linkedin-in text-dark"></i>
+                  </a>
+                  @endif
+                  
+                  @if(setting('youtube_url'))
+                  <a
+                      href="{{ setting('youtube_url') }}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon bg-white rounded-circle d-flex align-items-center justify-content-center"
+                  >
+                      <i class="fab fa-youtube text-dark"></i>
+                  </a>
+                  @endif
               </div>
-            </div>
+          </div>
           </div>
         </div>
   
@@ -198,12 +225,81 @@
     </a>
 
            <!-- WhatsApp Button -->
-           <a href="#" id="whatsappButton" class="floating-button whatsapp-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i>
+           <a id="whatsappButton" 
+           href="#"
+           class="whatsapp-btn floating-button"
+           target="_blank"
+           data-number="{{ setting('whatsapp_number', '233246417853') }}"
+           data-default-message="Hello! I'm interested in your services">
+           <i class="fab fa-whatsapp"></i>
         </a>
   
       <!-- JavaScript -->
+      <script>
+        document.getElementById('newsletter-form').addEventListener('submit', async function (e) {
+            e.preventDefault();
+        
+            const form = e.target;
+            const formData = new FormData(form);
+            const emailInput = document.getElementById('email-input');
+            const errorDiv = document.getElementById('email-error');
+            const responseDiv = document.getElementById('newsletter-response');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnSpinner = document.getElementById('btn-spinner');
+        
+            // Reset feedback
+            errorDiv.classList.add('d-none');
+            emailInput.classList.remove('is-invalid');
+            responseDiv.classList.add('d-none');
+            responseDiv.classList.remove('alert-success', 'alert-danger');
+            responseDiv.textContent = '';
+        
+            // Disable button and show spinner
+            submitBtn.disabled = true;
+            btnText.textContent = 'Subscribing...';
+            btnSpinner.classList.remove('d-none');
+        
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    },
+                    body: formData
+                });
+        
+                const data = await res.json();
+        
+                if (res.ok) {
+                    responseDiv.classList.remove('d-none');
+                    responseDiv.classList.add('alert', 'alert-success');
+                    responseDiv.textContent = data.message;
+                    form.reset();
+                } else if (res.status === 422) {
+                    const errors = data.errors;
+                    if (errors.email) {
+                        errorDiv.textContent = errors.email[0];
+                        errorDiv.classList.remove('d-none');
+                        emailInput.classList.add('is-invalid');
+                    }
+                } else {
+                    throw new Error('Unexpected error');
+                }
+        
+            } catch (err) {
+                responseDiv.classList.remove('d-none');
+                responseDiv.classList.add('alert', 'alert-danger');
+                responseDiv.textContent = 'Something went wrong. Please try again.';
+            } finally {
+                submitBtn.disabled = false;
+                btnText.textContent = 'Subscribe';
+                btnSpinner.classList.add('d-none');
+            }
+        });
+        </script>
+        
       <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-      <script src="/assets/js/script.js"></script>
+      <script src="{{ asset('assets/js/script.js') }}"></script>
       <!-- Bootstrap JS Bundle with Popper -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

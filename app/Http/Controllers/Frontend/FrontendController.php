@@ -13,6 +13,7 @@ use App\Models\TeamMember;
 use App\Models\Story;
 use App\Helpers\PageSettingsHelper;
 use App\Models\Institution;
+use App\Models\AboutPageImpactItem;
 
 class FrontendController extends Controller
 {
@@ -84,10 +85,11 @@ class FrontendController extends Controller
         $aboutData = PageSettingsHelper::getAboutPageData();
 
         $institutions = Institution::orderBy('name')->get();
+        $impactItems = AboutPageImpactItem::orderBy('order')->get();
 
 
 
-        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs', 'aboutData', 'institutions'));
+        return view('frontend.pages.about', compact('teamMembers', 'partners', 'impactData', 'featuredBlogs', 'aboutData', 'institutions', 'impactItems'));
     }
 
     /**

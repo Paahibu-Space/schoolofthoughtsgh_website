@@ -240,26 +240,26 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="github_url" class="form-label">GitHub</label>
+                                <label for="facebook_url" class="form-label">GitHub</label>
                                 <div class="input-group">
                                     <span class="input-group-text social-icon-prepend border">
-                                        <i class="fab fa-github text-dark"></i>
+                                        <i class="fab fa-facebook text-info"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('github_url') is-invalid @enderror" id="github_url" name="github_url" value="{{ old('github_url') }}" placeholder="https://github.com/username">
-                                    @error('github_url')
+                                    <input type="url" class="form-control social-input @error('facebook_url') is-invalid @enderror" id="facebook_url" name="facebook_url" value="{{ old('facebook_url') }}" placeholder="https://github.com/username">
+                                    @error('facebook_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label for="twitter_url" class="form-label">Twitter / X</label>
+                                <label for="x_url" class="form-label">Twitter / X</label>
                                 <div class="input-group">
                                     <span class="input-group-text social-icon-prepend border">
-                                        <i class="fab fa-twitter text-info"></i>
+                                        <i class="fab fa-x text-info"></i>
                                     </span>
-                                    <input type="url" class="form-control social-input @error('twitter_url') is-invalid @enderror" id="twitter_url" name="twitter_url" value="{{ old('twitter_url') }}" placeholder="https://twitter.com/username">
-                                    @error('twitter_url')
+                                    <input type="url" class="form-control social-input @error('x_url') is-invalid @enderror" id="x_url" name="x_url" value="{{ old('x_url') }}" placeholder="https://twitter.com/username">
+                                    @error('x_url')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

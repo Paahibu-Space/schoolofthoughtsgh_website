@@ -15,7 +15,8 @@ class AdminController extends Controller
         $pastEventsCount = Event::past()->count();
         $totalUsers = User::count();
         $recentUsers = User::latest()->take(5)->get();
+        $upcomingEvents = Event::upcoming()->take(5)->get();
 
-        return view('admin.dashboard', compact('upcomingEventsCount', 'pastEventsCount', 'totalUsers', 'recentUsers'));
+        return view('admin.dashboard', compact('upcomingEventsCount', 'pastEventsCount', 'totalUsers', 'recentUsers', 'upcomingEvents'));
     }
 }

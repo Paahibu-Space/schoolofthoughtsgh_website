@@ -39,7 +39,7 @@
                     </li>
                 </ul>
 
-                <div class="d-flex">
+                {{-- <div class="d-flex">
                     <div class="input-group me-2" style="width: 250px;">
                         <input type="text" class="form-control" placeholder="Search events..."
                             aria-label="Search events">
@@ -81,7 +81,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <div class="card-body p-0">

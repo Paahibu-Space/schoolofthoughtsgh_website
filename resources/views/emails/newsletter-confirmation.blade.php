@@ -10,5 +10,5 @@ Confirm Subscription
 If you didn't request this subscription, you can safely ignore this email.
 
 Thanks,<br>
-{{ config('app.name') }}
+School of Thoughts Ghana
 @endcomponent

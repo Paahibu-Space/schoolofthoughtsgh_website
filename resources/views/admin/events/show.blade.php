@@ -238,7 +238,7 @@
         </div>
         
         <!-- Related Information Card -->
-        <div class="card mb-4">
+        {{-- <div class="card mb-4">
             <div class="card-header">
                 <h5 class="mb-0">Related Information</h5>
             </div>
@@ -252,7 +252,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 

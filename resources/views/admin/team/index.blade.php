@@ -85,10 +85,10 @@
                                         </td>
                                         <td>
                                             <div class="d-flex">
-                                                <a href="#" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
+                                                {{-- <a href="#" class="btn btn-sm btn-light me-1" data-bs-toggle="tooltip"
                                                     title="View Details">
                                                     <i class="fas fa-eye"></i>
-                                                </a>
+                                                </a> --}}
                                                 <a href="{{ route('admin.team.edit', $member) }}"
                                                     class="btn btn-sm btn-primary me-1" data-bs-toggle="tooltip"
                                                     title="Edit Team">
@@ -134,7 +134,7 @@
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     <script>
-        document.addTeamListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const teamList = document.getElementById('team-members-list');
 
             if (teamList) {

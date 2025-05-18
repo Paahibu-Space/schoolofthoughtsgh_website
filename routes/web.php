@@ -14,12 +14,16 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\StoryController;
-use App\Http\Controllers\Frontend\NewsletterController;
+use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Frontend\FrontendNewsletterController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Admin\PageSettingsController;
+use App\Http\Controllers\Admin\WebsiteSettingsController;
+use App\Models\WebsiteSetting;
+use App\Http\Controllers\Admin\EmailSettingsController;
 
 
 Route::get('/', 'App\Http\Controllers\Frontend\FrontendController@index')->name('frontend.home');
@@ -103,9 +107,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('team/update-order', [TeamMemberController::class, 'updateOrder'])->name('team.update-order');
 
     // Newsletter Routes
-    Route::resource('newsletter', \App\Http\Controllers\Admin\NewsletterController::class)
-        ->only(['index', 'destroy'])
-        ->names('newsletter');
+    Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
+    // Route::delete('/newsletter/{subscription}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
+    Route::get('/newsletter/export', [NewsletterController::class, 'export'])->name('newsletter.export');
+    Route::delete('/newsletter/bulk-delete', [NewsletterController::class, 'bulkDelete'])->name('newsletter.bulkDelete');
+
 
     // Gallery Routes
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
@@ -128,11 +134,20 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
         Route::get('/about', [PageSettingsController::class, 'aboutPage'])->name('about');
         Route::post('/about', [PageSettingsController::class, 'updateAboutPage'])->name('about.update');
 
+        // Website Settings
+        Route::get('/', [WebsiteSettingsController::class, 'index'])->name('website-settings.index');
+        Route::put('/', [WebsiteSettingsController::class, 'update'])->name('website-settings.update');
+
         // Impact Items
         Route::post('/about/impact-items', [PageSettingsController::class, 'storeImpactItem'])->name('about.impact-items.store');
         Route::put('/about/impact-items/{id}', [PageSettingsController::class, 'updateImpactItem'])->name('about.impact-items.update');
         Route::delete('/about/impact-items/{id}', [PageSettingsController::class, 'deleteImpactItem'])->name('about.impact-items.delete');
         Route::post('/about/impact-items/order', [PageSettingsController::class, 'updateImpactItemsOrder'])->name('about.impact-items.order');
+
+        // Email Settings
+        Route::get('email', [EmailSettingsController::class, 'index'])->name('email');
+    Route::put('email', [EmailSettingsController::class, 'update'])->name('email.update');
+    Route::post('email/test', [EmailSettingsController::class, 'sendTestEmail'])->name('email.test');
     });
 });
 
@@ -153,11 +168,11 @@ Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmFo
 Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
 
 // Email Verification Routes
-Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])
+Route::post('/newsletter/subscribe', [FrontendNewsletterController::class, 'subscribe'])
     ->name('newsletter.subscribe');
 
-Route::get('/newsletter/confirm/{token}', [NewsletterController::class, 'confirm'])
+Route::get('/newsletter/confirm/{token}', [FrontendNewsletterController::class, 'confirm'])
     ->name('newsletter.confirm');
 
-Route::get('/newsletter/unsubscribe/{token}', [NewsletterController::class, 'unsubscribe'])
+Route::get('/newsletter/unsubscribe/{token}', [FrontendNewsletterController::class, 'unsubscribe'])
     ->name('newsletter.unsubscribe');

@@ -26,7 +26,7 @@
                                         School of Thoughts Ghana
                                     </h1>
                                     <p class="animate__animated animate__fadeInUp animate__delay-1s">
-                                        We Think To Change! We Are Change!
+                                        Transforming Minds, Changing Narratives!
                                     </p>
                                     <div class="btn-group animate__animated animate__fadeInUp animate__delay-2s">
                                         <a href="{{ route('frontend.about') }}" class="btn btn-primary me-3">
@@ -188,46 +188,6 @@
             @endif
         </div>
     </section>
-
-    {{-- PAST EVENTS SECTION --}}
-    {{-- <section class="events-section py-3">
-        <div class="container">
-            <div class="row justify-content-center mb-3">
-                <div class="col-lg-8 text-center">
-                    <h2 class="display-5 fw-bold mb-3">Explore Our Past Events</h2>
-                </div>
-            </div>
-
-            @if ($pastEvents->count() > 0)
-                <div class="swiper events-slider">
-                    <div class="swiper-wrapper">
-                        @foreach ($pastEvents as $event)
-                            <div class="swiper-slide">
-                                <div class="event-card card-{{ $loop->iteration }}">
-                                    <div class="event-img">
-                                        <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->title }}"
-                                            class="img-fluid" />
-                                    </div>
-                                    <div class="event-content">
-                                        <h3>{{ $event->title }}</h3>
-                                        <p>{!! iFrameFilterInSummernoteAndRender($event->excerpt ?? Str::limit($event->description, 150)) !!}</p>
-                                        <a href="{{ route('frontend.event.show', $event->id) }}" class="btn learn-btn">
-                                            Learn More <i class="fas fa-arrow-right ms-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            @else
-                <div class="text-center py-4">
-                    <p >No past events. Check back later!</p>
-                </div>
-            @endif
-        </div>
-    </section> --}}
 
     <section class="blogs-section py-5 bg-light">
         <div class="container">
