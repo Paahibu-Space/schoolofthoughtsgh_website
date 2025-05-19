@@ -108,9 +108,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // Newsletter Routes
     Route::get('/newsletter', [NewsletterController::class, 'index'])->name('newsletter.index');
-    // Route::delete('/newsletter/{subscription}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
+    Route::delete('/newsletter/{subscription}', [NewsletterController::class, 'destroy'])->name('newsletter.destroy');
     Route::get('/newsletter/export', [NewsletterController::class, 'export'])->name('newsletter.export');
-    Route::delete('/newsletter/bulk-delete', [NewsletterController::class, 'bulkDelete'])->name('newsletter.bulkDelete');
+    // Route::delete('/newsletter/bulk-delete', [NewsletterController::class, 'bulkDelete'])->name('newsletter.bulkDelete');
 
 
     // Gallery Routes
