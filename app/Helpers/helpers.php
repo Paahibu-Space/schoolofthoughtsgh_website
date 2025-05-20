@@ -10,3 +10,9 @@ if (!function_exists('setting')) {
         return \App\Models\WebsiteSetting::getValue($key, $default);
     }
 }
+
+function render_frontend_footer_events()
+{
+    $instance = new \App\MenuBuilder\MenuBuilderFrontendRender();
+    return $instance->render_frontend_footer_events();
+}

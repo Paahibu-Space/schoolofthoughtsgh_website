@@ -20,7 +20,13 @@
                     </h3>
                   </div>
                 </div>
-  
+ 
+                                <!-- Products Column -->
+                                <div class="col-md-4 col-6 mb-4 mb-md-0">
+                                  <h5 class="text-white mb-3">Events</h5>
+                                  {!! render_frontend_footer_events() !!}
+                                </div>
+                                
                 <!-- Links Column -->
                 <div class="col-md-4 col-6 mb-4 mb-md-0">
                   <h5 class="text-white mb-3">Quick Links</h5>
@@ -39,42 +45,17 @@
                       >
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none">Blog</a>
+                      <a href="{{ route('frontend.blogs') }}" class="text-white text-decoration-none">Blog</a>
                     </li>
                     <li class="mb-2">
-                      <a href="#" class="text-white text-decoration-none"
+                      <a href="mailto:info@sotgh.org" class="text-white text-decoration-none"
                         >Contact</a
                       >
                     </li>
                   </ul>
                 </div>
   
-                <!-- Products Column -->
-                <div class="col-md-4 col-6 mb-4 mb-md-0">
-                  <h5 class="text-white mb-3">Events</h5>
-                  <ul class="list-unstyled">
-                    <li class="mb-2">
-                      <a href="{{ route('frontend.startright') }}" class="text-white text-decoration-none"
-                        >Startright</a
-                      >
-                    </li>
-                    <li class="mb-2">
-                      <a href="{{ route('frontend.edutor') }}" class="text-white text-decoration-none"
-                        >Edutor</a
-                      >
-                    </li>
-                    <li class="mb-2">
-                      <a href="{{ route('frontend.afrijam') }}" class="text-white text-decoration-none"
-                        >AfriJam</a
-                      >
-                    </li>
-                    <li class="mb-2">
-                      <a href="{{ route('frontend.industry-seminar') }}" class="text-white text-decoration-none"
-                        >Industry Seminar</a
-                      >
-                    </li>
-                  </ul>
-                </div>
+
   
                 <!-- Contact Column -->
                 <div class="col-md-4 col-12">
@@ -83,7 +64,7 @@
                     <li class="mb-2 d-flex align-items-center">
                       <i class="fas fa-envelope text-white me-2"></i>
                       <a
-                        href="mailto:info@schoolname.edu"
+                        href="mailto:info@sotgh.org"
                         class="text-white text-decoration-none"
                         >info@sotgh.org</a
                       >
