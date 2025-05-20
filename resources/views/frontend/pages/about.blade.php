@@ -266,7 +266,7 @@
                                 <div class="blog-content p-4">
                                     <h3>{{ $blog->title }}</h3>
                                     <p class="mb-3">{!! iFrameFilterInSummernoteAndRender(Str::limit($blog->content, 100)) !!}</p>
-                                    <a href="#" class="btn learn-btn">
+                                    <a href="{{ route('frontend.blog.show', $blog->id) }}" class="btn learn-btn">
                                         Read More <i class="fas fa-arrow-right ms-2"></i>
                                     </a>
                                 </div>
